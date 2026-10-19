@@ -745,7 +745,7 @@ html body .cnt-submit:not(#a):not(#b) {
 }
 
 /* =========================================================
-   CTA BACKGROUND — image fades in at top & bottom (same as Work page)
+   CTA BACKGROUND — image fades in at top & bottom 
    ========================================================= */
 .lib-final-cta {
   position: relative;

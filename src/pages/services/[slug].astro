@@ -39,7 +39,10 @@ const stageCount = projectStages.length;
 // title: pehla aadha white, doosra aadha halka brown gradient
 const titleWords: string[] = String(title).split(/\s+/).filter(Boolean);
 const titleSplit = Math.max(1, Math.ceil(titleWords.length / 2));
-const lead = String(description).split(/(?<=[.!?])\s/)[0].slice(0, 190);
+const firstSentence = String(description).split(/(?<=[.!?])\s/)[0];
+const lead = firstSentence.slice(0, 190);
+// "What's included" mein sirf wahi bacha hua text jo hero mein pehle se nahi dikha (repeat nahi)
+const restDesc = firstSentence.length > 190 ? String(description) : String(description).slice(firstSentence.length).trim();
 
 // --- markdown body -> modules (cards ke liye) ---
 const escapeHtml = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -168,9 +171,9 @@ const cardMods = parsed.mods
     const { intro, groups } = groupsOf(m);
     const firstList = m.blocks.find((b) => b.t === "ul") as { t: "ul"; items: string[] } | undefined;
     const preview = intro.length
-      ? clip(stripHtml(intro[0]), 120)
+      ? clip(stripHtml(intro[0]), 160)
       : firstList
-        ? clip(firstList.items.slice(0, 2).map(stripHtml).join(" · "), 120)
+        ? clip(firstList.items.slice(0, 2).map(stripHtml).join(" · "), 160)
         : "";
     return { title: m.title, preview, intro, groups };
   });
@@ -299,19 +302,17 @@ const context = engagementContext.slice(0, 4);
           <div class="svcd-wrap">
             <div class="svcd-head svcd-reveal">
               <div>
-                <span class="svcd-label">What's included</span>
-                <h2 class="svcd-h2">Solutions in <span class="svcd-hl">{title}</span></h2>
+                <h2 class="svcd-h2">What's <span class="svcd-hl">included</span></h2>
               </div>
-              <p class="svcd-head-note">{description}</p>
+              {restDesc && <p class="svcd-head-note">{restDesc}</p>}
             </div>
 
             <div class="svcd-cards">
               {cards.map((c: any, i: number) => (
-                <article class={`svcd-card svcd-reveal${i === 0 ? " is-feature" : ""}`} style={`--d:${i * 70}ms`} data-card>
+                <article class="svcd-card svcd-reveal" style={`--d:${i * 70}ms`} data-card>
                   <span class="svcd-card-icon">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d={icons[i % icons.length]} /></svg>
                   </span>
-                  <span class="svcd-card-num">{pad(i + 1)}</span>
                   <h3 class="svcd-card-title">{c.title}</h3>
                   {c.preview && <p class="svcd-card-text">{c.preview}</p>}
 
@@ -397,7 +398,7 @@ const context = engagementContext.slice(0, 4);
                     </ul>
                   </div>
                 )}
-                <div class="svcd-note svcd-note--brown svcd-reveal" style="--d:200ms">
+                <div class="svcd-note svcd-note--light svcd-reveal" style="--d:200ms">
                   <h3>First draft in 7 days</h3>
                   <p>Send your drawings, sketches or model. We reply with a clear scope.</p>
                   <a href="/Contact/">Start a project ↗</a>
@@ -456,7 +457,6 @@ const context = engagementContext.slice(0, 4);
               {faqs.map((f, i) => (
                 <div class="svcd-faq-item svcd-reveal" style={`--d:${i * 60}ms`}>
                   <button class="svcd-faq-q" type="button" aria-expanded="false" aria-controls={`faq-a-${i}`} id={`faq-q-${i}`}>
-                    <span class="svcd-faq-idx">{pad(i + 1)}</span>
                     <span class="svcd-faq-text">{f.q}</span>
                     <span class="svcd-faq-plus" aria-hidden="true"></span>
                   </button>

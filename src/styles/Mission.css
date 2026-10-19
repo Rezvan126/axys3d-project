@@ -40,13 +40,14 @@
 
 .mission-col { display: flex; flex-direction: column; gap: 20px; }
 
-/* ---------- SHARED CARD ---------- */
+/* ---------- SHARED CARD ----------
+   Flat dark card (no grey wash) so it matches the black + brown theme */
 .mission-card {
   opacity: 0;
   transform: translateY(28px);
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: linear-gradient(160deg, #3a2518 0%, #5b5957 50%, #272321 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #121212;
   padding: 30px;
   box-sizing: border-box;
   cursor: default;
@@ -67,20 +68,20 @@
 }
 
 .mission-card-tag {
-  font-size: 10px;
+  font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 1.2px;
   text-transform: uppercase;
-  color: #b8946f;
+  color: #c9a67f;
   display: inline-block;
   margin-bottom: 12px;
 }
 
-.mission-card-tag--light { color: #b5afab; }
-.mission-card-tag--gold  { color: #b8946f; }
+.mission-card-tag--light { color: #cfc9c5; }
+.mission-card-tag--gold  { color: #c9a67f; }
 
-.mission-card-copy { margin: 0; color: #b5afab; font-size: 13.5px; line-height: 1.55; }
-.mission-card-copy--light { color: #c4beba; }
+.mission-card-copy { margin: 0; color: #cfc9c5; font-size: 14.5px; line-height: 1.6; }
+.mission-card-copy--light { color: #e0dad6; }
 
 /* ---------- COLUMN 1 ---------- */
 .mission-card--avatars {
@@ -92,27 +93,27 @@
 
 .avatar-dot {
   display: flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px; border-radius: 50%;
+  width: 38px; height: 38px; border-radius: 50%;
   margin-left: -10px;
-  border: 2px solid #2a2624;
-  background: #5a5654;
+  border: 2px solid #121212;
+  background: #4a4644;
   color: #ffffff;
-  font-size: 11px; font-weight: 700;
+  font-size: 12px; font-weight: 700;
 }
 
 .avatar-dot:first-child { margin-left: 0; }
 
 .avatar-dot--more { background: linear-gradient(135deg, #8f6444, #5b3b27); color: #ffffff; }
 
-.mission-card-label { color: #aea7a3; font-size: 13px; font-weight: 600; }
+.mission-card-label { color: #d6d0cc; font-size: 14px; font-weight: 600; }
 .mission-stat-inline { color: #ffffff; font-weight: 800; }
 
+/* Stat card: warm dark brown, clearly different from the others but still on-theme */
 .mission-card--stat {
   display: flex; flex-direction: column; justify-content: space-between; flex: 1.2;
-  background:  #30261c;
-  border-color: rgba(255, 255, 255, 0.18);
+  background: #1d1510;
+  border-color: rgba(143, 100, 68, 0.3);
 }
-/* light grey card ke upar text/numbers saaf dikhen */
 .mission-card--stat .mission-card-tag { color: #e3c9a8; }
 .mission-card--stat .mission-card-copy { color: #ece8e5; }
 .mission-card--stat .mission-card-note { color: #d6d0cc; }
@@ -145,7 +146,7 @@
 
 /* ---------- COLUMN 2 (ACCENT TALL CARD) ---------- */
 .mission-card--accent {
-  background: rgb(48, 48, 48);
+  background: #181513;
   border: 1px solid rgba(143, 100, 68, 0.4);
   display: flex; flex-direction: column; justify-content: space-between;
   min-height: 380px;
@@ -157,36 +158,36 @@
 .mission-hero-title {
   color: #ffffff;
   font-family: "Bricolage Grotesque", sans-serif;
-  font-size: 18px; font-weight: 800; letter-spacing: -0.01em;
+  font-size: 19px; font-weight: 800; letter-spacing: -0.01em;
   margin: 4px 0 0;
 }
 
 .mission-booking-card {
   display: flex; align-items: center; gap: 12px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 12px 18px; border-radius: 14px; margin-top: 16px;
 }
 
 .mission-badge-dot {
   width: 8px; height: 8px; border-radius: 50%;
-  background: #b8946f;
+  background: #c9a67f;
   box-shadow: 0 0 0 4px rgba(184, 148, 111, 0.2);
 }
 
 .mission-booking-label {
-  display: block; font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
-  color: #b5afab; font-weight: 600;
+  display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+  color: #cfc9c5; font-weight: 600;
 }
 
-.mission-booking-val { display: block; color: #ffffff; font-size: 12px; font-weight: 700; }
+.mission-booking-val { display: block; color: #ffffff; font-size: 13.5px; font-weight: 700; }
 
 /* ---------- COLUMN 3 (DARK CARD) ---------- */
 .mission-card--dark {
   grid-column: 3;
   min-height: 380px;
   display: flex; flex-direction: column; justify-content: space-between;
-  background: linear-gradient(160deg, #121212 0%, #070707 55%, #000000 100%);
+  background: #0a0a0a;
   border: 1px solid rgba(143, 100, 68, 0.3);
 }
 
@@ -194,7 +195,7 @@
 
 .mission-chart-line,
 .mission-chart-arrowhead {
-  fill: none; stroke: #8f6444; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+  fill: none; stroke: #a9764f; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
 }
 
 .mission-chart-line {
@@ -210,15 +211,15 @@
 .mission-dark-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
 
 .mission-rating .mission-stat-value { font-size: clamp(34px, 3.4vw, 44px); }
-.mission-rating .mission-stat-suffix { background: none; -webkit-text-fill-color: #b5afab; color: #b5afab; }
+.mission-rating .mission-stat-suffix { background: none; -webkit-text-fill-color: #cfc9c5; color: #cfc9c5; }
 
 .mission-trust { text-align: right; }
 
-.mission-stars { display: block; color: #b8946f; font-size: 11px; letter-spacing: 2px; margin-bottom: 4px; }
+.mission-stars { display: block; color: #c9a67f; font-size: 13px; letter-spacing: 2px; margin-bottom: 4px; }
 
 .mission-trust-label {
-  display: block; color: #b5afab; font-size: 9.5px; font-weight: 600;
-  letter-spacing: 0.3px; text-transform: uppercase; max-width: 120px;
+  display: block; color: #cfc9c5; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.3px; text-transform: uppercase; max-width: 140px;
 }
 
 /* ---------- RESPONSIVE ---------- */
@@ -232,24 +233,33 @@
 }
 
 /* ---------- EXPLAINER NOTES ---------- */
-.mission-card-note { margin: 8px 0 0; color: #a39d99; font-size: 12px; line-height: 1.5; }
-.mission-card-note--light { color: #b5afab; margin: 0 0 4px; }
+.mission-card-note { margin: 8px 0 0; color: #bdb7b3; font-size: 13px; line-height: 1.55; }
+.mission-card-note--light { color: #cfc9c5; margin: 0 0 4px; }
 
 .mission-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 14px; }
 
 .mission-chips-label {
-  width: 100%; color: #b5afab; font-size: 9px; font-weight: 700;
+  width: 100%; color: #cfc9c5; font-size: 11px; font-weight: 700;
   letter-spacing: 1px; text-transform: uppercase;
 }
 
 .mission-chip {
-  padding: 5px 11px; border-radius: 999px;
-  background: rgba(91, 59, 39, 0.2);
-  border: 1px solid rgba(143, 100, 68, 0.4);
-  color: #b8946f; font-size: 11px; font-weight: 600;
+  padding: 5px 12px; border-radius: 999px;
+  background: rgba(91, 59, 39, 0.25);
+  border: 1px solid rgba(143, 100, 68, 0.5);
+  color: #d4b08a; font-size: 12px; font-weight: 600;
 }
 
 .mission-rating-label {
-  display: block; margin-bottom: 2px; color: #b5afab; font-size: 9px; font-weight: 600;
+  display: block; margin-bottom: 2px; color: #cfc9c5; font-size: 11px; font-weight: 600;
   letter-spacing: 1px; text-transform: uppercase;
+}
+
+/* ---------- ACCESSIBILITY ---------- */
+/* If a visitor has reduced motion on (or JS is slow), cards must still show */
+@media (prefers-reduced-motion: reduce) {
+  .mission-card { opacity: 1; transform: none; transition: none; }
+  .mission-card:hover { transform: none; }
+  .mission-chart-line { stroke-dashoffset: 0; transition: none; }
+  .mission-chart-arrowhead { opacity: 1; transition: none; }
 }

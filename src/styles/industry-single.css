@@ -226,6 +226,7 @@ html:not(.js) .indd-reveal { opacity: 1; transform: none; }
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: clamp(32px, 5vw, 72px);
   align-items: start;
+  margin-top: 64px;
 }
 .indd-ctx-text .indd-h2 { margin-bottom: 18px; max-width: 18ch; }
 .indd-ctx-text > p { margin: 0 0 26px; max-width: 44ch; font-size: 14.5px; line-height: 1.75; color: var(--muted); }
@@ -235,7 +236,7 @@ html:not(.js) .indd-reveal { opacity: 1; transform: none; }
   position: absolute;
   overflow: hidden;
   border-radius: 50%;
-  background: #111113;
+  background: #202020;
   box-shadow: 0 22px 44px rgba(0, 0, 0, 0.5);
 }
 .indd-collage img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(0.2) contrast(1.03); }
@@ -253,30 +254,31 @@ html:not(.js) .indd-reveal { opacity: 1; transform: none; }
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #8f6444;
+  color: #c9a07a;
 }
 
 .indd-card {
   padding: 24px 22px 22px;
   border: 0;
   border-radius: 22px;
-  background: #ffffff;
-  color: #1a1511;
-  transition: transform 0.5s ease, box-shadow 0.4s ease;
+  background: #3d3d3d;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: background 0.35s ease, transform 0.5s ease, box-shadow 0.4s ease;
 }
-.indd-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35); }
-.indd-card h3 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.25; color: #1a1511; }
+.indd-card:hover { transform: translateY(-4px); background: #2a1e16; box-shadow: inset 0 0 0 1px rgba(201, 160, 122, 0.5), 0 24px 48px rgba(0, 0, 0, 0.35); }
+.indd-card h3 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.25; color: #ffffff; }
 .indd-list { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 11px; }
-.indd-list li { display: flex; gap: 10px; font-size: 13px; line-height: 1.55; color: #5d544c; }
+.indd-list li { display: flex; gap: 10px; font-size: 13px; line-height: 1.55; color: #d6d0cc; }
 .indd-list svg {
   flex-shrink: 0;
   width: 20px;
   height: 20px;
   padding: 4px;
   border-radius: 50%;
-  background: rgba(91, 59, 39, 0.1);
+  background: rgba(143, 100, 68, 0.2);
   fill: none;
-  stroke: #5b3b27;
+  stroke: #c9a07a;
   stroke-width: 2.6;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -293,13 +295,14 @@ html:not(.js) .indd-reveal { opacity: 1; transform: none; }
 }
 .indd-tile b { display: block; font-family: 'Manrope', sans-serif; font-size: clamp(40px, 4vw, 56px); font-weight: 700; line-height: 1; letter-spacing: -0.05em; }
 .indd-tile p { margin: 10px 0 0; font-size: 13px; line-height: 1.55; }
-.indd-tile--black { background: #121213; color: #ffffff; }
+.indd-tile--black { background: #151517; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1); color: #ffffff; }
 .indd-tile--black .indd-tag { color: var(--brown-light); }
 .indd-tile--black p { color: #b4b0ac; }
-.indd-tile--grey { background: #dcdad7; color: #1a1511; }
-.indd-tile--grey p { color: #4b433c; }
+.indd-tile--grey { background: #31200f; color: #ffffff; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1); }
+.indd-tile--grey .indd-tag { color: var(--brown-light); }
+.indd-tile--grey p { color: #b4b0ac; }
 
-/* ---------- ENGAGEMENT STEPS (Updated Background: #beb8ae) ---------- */
+/* ---------- ENGAGEMENT STEPS (dark card) ---------- */
 .indd-steps { 
   display: grid; 
   grid-template-columns: repeat(4, minmax(0, 1fr)); 
@@ -312,12 +315,14 @@ html:not(.js) .indd-reveal { opacity: 1; transform: none; }
   min-height: 230px;
   padding: 24px 22px 22px;
   border-radius: 22px;
-  background: #beb8ae;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  color: #1a1511;
-  transition: transform 0.5s ease, box-shadow 0.4s ease;
+  background: #362e24;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transition: background 0.35s ease, border-color 0.3s ease, transform 0.5s ease, box-shadow 0.4s ease;
 }
 .indd-step:hover { 
+  background: #2a1e16; 
+  border-color: rgba(201, 160, 122, 0.5); 
   transform: translateY(-4px); 
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35); 
 }
@@ -334,13 +339,13 @@ html:not(.js) .indd-reveal { opacity: 1; transform: none; }
   width: 42px; 
   height: 42px; 
   border-radius: 50%; 
-  background: rgba(0, 0, 0, 0.06); 
+  background: rgba(143, 100, 68, 0.2); 
 }
 .indd-step-icon svg { 
   width: 20px; 
   height: 20px; 
   fill: none; 
-  stroke: #1a1511; 
+  stroke: #c9a07a; 
   stroke-width: 1.7; 
   stroke-linecap: round; 
   stroke-linejoin: round; 
@@ -349,20 +354,20 @@ html:not(.js) .indd-reveal { opacity: 1; transform: none; }
   font-family: 'JetBrains Mono', ui-monospace, monospace; 
   font-size: 11px; 
   letter-spacing: 0.18em; 
-  color: rgba(26, 21, 17, 0.55); 
+  color: rgba(255, 255, 255, 0.55); 
 }
 .indd-step h3 { 
   margin: 0; 
   font-size: 18px; 
   font-weight: 700; 
   letter-spacing: -0.03em; 
-  color: #1a1511; 
+  color: #ffffff; 
 }
 .indd-step p { 
   margin: 0; 
   font-size: 13px; 
   line-height: 1.6; 
-  color: #3b352f; 
+  color: #c4bebb; 
 }
 
 /* =========================================================
@@ -381,15 +386,16 @@ html:not(.js) .indd-reveal { opacity: 1; transform: none; }
   align-items: center;
   padding: 18px 22px 18px 18px;
   border-radius: 26px;
-  background: #232323;
-  border: 1px solid #232328;
+  background: #2b2b2e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: #ffffff;
-  transition: transform 0.35s ease, border-color 0.3s ease, box-shadow 0.35s ease;
+  transition: background 0.35s ease, transform 0.35s ease, border-color 0.3s ease, box-shadow 0.35s ease;
 }
 
 .indd-svc-row:hover {
   transform: translateY(-3px);
-  border-color: #383a45;
+  background: #2a1e16;
+  border-color: rgba(201, 160, 122, 0.5);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
 }
 
@@ -443,7 +449,7 @@ html:not(.js) .indd-reveal { opacity: 1; transform: none; }
   gap: 4px;
   font-size: 13px;
   font-weight: 600;
-  color: #9295a6;
+  color: #b5b0ad;
   text-decoration: none;
   transition: color 0.25s ease;
   white-space: nowrap;
@@ -466,7 +472,7 @@ html:not(.js) .indd-reveal { opacity: 1; transform: none; }
   margin: 0;
   font-size: 14.5px;
   line-height: 1.65;
-  color: #a4a7b5;
+  color: #c4bebb;
 }
 
 .indd-svc-row-bottom {
@@ -488,11 +494,11 @@ html:not(.js) .indd-reveal { opacity: 1; transform: none; }
   display: inline-block;
   padding: 4px 12px;
   border-radius: 999px;
-  background: #202127;
-  border: 1px solid #2d2e37;
+  background: #1c1c1f;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
-  color: #b5b7c4;
+  color: #cfc9c5;
 }
 
 .indd-svc-row-btn {
@@ -501,8 +507,8 @@ html:not(.js) .indd-reveal { opacity: 1; transform: none; }
   gap: 8px;
   padding: 9px 20px;
   border-radius: 999px;
-  background: #1c1d22;
-  border: 1px solid #32343f;
+  background: #1c1c1f;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   color: #ffffff;
   font-size: 13px;
   font-weight: 600;
@@ -536,14 +542,16 @@ html:not(.js) .indd-reveal { opacity: 1; transform: none; }
   gap: 22px; 
   padding: 30px; 
   border-radius: 26px;
-  background: #343538;
-  border: 1px solid #2d2e38;
+  background: #151517;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: #ffffff;
+  box-shadow: none;
 }
 
 .indd-card--wide:hover { 
   transform: none; 
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45); 
+  background: #2a1e16; 
+  box-shadow: inset 0 0 0 1px rgba(201, 160, 122, 0.5), 0 16px 36px rgba(0, 0, 0, 0.45); 
 }
 
 .indd-card--wide p { 
@@ -588,15 +596,16 @@ html:not(.js) .indd-reveal { opacity: 1; transform: none; }
   flex-direction: column;
   padding: 10px;
   border: 0;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   border-radius: 22px;
-  background: #ffffff;
-  color: #1a1511;
+  background: #151517;
+  color: #ffffff;
   text-decoration: none;
   transition: background 0.35s ease, transform 0.5s ease, box-shadow 0.4s ease;
 }
-.indd-proj:hover { background: #faf8f6; transform: translateY(-4px); box-shadow: 0 22px 44px rgba(0, 0, 0, 0.35); }
+.indd-proj:hover { background: #2a1e16; transform: translateY(-4px); box-shadow: inset 0 0 0 1px rgba(201, 160, 122, 0.5), 0 22px 44px rgba(0, 0, 0, 0.35); }
 
-.indd-proj-media { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; background: #d9d4ce; }
+.indd-proj-media { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; background: #1c1c1f; }
 .indd-proj-media img, .indd-proj-media video {
   position: absolute;
   inset: 0;
@@ -630,11 +639,11 @@ html:not(.js) .indd-reveal { opacity: 1; transform: none; }
   font-style: normal;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #8f6444;
+  color: #c9a07a;
 }
-.indd-proj-body strong { font-size: 16px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.25; color: #1a1511; }
-.indd-proj-body small { font-size: 12.5px; color: #6b625a; }
-.indd-proj-go { margin-top: 8px; font-size: 12.5px; font-weight: 700; color: #5b3b27; }
+.indd-proj-body strong { font-size: 16px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.25; color: #ffffff; }
+.indd-proj-body small { font-size: 12.5px; color: #b5b0ad; }
+.indd-proj-go { margin-top: 8px; font-size: 12.5px; font-weight: 700; color: #c9a07a; }
 .indd-proj-go i { font-style: normal; transition: transform 0.3s ease; display: inline-block; }
 .indd-proj:hover .indd-proj-go i { transform: translate(3px, -3px); }
 

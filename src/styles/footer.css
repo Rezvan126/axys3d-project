@@ -6,9 +6,11 @@
   --bg-dark: #000000;
   --brown: #1a1a1a;
   --brown-hi: #8f6444;
+  --brown-lt: #c79a6e;
   --text-white: #ffffff;
-  --text-muted: #959595;
-  --border-line: rgba(255, 255, 255, 0.08);
+  --text-muted: #b5b5b7;
+  --text-dim: #8f8f92;
+  --border-line: rgba(255, 255, 255, 0.1);
 
   position: relative;
   overflow: hidden;
@@ -73,28 +75,28 @@
 .footer-brand p {
   margin: 0;
   color: var(--text-muted);
-  font-size: 13.5px;
+  font-size: 15px;
   line-height: 1.6;
-  max-width: 320px;
+  max-width: 340px;
 }
 
 .footer-contact {
   color: var(--text-white);
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 600;
   text-decoration: none;
   margin-top: 4px;
   transition: color 0.2s ease;
 }
 
-.footer-contact:hover { color: var(--brown-hi); }
+.footer-contact:hover { color: var(--brown-lt); }
 
 .footer-heading {
   display: block;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: #6b6b6d;
+  color: var(--text-dim);
   margin-bottom: 18px;
   text-transform: uppercase;
 }
@@ -105,32 +107,46 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .footer-links a {
+  display: inline-block;
+  padding: 4px 0;
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 13.5px;
+  font-size: 15px;
   transition: color 0.2s ease;
 }
 
-.footer-links a:hover { color: var(--brown-hi); }
+.footer-links a:hover { color: var(--brown-lt); }
 
 .footer-socials {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 18px;
+  gap: 8px 22px;
 }
 
 .footer-socials a {
+  display: inline-block;
+  padding: 4px 0;
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 13.5px;
+  font-size: 15px;
   transition: color 0.2s ease;
 }
 
-.footer-socials a:hover { color: var(--brown-hi); }
+.footer-socials a:hover { color: var(--brown-lt); }
+
+/* Visible keyboard focus */
+.footer-logo:focus-visible,
+.footer-contact:focus-visible,
+.footer-links a:focus-visible,
+.footer-socials a:focus-visible {
+  outline: 2px solid var(--brown-lt);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
 
 .footer-bottom {
   border-top: 1px solid var(--border-line);
@@ -139,8 +155,8 @@
 
 .footer-bottom p {
   margin: 0;
-  font-size: 12px;
-  color: #6b6b6d;
+  font-size: 13px;
+  color: var(--text-dim);
 }
 
 /* =========================================================

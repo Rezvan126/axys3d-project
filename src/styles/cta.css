@@ -5,10 +5,10 @@
 
 .cta-section {
   --black: #000000;
-  --grey: #959595;
+  --grey: #b5b0ad;
   --grey-dark: #525254;
   --grey-darker: #363336;
-  --sand: #aea7a3;
+  --sand: #cfc9c5;
   --brown: #5b3b27;
   --brown-hi: #8f6444;
   --brown-lt: #b8946f;
@@ -21,13 +21,14 @@
   font-family: "Manrope", sans-serif;
 }
 
-/* ---------- Background image + black overlay ---------- */
+/* ---------- Background image + black overlay ----------
+   Overlay is lighter now so the building photo is actually visible */
 .cta-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
   background-image:
-    linear-gradient(135deg, rgba(0, 0, 0,.94) 0%, rgba(0, 0, 0,.82) 50%, rgba(0, 0, 0,.95) 100%),
+    linear-gradient(rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.66)),
     url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop');
   background-size: cover;
   background-position: center;
@@ -47,7 +48,7 @@
 .cta-main {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(40px, 6vw, 96px);
+  gap: clamp(48px, 6vw, 96px);
   align-items: center;
 }
 
@@ -57,9 +58,9 @@
   margin-bottom: 18px;
   color: var(--grey);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: clamp(.5rem, .6vw, .68rem);
-  font-weight: 400;
-  letter-spacing: .3em;
+  font-size: clamp(.72rem, .85vw, .82rem);
+  font-weight: 500;
+  letter-spacing: .24em;
   text-transform: uppercase;
 }
 
@@ -68,8 +69,8 @@
   color: #ffffff;
   font-family:  'Manrope', sans-serif;
   font-size: clamp(2.3rem, 6vw, 4rem);
-  line-height: 0.95;
-  letter-spacing: -0.065em !important;
+  line-height: 1;
+  letter-spacing: -0.06em !important;
   font-weight: 900 !important;
   margin-top: 10px;
 }
@@ -78,54 +79,54 @@
 .cta-highlight {
   display: inline-block;
   padding-right: .06em;
-  background: linear-gradient(90deg, #b8946f 0%, #8f6444 55%, #6b452c 100%);
+  background: linear-gradient(90deg, #c9a67f 0%, #a9764f 55%, #8f6444 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
-/* ---------- Right: glass card + offset shapes ---------- */
+/* ---------- Right: glass card + offset shapes ----------
+   Shapes are smaller, flatter and closer to the card so they
+   look like a neat accent instead of a messy overlap */
 .cta-card-wrap {
   position: relative;
   isolation: isolate;
-  margin: 28px 28px 28px 0;
+  margin: 18px 18px 18px 0;
 }
 
 .cta-shape {
   position: absolute;
   z-index: -1;
-  border-radius: 28px;
+  border-radius: 22px;
 }
 
 /* top-right, grey */
 .cta-shape--a {
-  top: -28px;
-  right: -28px;
-  width: 58%;
-  height: 72%;
-  background: linear-gradient(160deg, var(--grey-dark) 0%, var(--grey-darker) 100%);
-  border-top-right-radius: 56px;
+  top: -18px;
+  right: -18px;
+  width: 44%;
+  height: 56%;
+  background: #2a292b;
+  border-top-right-radius: 44px;
 }
 
 /* bottom-left, coffee brown */
 .cta-shape--b {
-  left: -28px;
-  bottom: -28px;
-  width: 52%;
-  height: 66%;
-  background: linear-gradient(200deg, var(--brown) 0%, #2a1a10 100%);
-  border-bottom-left-radius: 56px;
+  left: -18px;
+  bottom: -18px;
+  width: 40%;
+  height: 50%;
+  background: #3a2518;
+  border-bottom-left-radius: 44px;
 }
 
 .cta-card {
   position: relative;
   padding: clamp(28px, 3.2vw, 44px);
   border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background:
-    radial-gradient(90% 120% at 85% 40%, rgba(174, 167, 163, 0.12), transparent 70%),
-    linear-gradient(135deg, rgba(18, 18, 18, 0.88) 0%, rgba(10, 10, 10, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(12, 12, 12, 0.88);
   -webkit-backdrop-filter: blur(18px) saturate(120%);
   backdrop-filter: blur(18px) saturate(120%);
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -134,7 +135,7 @@
 .cta-card p {
   margin: 0 0 30px;
   color: var(--sand);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.7;
 }
@@ -152,7 +153,7 @@
   background: linear-gradient(135deg, var(--brown-hi) 0%, var(--brown) 100%);
   color: #ffffff;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   box-shadow: 0 10px 30px rgba(91, 59, 39, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
   transition: transform .3s ease, box-shadow .3s ease;
@@ -209,9 +210,9 @@
 
 @media (max-width: 640px) {
   .cta-inner { padding: 0 20px; }
-  .cta-card-wrap { margin: 18px 18px 18px 0; }
-  .cta-shape--a { top: -18px; right: -18px; }
-  .cta-shape--b { left: -18px; bottom: -18px; }
+  .cta-card-wrap { margin: 14px 14px 14px 0; }
+  .cta-shape--a { top: -14px; right: -14px; }
+  .cta-shape--b { left: -14px; bottom: -14px; }
   .cta-button { width: 100%; justify-content: space-between; }
 }
 

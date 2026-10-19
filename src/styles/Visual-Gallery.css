@@ -1,4 +1,3 @@
-
 /* 3D WALK-THE-GALLERY — Black + Grey + Coffee Brown (60/30/10) */
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
@@ -6,7 +5,7 @@
 .vg {
   --bg: #000000;
   --cream: #ffffff;
-  --muted: #959595;
+  --muted: #b5b0ad;
   --edge: rgba(255, 255, 255, 0.09);
   --brown: #5b3b27;
   --brown-hi: #8f6444;
@@ -44,7 +43,7 @@
 .vg-tag {
   display: block; margin-bottom: 14px;
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: clamp(.55rem, .65vw, .7rem); letter-spacing: .3em; color: #959595;
+  font-size: clamp(.72rem, .8vw, .82rem); letter-spacing: .24em; color: #b5b0ad;
 }
 
 /* Title: white -> grey */
@@ -252,7 +251,7 @@
   backdrop-filter: blur(8px);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-weight: 600;
-  font-size: clamp(.55rem, .65vw, .72rem);
+  font-size: clamp(.72rem, .8vw, .82rem);
   line-height: 1.5; letter-spacing: .24em; text-transform: uppercase;
   color: #aea7a3;
   pointer-events: none; z-index: 6;
@@ -264,8 +263,8 @@
 .vg-modes button {
   display: inline-flex; align-items: center; gap: 6px;
   background: none; border: 0; padding: 0;
-  color: #6b6b6d;
-  font: 600 clamp(.72rem, .85vw, .95rem) 'Manrope', sans-serif;
+  color: #a5a5a8;
+  font: 600 clamp(.8rem, .9vw, 1rem) 'Manrope', sans-serif;
   letter-spacing: -.01em; cursor: pointer; transition: color .3s;
 }
 
@@ -299,9 +298,9 @@
 .vg-enter small {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-weight: 600;
-  font-size: clamp(.55rem, .65vw, .72rem);
-  letter-spacing: .25em;
-  color: #959595;
+  font-size: clamp(.72rem, .8vw, .82rem);
+  letter-spacing: .2em;
+  color: #b5b0ad;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
@@ -347,30 +346,30 @@
 
 .vg-tip.is-on { opacity: 1; }
 .vg-tip b { display: block; font: 700 clamp(.8rem, 1vw, 1.1rem) 'Manrope', sans-serif; letter-spacing: -.02em; color: #fff; }
-.vg-tip small { display: block; margin-top: 4px; font: 500 10px ui-monospace, Menlo, monospace; letter-spacing: .16em; color: #959595; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vg-tip small { display: block; margin-top: 4px; font: 500 11.5px ui-monospace, Menlo, monospace; letter-spacing: .14em; color: #b5b0ad; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .vg-detail { position: absolute; inset: 0; z-index: 10; display: grid; grid-template-columns: 62% 38%; background: #080808; opacity: 0; visibility: hidden; transition: opacity .6s ease, visibility 0s linear .6s; }
 .vg-detail.is-open { opacity: 1; visibility: visible; transition-delay: 0s; }
-.vg-detail-img { position: relative; overflow: hidden; }
+.vg-detail-img { position: relative; overflow: hidden; background: #141210; }
 .vg-detail-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity .7s ease; }
 .vg-detail-img img.is-on { opacity: 1; }
 .vg-detail-info { position: relative; display: flex; flex-direction: column; justify-content: center; padding: 0 44px; }
-.vg-close { position: absolute; top: 16px; right: 16px; width: 30px; height: 30px; border-radius: 50%; border: 0; background: rgba(255,255,255,.08); color: #ffffff; font-size: 12px; cursor: pointer; transition: background .2s; }
+.vg-close { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border-radius: 50%; border: 0; background: rgba(255,255,255,.12); color: #ffffff; font-size: 15px; cursor: pointer; transition: background .2s; }
 .vg-close:hover { background: #5b3b27; }
-.vg-eyebrow { display: block; margin-bottom: 12px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: clamp(.5rem, .6vw, .66rem); letter-spacing: .24em; color: #8f6444; }
+.vg-eyebrow { display: block; margin-bottom: 12px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: clamp(.72rem, .8vw, .8rem); letter-spacing: .2em; color: #c9a07a; }
 .vg-detail-info h3 {
   margin: 0 0 10px; font-family: 'Inter', system-ui, sans-serif;
   font-size: clamp(1.4rem, 2.2vw, 2.3rem); line-height: 1.05; font-weight: 800; letter-spacing: -.05em;
   background: linear-gradient(180deg, #ffffff 0%, #aea7a3 100%);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
-.vg-detail-info p { margin: 0 0 20px; font-size: clamp(.72rem, .8vw, .85rem); line-height: 1.55; color: #959595; max-width: 30ch; }
+.vg-detail-info p { margin: 0 0 20px; font-size: clamp(.88rem, .95vw, .98rem); line-height: 1.6; color: #c4bebb; max-width: 36ch; }
 .vg-detail-info dl { margin: 0 0 26px; display: grid; gap: 9px; }
-.vg-detail-info dl div { display: grid; grid-template-columns: 96px 1fr; font-size: clamp(.68rem, .75vw, .8rem); }
-.vg-detail-info dt { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: clamp(.45rem, .55vw, .6rem); letter-spacing: .2em; color: #6b6b6d; padding-top: 3px; }
+.vg-detail-info dl div { display: grid; grid-template-columns: 110px 1fr; font-size: clamp(.82rem, .9vw, .92rem); }
+.vg-detail-info dt { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: clamp(.66rem, .72vw, .74rem); letter-spacing: .16em; color: #a5a5a8; padding-top: 4px; }
 .vg-detail-info dd { margin: 0; color: #ffffff; }
 .vg-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
-.vg-btn-solid, .vg-btn-ghost { padding: 8px 16px; border-radius: 999px; font: 600 11.5px 'Manrope', sans-serif; cursor: pointer; text-decoration: none; transition: transform .3s; }
+.vg-btn-solid, .vg-btn-ghost { padding: 11px 20px; border-radius: 999px; font: 600 13.5px 'Manrope', sans-serif; cursor: pointer; text-decoration: none; transition: transform .3s; }
 .vg-btn-solid { background: linear-gradient(135deg, #8f6444, #5b3b27); color: #ffffff; border: 1px solid #5b3b27; }
 .vg-btn-ghost { background: transparent; color: #ffffff; border: 1px solid rgba(255,255,255,.2); }
 .vg-btn-solid:hover, .vg-btn-ghost:hover { transform: translateY(-2px); }
@@ -448,3 +447,15 @@ html body .vg-btn-ghost:not(#a):not(#b) {
   font-family: 'Inter Tight', sans-serif !important;
   letter-spacing: -0.015em !important;
 }
+
+/* =========================================================
+   FIXES — scroll offset, touch size, keyboard focus
+========================================================= */
+.vg { scroll-margin-top: 96px; }
+.vg-ctrl button { min-width: 34px; min-height: 34px; }
+.vg-modes button:focus-visible,
+.vg-ctrl button:focus-visible,
+.vg-close:focus-visible,
+.vg-enter button:focus-visible,
+.vg-btn-solid:focus-visible,
+.vg-btn-ghost:focus-visible { outline: 2px solid #c9a07a; outline-offset: 3px; }

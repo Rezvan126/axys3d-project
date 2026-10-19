@@ -12,7 +12,8 @@
   --font-primary: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-heading: "Manrope", sans-serif;
 }
-
+html { scroll-padding-top: 96px; }   /* nav ki height ke barabar */
+section[id] { scroll-margin-top: 96px; }
 /* =========================================================
    ZERO-GAP FULLSCREEN RESET
    ========================================================= */
@@ -21,6 +22,9 @@
 *::after {
   box-sizing: border-box;
 }
+
+img { background-color: #161616; }   /* load hone tak dark placeholder */
+img[loading="lazy"] { min-height: 1px; }
 
 html,
 body {
