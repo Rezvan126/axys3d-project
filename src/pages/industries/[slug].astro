@@ -1,5 +1,6 @@
 ---
 // src/pages/industries/[slug].astro
+import SEO from "../../components/SEO.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import "../../styles/token.css";
@@ -221,7 +222,7 @@ const svcCards = typicalServices.slice(0, 3).map((name: string, i: number) => {
 
 // ---------- Related projects ----------
 async function loadWork() {
-  for (const name of ["work", "caseStudies", "projects"]) {
+  for (const name of ["projects"]) {
     try {
       const items = await (getCollection as any)(name);
       if (items && items.length) return items as any[];
@@ -264,8 +265,7 @@ const stepIcons = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <title>{title} — Axys3D</title>
+    <SEO title={`${title} | Axys3D`} description={description} />
     <script is:inline>
       document.documentElement.classList.add("js");
     </script>
@@ -282,7 +282,7 @@ const stepIcons = [
         <div class="indd-banner-shade" aria-hidden="true"></div>
         <div class="indd-wrap indd-banner-inner">
           <nav class="indd-crumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a><span>/</span><a href="/Industries/">Industries</a><span>/</span><em>{title}</em>
+            <a href="/">Home</a><span>/</span><a href="/industries/">Industries</a><span>/</span><em>{title}</em>
           </nav>
           <h1 class="indd-h1">
             {titleWords.map((w: string, i: number) => (

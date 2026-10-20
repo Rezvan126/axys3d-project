@@ -263,3 +263,38 @@
   .mission-chart-line { stroke-dashoffset: 0; transition: none; }
   .mission-chart-arrowhead { opacity: 1; transition: none; }
 }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+/* tablet: 3 columns tang hote hain -> 2 columns, dark card poori line me */
+@media (max-width: 1100px) and (min-width: 701px) {
+  .mission { padding: 84px 5% 56px; }
+  .mission-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mission-card--dark { grid-column: 1 / -1; min-height: 0; }
+  .mission-card--accent { min-height: 0; }
+}
+
+/* phone: 1 column, cards ki zabardasti ki height khatam */
+@media (max-width: 700px) {
+  .mission-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .mission-col { gap: 16px; }
+  .mission-card--dark { grid-column: auto; }
+  .mission-card--accent, .mission-card--dark { min-height: 0; gap: 18px; }
+  .mission-card { padding: 22px; border-radius: 20px; }
+  .mission-chart { height: 72px; }
+  .mission-dark-bottom { flex-wrap: wrap; }
+  .mission-trust-label { max-width: none; }
+}
+
+@media (max-width: 480px) {
+  .mission { padding: 56px 5% 64px; }
+  .mission-card-copy { font-size: 14px; }
+  .mission-booking-card { padding: 10px 14px; }
+}
+
+@media (hover: none) {
+  .mission-card:hover { transform: none; }
+}

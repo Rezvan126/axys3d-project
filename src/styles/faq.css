@@ -254,3 +254,26 @@
   .faq-question-text { font-size: 14px; }
   .faq-btn-circle { width: 30px; height: 30px; }
 }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+.faq-left { min-width: 0; }
+.faq-question-text { overflow-wrap: anywhere; }
+
+@media (max-width: 640px) {
+  .faq-section { padding: 52px 0 70px; }
+  .faq-header { margin-bottom: 30px; }
+  .faq-left { gap: 12px; }
+  .faq-content p { font-size: 14px; line-height: 1.6; }
+}
+
+@media (pointer: coarse) {
+  .faq-summary { min-height: 44px; }
+}
+
+@media (hover: none) {
+  .faq-card:hover { transform: none; }
+}

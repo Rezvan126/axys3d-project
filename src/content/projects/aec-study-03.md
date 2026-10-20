@@ -10,4 +10,7 @@ services:
   - "Revit production"
   - "3ds Max production"
   - "Visualization"
+seoTitle: "Anonymous Production-Package Study: Revit & 3ds Max | Axys3D"
+seoDescription: "A demonstration of an NDA-safe case-study format that shows production scope and evidence for Revit, 3ds Max and visualization without exposing a client."
+publishDate: 2026-10-19
 ---

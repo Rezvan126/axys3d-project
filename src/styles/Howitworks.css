@@ -218,3 +218,42 @@
 .hw-section { scroll-margin-top: 96px; }
 .hw-tab:focus-visible,
 .hw-btn:focus-visible { outline: 2px solid #c9a07a; outline-offset: 3px; }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+@media (max-width: 992px) {
+  /* 5 tabs: upar 3, neeche 2 (khali jagah nahi) */
+  .hw-timeline { grid-template-columns: repeat(6, 1fr); }
+  .hw-tab { grid-column: span 2; }
+  .hw-tab:nth-child(n+4) { grid-column: span 3; }
+
+  .hw-outcome { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+  .hw-info-pane { padding: clamp(22px, 4vw, 36px); }
+}
+
+@media (max-width: 640px) {
+  .hw-timeline { grid-template-columns: 1fr 1fr; }
+  .hw-tab, .hw-tab:nth-child(n+4) { grid-column: auto; }
+  .hw-tab { padding: 14px 14px 16px; }
+  .hw-tab:nth-child(odd)  { border-right: 1px solid var(--hw-border); }
+  .hw-tab:nth-child(even) { border-right: 0; }
+  .hw-tab:nth-child(n+3)  { border-top: 1px solid var(--hw-border); }
+  .hw-tab:last-child { grid-column: 1 / -1; border-right: 0; }
+
+  .hw-case-row { flex-wrap: wrap; gap: 4px 16px; }
+  .hw-controls { gap: 8px; }
+  .hw-btn { flex: 1 1 auto; justify-content: center; }
+  .hw-screen { min-height: 240px; }
+  .hw-brief-card { width: 88%; }
+}
+
+@media (pointer: coarse) {
+  .hw-btn, .hw-tab { min-height: 44px; }
+}
+
+@media (hover: none) {
+  .hw-btn-play:hover, .hw-case-link:hover, .hw-case-link:focus-visible { transform: none; }
+}

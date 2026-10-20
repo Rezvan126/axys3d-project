@@ -459,3 +459,85 @@ html body .vg-btn-ghost:not(#a):not(#b) {
 .vg-enter button:focus-visible,
 .vg-btn-solid:focus-visible,
 .vg-btn-ghost:focus-visible { outline: 2px solid #c9a07a; outline-offset: 3px; }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+.vg-pager-view { max-width: 100%; }
+.vg-detail-info dt { white-space: nowrap; }
+
+@media (max-width: 1200px) {
+  .vg-marquee, .vg-pager { --cw: 230px; --ch: 340px; }
+}
+
+@media (max-width: 1024px) {
+  .vg-head h2 { white-space: normal; }
+  .vg-stage { aspect-ratio: auto; min-height: 480px; }
+  /* detail khulne par stage bada ho jaye (modern browsers) */
+  .vg-stage:has(.vg-detail.is-open) { min-height: 560px; }
+}
+
+/* iPad / tablet: image + info side by side, label value se na takraye */
+@media (max-width: 1024px) and (min-width: 801px) {
+  .vg-detail { grid-template-columns: 52% 48%; }
+  .vg-detail-info { padding: 24px 28px; overflow-y: auto; justify-content: center; }
+  .vg-detail-info dl div { grid-template-columns: minmax(112px, auto) 1fr; column-gap: 16px; }
+}
+
+/* phone: image upar, info neeche, poora panel scroll hota hai */
+@media (max-width: 800px) {
+  .vg-marquee, .vg-pager { --cw: 190px; --ch: 290px; }
+  .vg-stage { min-height: 440px; }
+  .vg-stage:has(.vg-detail.is-open) { min-height: min(740px, calc(100svh - 120px)); }
+
+  .vg-detail {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  .vg-detail-img { flex: 0 0 clamp(190px, 32svh, 260px); }
+  .vg-detail-info {
+    position: static;
+    flex: 1 0 auto;
+    justify-content: flex-start;
+    padding: 20px 20px 28px;
+  }
+  .vg-close {
+    z-index: 3;
+    top: 12px;
+    right: 12px;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.55);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+  .vg-detail-info p { max-width: none; }
+  .vg-detail-info dl { margin-bottom: 22px; gap: 12px; }
+  /* label upar, value neeche (pehle "DELIVERABLES" value par chadh jata tha) */
+  .vg-detail-info dl div { grid-template-columns: 1fr; gap: 2px; }
+  .vg-detail-info dt { padding-top: 0; }
+  .vg-actions .vg-btn-solid, .vg-actions .vg-btn-ghost { flex: 1 1 auto; text-align: center; }
+}
+
+@media (max-width: 680px) {
+  .vg-wrap { width: 92vw; }
+}
+
+@media (max-width: 480px) {
+  .vg-marquee, .vg-pager { --cw: 160px; --ch: 250px; }
+  .vg-marquee-track, .vg-pager-track { gap: 14px; }
+  .vg-hud { font-size: .62rem; padding: 6px 12px; letter-spacing: .16em; }
+}
+
+@media (pointer: coarse) {
+  .vg-ctrl button { min-width: 44px; min-height: 44px; }
+}
+
+@media (hover: none) {
+  .vg-card:hover img { transform: none; }
+}

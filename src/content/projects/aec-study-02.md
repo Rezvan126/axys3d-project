@@ -10,4 +10,7 @@ services:
   - "3D modeling"
   - "Visualization"
   - "Real-time / Unreal"
+seoTitle: "Real-Time Unreal Engine Campus Visualization Study | Axys3D"
+seoDescription: "A demonstration case study showing how approved BIM information is translated into an optimized Unreal Engine environment for campus stakeholder review."
+publishDate: 2026-10-19
 ---

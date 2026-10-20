@@ -1170,3 +1170,65 @@ html body .prc-final-button:not(#a):not(#b) {
 /* gap: tag -> heading -> para */
 .prc-intro .prc-kicker { margin-bottom: 36px; }
 .prc-intro .prc-h1 { margin: 0 auto 44px !important; }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+@media (max-width: 1024px) {
+  .prc-wrap { width: min(100% - 56px, 1320px); }
+}
+
+@media (max-width: 900px) {
+  .process-page { margin-top: 108px; }
+  .prc-intro { padding: 36px 0 56px; }
+  .prc-intro .prc-kicker { margin-bottom: 24px; }
+  .prc-intro .prc-h1 { margin: 0 auto 28px !important; }
+  .prc-steps-sec { margin-top: 56px; padding-bottom: 84px; }
+  .prc-controls-sec { padding-bottom: 84px; }
+  .prc-final-cta { padding: 90px 0 100px; }
+}
+
+@media (max-width: 680px) {
+  .prc-wrap { width: min(100% - 40px, 100%); }
+  .prc-steps-sec { margin-top: 36px; padding-bottom: 64px; }
+  .prc-steps-grid { row-gap: 28px; }
+  .prc-controls-sec { padding-bottom: 64px; }
+  .prc-final-cta { padding: 70px 0 84px; }
+  .prc-lead { font-size: 15px; }
+}
+
+@media (max-width: 480px) {
+  .process-page { margin-top: 92px; }
+  .prc-wrap { width: min(100% - 32px, 100%); }
+  .prc-intro { padding: 24px 0 44px; }
+  .prc-intro .prc-kicker { margin-bottom: 18px; }
+  .prc-intro .prc-h1 { margin-bottom: 22px !important; }
+}
+
+@media (hover: none) {
+  .prc-step:hover { transform: none; }
+}
+
+
+/* ---- Main heading: lines ke beech zyada jagah (letters overlap na hon) ---- */
+html body .prc-h1:not(#a):not(#b) { line-height: 1.1 !important; padding-bottom: 0.04em; }
+html body .prc-h1:not(#a):not(#b) * { line-height: inherit !important; }
+
+@media (max-width: 1024px) {
+  html body .prc-h1:not(#a):not(#b) { font-size: clamp(3rem, 7.4vw, 4.6rem) !important; line-height: 1.1 !important; }
+  html body .prc-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}
+@media (max-width: 680px) {
+  html body .prc-h1:not(#a):not(#b) { font-size: clamp(2.2rem, 10.4vw, 3.2rem) !important; line-height: 1.08 !important; }
+  html body .prc-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}
+
+/* tablet: hero poori screen jitna lamba nahi */
+@media (min-width: 901px) and (orientation: portrait) {
+  .prc-intro { min-height: 0; padding: 20px 0 80px; }
+}
+@media (min-width: 901px) and (max-width: 1366px) and (orientation: landscape) {
+  .prc-intro { min-height: min(calc(100svh - 150px), 560px); padding-bottom: 100px; }
+}

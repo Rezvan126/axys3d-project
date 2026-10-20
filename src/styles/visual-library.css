@@ -768,3 +768,57 @@ html body .cnt-submit:not(#a):not(#b) {
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%);
 }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+@media (max-width: 1024px) {
+  .lib-wrap { width: min(100% - 56px, 1320px); }
+}
+
+@media (max-width: 900px) {
+  .library-page { margin-top: 104px; }
+  .lib-intro { padding: 24px 0 28px; }
+  .lib-intro-row { gap: 22px; }
+  .lib-section { margin-top: 36px; padding: 0 0 80px; }
+}
+
+/* hero sphere: stage ko saaf size do taake neeche na bhaage */
+@media (max-width: 900px) {
+  .lib-intro-media {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: auto !important;
+    height: min(88vw, 460px) !important;
+    min-height: 0;
+    margin: 4px auto 0;
+  }
+  .ind-sphere-stage { height: 100%; }
+}
+
+@media (max-width: 680px) {
+  .lib-grid { gap: 14px; }
+}
+
+@media (max-width: 480px) {
+  .library-page { margin-top: 92px; }
+  .lib-wrap { width: min(100% - 32px, 100%); }
+  .lib-intro-media { height: min(92vw, 360px) !important; }
+}
+
+
+/* ---- Main heading: lines ke beech zyada jagah (letters overlap na hon) ---- */
+html body .lib-h1:not(#a):not(#b) { line-height: 1.1 !important; padding-bottom: 0.04em; }
+html body .lib-h1:not(#a):not(#b) * { line-height: inherit !important; }
+
+@media (max-width: 1024px) {
+  html body .lib-h1:not(#a):not(#b) { font-size: clamp(3rem, 7.4vw, 4.6rem) !important; line-height: 1.1 !important; }
+  html body .lib-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}
+@media (max-width: 680px) {
+  html body .lib-h1:not(#a):not(#b) { font-size: clamp(2.2rem, 10.4vw, 3.2rem) !important; line-height: 1.08 !important; }
+  html body .lib-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}

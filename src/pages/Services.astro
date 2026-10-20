@@ -1,10 +1,11 @@
 ---
+import SEO from "../components/SEO.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/token.css";
 import "../styles/global.css";
 import "../styles/Navbar.css";
-import "../styles/Services.css";
+import "../styles/services.css";
 import "../styles/footer.css";
 
 // ⬇⬇ SIRF YAHAN IMAGE LINKS BADLO (https://... ya /images/... dono chalte hain) ⬇⬇
@@ -237,7 +238,10 @@ const stages = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Services</title>
+    <SEO
+      title="AEC Production Services: BIM, Revit, Visualization | Axys3D"
+      description="BIM, Revit, MEP coordination, 3D modeling, visualization, animation and real-time production services for architecture, engineering and development teams."
+    />
     <script is:inline>
       document.documentElement.classList.add("js");
     </script>

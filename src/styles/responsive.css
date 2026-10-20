@@ -1,0 +1,561 @@
+/* =========================================================
+   AXYS3D — RESPONSIVE LAYER (phone / tablet / iPad)
+   ---------------------------------------------------------
+   YEH FILE SABSE LAST ME LOAD HONI CHAHIYE (baqi sab CSS ke baad),
+   warna ye unhe override nahi kar paegi.
+   Breakpoints: 1300 / 1100 / 1024 / 900 / 768 / 680 / 480 / 380
+   ========================================================= */
+
+
+/* =========================================================
+   0. GLOBAL SAFETY (har page, har device)
+========================================================= */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: clip;
+}
+
+body {
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img, video, svg, canvas, iframe, picture {
+  max-width: 100%;
+}
+
+/* lambi English/URL/email wali lines box se bahar na jayen */
+h1, h2, h3, h4, p, li, a, span, label, dd, dt {
+  overflow-wrap: break-word;
+}
+
+/* Touch devices: iOS input par zoom na kare + bade tap targets */
+@media (pointer: coarse) {
+  input, select, textarea { font-size: 16px !important; }
+
+  .menu-toggle-btn,
+  .hotspot-btn,
+  .fit-chip,
+  .hw-btn,
+  .hw-tab,
+  .stage-tab,
+  .faq-summary,
+  .topbar-cta,
+  .side-nav-cta,
+  .cta-button,
+  .primary-button,
+  .secondary-button,
+  .footer-links a,
+  .footer-socials a,
+  .footer-contact {
+    min-height: 44px;
+  }
+
+  .footer-links a,
+  .footer-socials a { display: inline-flex; align-items: center; }
+
+  .vg-ctrl button { min-width: 44px; min-height: 44px; }
+}
+
+/* Touch devices: hover par card "atak" kar upar na rahe */
+@media (hover: none) {
+  .abt-bento-card:hover,
+  .abt-principle-card-grey:hover,
+  .abt-team-card-image:hover,
+  .cnt-info-card:hover,
+  .pl-card:hover,
+  .faq-card:hover,
+  .primary-button:hover,
+  .secondary-button:hover,
+  .cta-button:hover,
+  .topbar-cta:hover,
+  .hw-btn-play:hover,
+  .hw-case-link:hover,
+  .cnt-submit:hover,
+  .abt-final-button:hover {
+    transform: none;
+  }
+  .cnt-field input:focus,
+  .cnt-field select:focus,
+  .cnt-field textarea:focus { transform: none; }
+  .vg-card:hover img { transform: none; }
+}
+
+
+/* =========================================================
+   1. NAVBAR
+========================================================= */
+
+/* notch / rounded corners wale phone */
+.site-header-inner {
+  padding-left: max(4.5%, env(safe-area-inset-left));
+  padding-right: max(4.5%, env(safe-area-inset-right));
+}
+
+/* side menu: chhoti screen ya landscape me links kat na jayen */
+.side-nav {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: calc(30px + env(safe-area-inset-bottom));
+}
+
+@media (max-width: 900px) {
+  .site-header-inner {
+    padding-left: max(5%, env(safe-area-inset-left));
+    padding-right: max(5%, env(safe-area-inset-right));
+  }
+  .side-nav { justify-content: flex-start; }
+}
+
+@media (max-width: 380px) {
+  .site-header .logo { font-size: 16px; }
+  .menu-toggle-btn { padding: 7px 7px 7px 14px; gap: 8px; }
+  .menu-toggle-lines { width: 30px; height: 30px; }
+}
+
+/* landscape phone (kam height) */
+@media (max-height: 520px) and (orientation: landscape) {
+  .site-header { height: 60px; }
+  .side-nav { padding-top: 76px; gap: 10px; justify-content: flex-start; }
+  .side-nav-links a { padding: 6px 2px; }
+  .side-nav-link-text { font-size: 15px; }
+}
+
+
+/* =========================================================
+   2. HERO
+========================================================= */
+
+.hero h1 .line { max-width: 100%; }
+
+/* hotspots aur buttons aapas me na takrayen */
+@media (max-width: 1100px) {
+  .hero-content { padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 768px) {
+  .hero-hotspots {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    scrollbar-width: none;
+    bottom: calc(22px + env(safe-area-inset-bottom));
+  }
+  .hero-hotspots::-webkit-scrollbar { display: none; }
+  .hotspot-btn { flex: 0 0 auto; }
+  .hero-content { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 380px) {
+  .hero h1 { font-size: 26px; }
+  .hero-eyebrow { letter-spacing: 0.22em; }
+  .fit-chip { padding: 7px 10px; font-size: 11px; }
+}
+
+/* landscape phone: text kam, sab screen me aa jaye */
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero, .hero-content { min-height: 100vh; min-height: 100dvh; }
+  .hero-content { padding: 76px 5% 76px; }
+  .hero h1 { font-size: clamp(24px, 5vw, 34px); }
+  .hero-lead, .hero-fit, .hero-scroll-cue { display: none; }
+  .hero-buttons { flex-direction: row; width: auto; margin-top: 14px; }
+  .primary-button, .secondary-button { width: auto; }
+}
+
+
+/* =========================================================
+   3. STAGES
+========================================================= */
+
+@media (max-width: 1024px) {
+  .stage-card { transform: none; }
+}
+
+@media (max-width: 900px) {
+  .stages { padding: clamp(3.5rem, 9vh, 6rem) 0; }
+  .stages h2 .line { white-space: normal; }
+  .stages-copy p { max-width: 52ch; }
+  .stage-badge { min-width: 96px; padding: 0.6rem 0.8rem; }
+}
+
+@media (max-width: 600px) {
+  .stage-chip, .stage-tag { padding: 6px 10px; font-size: 0.55rem; }
+  .stage-tag { display: none; }
+  .stage-badge { min-width: 84px; }
+  .stage-badge strong { font-size: 0.85rem; }
+  .badge-qc { top: 14%; right: 3%; }
+  .badge-model { left: 3%; bottom: 12%; }
+}
+
+@media (max-width: 480px) {
+  .stage-tabs { grid-template-columns: repeat(2, 1fr); row-gap: 1.1rem; }
+  .tab-name { font-size: 0.85rem; overflow-wrap: anywhere; }
+}
+
+
+/* =========================================================
+   4. PRODUCTION LAYER (services carousel)
+========================================================= */
+
+.pl-track { overscroll-behavior-x: contain; }
+
+@media (max-width: 992px) {
+  .pl-section { padding: 64px 5% 80px; }
+}
+
+@media (max-width: 640px) {
+  .pl-top { gap: 14px; }
+  .pl-card { min-height: min(460px, 68svh); }
+}
+
+
+/* =========================================================
+   5. HOW IT WORKS
+========================================================= */
+
+@media (max-width: 992px) {
+  /* 5 tabs: upar 3, neeche 2 (khali jagah nahi) */
+  .hw-timeline { grid-template-columns: repeat(6, 1fr); }
+  .hw-tab { grid-column: span 2; }
+  .hw-tab:nth-child(n+4) { grid-column: span 3; }
+
+  .hw-outcome { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+  .hw-info-pane { padding: clamp(22px, 4vw, 36px); }
+}
+
+@media (max-width: 640px) {
+  .hw-timeline { grid-template-columns: 1fr 1fr; }
+  .hw-tab,
+  .hw-tab:nth-child(n+4) { grid-column: auto; }
+  .hw-tab { padding: 14px 14px 16px; }
+  .hw-tab:nth-child(odd)  { border-right: 1px solid var(--hw-border); }
+  .hw-tab:nth-child(even) { border-right: 0; }
+  .hw-tab:nth-child(n+3)  { border-top: 1px solid var(--hw-border); }
+  .hw-tab:last-child { grid-column: 1 / -1; border-right: 0; }
+
+  .hw-case-row { flex-wrap: wrap; gap: 4px 16px; }
+  .hw-controls { gap: 8px; }
+  .hw-btn { flex: 1 1 auto; justify-content: center; }
+  .hw-screen { min-height: 240px; }
+  .hw-brief-card { width: 88%; }
+}
+
+
+/* =========================================================
+   6. FAQ
+========================================================= */
+
+.faq-left { min-width: 0; }
+.faq-question-text { overflow-wrap: anywhere; }
+
+@media (max-width: 640px) {
+  .faq-section { padding: 52px 0 70px; }
+  .faq-header { margin-bottom: 30px; }
+  .faq-left { gap: 12px; }
+  .faq-content p { font-size: 14px; line-height: 1.6; }
+}
+
+
+/* =========================================================
+   7. CTA
+========================================================= */
+
+@media (max-width: 992px) {
+  .cta-section { padding: clamp(64px, 10vh, 110px) 0; }
+}
+
+@media (max-width: 480px) {
+  .cta-card { padding: 24px 20px; }
+  .cta-card p { font-size: 15px; margin-bottom: 24px; }
+  .cta-main h2 { letter-spacing: -0.045em !important; }
+}
+
+
+/* =========================================================
+   8. FOOTER
+========================================================= */
+
+@media (max-width: 1024px) {
+  .footer-top { gap: 40px; grid-template-columns: 1.5fr 1fr 1.3fr; }
+}
+
+@media (max-width: 768px) {
+  .site-footer { padding: 56px 0 calc(24px + env(safe-area-inset-bottom)); }
+  .footer-inner { padding: 0 max(22px, env(safe-area-inset-left)); }
+  .footer-top { padding-bottom: 36px; }
+  .footer-brand p { max-width: none; }
+  /* chhoti screen par animated glow ka bojh kam */
+  .footer-glow, .footer-glow::after { animation: none !important; }
+}
+
+@media (max-width: 480px) {
+  .footer-logo { font-size: 26px; }
+}
+
+
+/* =========================================================
+   9. PAGE WRAPPERS — side margins + top space (sab pages)
+========================================================= */
+
+/* Tablet (iPad portrait / chhoti laptop): 80px side margin zyada hai */
+@media (max-width: 1024px) {
+  .abt-wrap, .cnt-wrap, .svc-wrap, .wrk-wrap, .ind-wrap, .lib-wrap,
+  .isl-wrap, .isd-wrap, .svcd-wrap, .indd-wrap {
+    width: min(100% - 56px, 1320px);
+  }
+}
+
+@media (max-width: 900px) {
+  /* fixed navbar ke neeche content ki top jagah (navbar 76px) */
+  .about-page, .services-page, .work-page, .industries-page,
+  .library-page, .isl-page, .isd-page { margin-top: 108px; }
+  .wrk-page { margin-top: 100px; }
+
+  .svcd-banner, .indd-banner { padding: 190px 0 90px; }
+}
+
+@media (max-width: 680px) {
+  .abt-wrap, .cnt-wrap, .svc-wrap, .wrk-wrap, .ind-wrap, .lib-wrap,
+  .isl-wrap, .isd-wrap, .svcd-wrap, .indd-wrap {
+    width: min(100% - 40px, 1320px);
+  }
+  .vg-wrap { width: 92vw; }
+}
+
+@media (max-width: 480px) {
+  .abt-wrap, .cnt-wrap, .svc-wrap, .wrk-wrap, .ind-wrap, .lib-wrap,
+  .isl-wrap, .isd-wrap, .svcd-wrap, .indd-wrap {
+    width: min(100% - 32px, 1320px);
+  }
+  .about-page, .services-page, .work-page, .industries-page,
+  .library-page, .isl-page, .isd-page { margin-top: 92px; }
+  .wrk-page { margin-top: 88px; }
+  .svcd-banner, .indd-banner { padding: 150px 0 70px; }
+}
+
+
+/* =========================================================
+   10. ABOUT
+========================================================= */
+
+/* BUG FIX: tablet par handshake/stats card 3rd (anjaan) column me chali jati thi */
+@media (max-width: 1024px) {
+  .abt-bento-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; }
+  .abt-bento-card--tall      { grid-column: 1 / -1; grid-row: auto; }
+  .abt-bento-card--handshake { grid-column: 1;      grid-row: auto; }
+  .abt-bento-card--stats     { grid-column: 2;      grid-row: auto; }
+  .abt-bento-card--wide      { grid-column: 1 / -1; grid-row: auto; }
+
+  .abt-bento-card--tall { flex-direction: row; align-items: center; gap: 28px; }
+  .abt-bento-card--tall .abt-bento-tall-media { width: 42%; flex: none; margin-bottom: 0; }
+  .abt-bento-card--tall > div:last-child { flex: 1; }
+}
+
+@media (max-width: 900px) {
+  .abt-intro { padding: 30px 0 60px; }
+  .abt-bento-section { padding-bottom: 80px; }
+  .abt-principles { padding: 40px 0 80px; }
+  .abt-team { padding-bottom: 80px; }
+  .abt-quotes { padding-bottom: 80px; }
+  .abt-final-cta { padding: 90px 0 100px; }
+}
+
+@media (max-width: 680px) {
+  .abt-bento-grid { grid-template-columns: 1fr; gap: 16px; }
+  .abt-bento-card--tall,
+  .abt-bento-card--handshake,
+  .abt-bento-card--stats,
+  .abt-bento-card--wide { grid-column: 1 / -1; }
+
+  .abt-bento-card--tall { flex-direction: column; align-items: stretch; padding: 24px 22px 28px; }
+  .abt-bento-card--tall .abt-bento-tall-media { width: 100%; aspect-ratio: 4 / 3; }
+  .abt-bento-card--wide { padding: 28px 24px; min-height: 0; }
+  .abt-bento-wide-overlay {
+    background: linear-gradient(180deg, rgba(12,10,10,.9) 0%, rgba(12,10,10,.88) 100%);
+  }
+
+  /* team: 2 cards ek line me, badge chhota */
+  .abt-team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .abt-team-floating-badge { left: 8px; right: 8px; bottom: 8px; padding: 8px 10px; border-radius: 10px; }
+  .abt-team-badge-info h4 { font-size: 13px; }
+  .abt-team-badge-info span { font-size: 11px; }
+  .abt-team-linkedin-btn { width: 28px; height: 28px; flex: none; }
+
+  .abt-principles-grid-2x2 { grid-template-columns: 1fr; }
+  .abt-bubble-box { min-height: 0; }
+  .abt-trust-strip { padding: 32px 0 44px; margin-bottom: 60px; }
+  .abt-final-inner h2 { margin-bottom: 26px !important; }
+}
+
+@media (max-width: 480px) {
+  .abt-team-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
+  .abt-bento-stats-grid { gap: 18px 14px; }
+}
+
+/* headings: mobile par bohat chhoti na ho */
+@media (max-width: 680px) {
+  html body .abt-h1:not(#a):not(#b) { font-size: clamp(2rem, 9vw, 2.8rem) !important; line-height: 1 !important; }
+  html body .cnt-intro-title:not(#a):not(#b) { font-size: clamp(2rem, 9.5vw, 2.8rem) !important; line-height: 1 !important; }
+}
+
+
+/* =========================================================
+   11. CONTACT
+========================================================= */
+
+.cnt-info-value { overflow-wrap: anywhere; }
+.cnt-info-content { min-width: 0; }
+
+@media (max-width: 1050px) {
+  /* margin-top 200px + padding-top 250px = bohat khali jagah tha */
+  .page-contact { margin-top: 0; }
+  .cnt-contact-section { padding: 150px 0 90px; }
+  .cnt-wrap { width: min(100% - 56px, 1320px); }
+}
+
+@media (max-width: 760px) {
+  .cnt-contact-section { padding: 124px 0 64px; }
+  .cnt-wrap { width: min(100% - 40px, 1320px); }
+  .cnt-form-footer { gap: 14px; }
+  .cnt-required-note { text-align: center; }
+  /* chhoti screen par heavy animated blur band */
+  .cnt-page-bg::before, .cnt-page-bg::after { animation: none; }
+}
+
+@media (max-width: 480px) {
+  .cnt-contact-section { padding: 108px 0 56px; }
+  .cnt-wrap { width: min(100% - 32px, 1320px); }
+  .cnt-info-value { font-size: 13px; }
+}
+
+
+/* =========================================================
+   12. INDUSTRIES / SERVICES / WORK / INSIGHTS / LIBRARY
+========================================================= */
+
+@media (max-width: 900px) {
+  .ind-trust { padding: 70px 0; }
+  .ind-cards-sec { padding: 56px 0 80px; }
+  .lib-section { padding: 90px 0 100px; }
+  .svc-list { padding-bottom: 60px; }
+}
+
+/* iPad portrait: stats 2x2 ke bajaye 4 me tang na ho (existing 1000 rule ke saath consistent) */
+@media (max-width: 1000px) and (min-width: 681px) {
+  .ind-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Insights: bohat bada top gap phone par */
+@media (max-width: 900px) {
+  .isl-intro { margin-top: 120px; }
+  .isl-cards-sec { margin-top: 60px; padding-bottom: 80px; }
+}
+@media (max-width: 480px) {
+  .isl-intro { margin-top: 80px; }
+  .isl-cards-sec { margin-top: 36px; }
+}
+
+/* Visual library: tablet par 2 card ek line me (existing: 3 span of 6 = 2 cards) + phone par 1 */
+@media (max-width: 680px) {
+  .lib-grid { gap: 14px; }
+}
+
+
+/* =========================================================
+   13. SERVICE DETAIL + INDUSTRY DETAIL
+========================================================= */
+
+@media (max-width: 1024px) {
+  .svcd-faq-head { position: static; }
+  .svcd-faq-a-inner { padding-right: 20px; }
+}
+
+@media (max-width: 640px) {
+  .svcd-sec, .svcd-band-sec { padding-bottom: 80px; }
+  .svcd-final, .indd-final-cta { padding: 76px 0 84px; }
+  .svcd-final-inner p { font-size: 15.5px; }
+}
+
+/* Industry collage: fixed-pixel circles chhoti screen par scale ho jayen */
+@media (max-width: 480px) {
+  .indd-collage {
+    transform: scale(0.68);
+    transform-origin: left top;
+    height: 236px;
+    margin-top: 32px;
+  }
+}
+
+
+/* =========================================================
+   14. WORK DETAIL (case study)
+========================================================= */
+
+@media (max-width: 1024px) {
+  .wrk-article { margin-top: 48px; }
+}
+
+@media (max-width: 680px) {
+  .wrk-section--first { padding-top: 40px; }
+  .wrk-rp-stage { min-height: 0; }
+  .wrk-rp-tab { padding: 14px 14px 16px; }
+  .wrk-rp-btn { height: 40px; }
+  /* lightbox: arrows angootha-friendly */
+  .wrk-lb-nav { width: 44px; height: 44px; margin-top: -22px; }
+}
+
+
+/* =========================================================
+   15. VISUAL GALLERY
+   NOTE: cards 4 ek sath dikhte hain aur JS unhe page karta hai.
+   Yahan sirf size/overflow safe kiya hai. Phone par asli fix ke liye
+   gallery ki script bhi chahiye (niche baat likhi hai).
+========================================================= */
+
+.vg-pager-view { max-width: 100%; }
+
+@media (max-width: 1200px) {
+  .vg-marquee, .vg-pager { --cw: 230px; --ch: 340px; }
+}
+
+@media (max-width: 1024px) {
+  .vg-head h2 { white-space: normal; }
+  .vg-stage { aspect-ratio: auto; min-height: 460px; }
+}
+
+@media (max-width: 800px) {
+  .vg-marquee, .vg-pager { --cw: 190px; --ch: 290px; }
+  .vg-stage { min-height: 420px; }
+  .vg-detail-info dl div { grid-template-columns: 92px 1fr; }
+}
+
+@media (max-width: 480px) {
+  .vg-marquee, .vg-pager { --cw: 160px; --ch: 250px; }
+  .vg-marquee-track, .vg-pager-track { gap: 14px; }
+  .vg-hud { font-size: .62rem; padding: 6px 12px; letter-spacing: .16em; }
+}
+
+
+/* =========================================================
+   16. PERFORMANCE — phone par bhari effects halke
+========================================================= */
+
+@media (max-width: 768px) {
+  .site-header::before,
+  .floating-nav ul,
+  .menu-toggle-btn,
+  .hero-hotspots,
+  .fit-chip,
+  .faq-card,
+  .stage-chip, .stage-tag, .stage-badge {
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

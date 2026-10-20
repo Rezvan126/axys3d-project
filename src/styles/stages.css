@@ -213,3 +213,37 @@
 @media (prefers-reduced-motion: reduce) {
   .stage-img.is-top, .stage-beam.run { animation: none; }
 }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+@media (max-width: 1024px) {
+  .stage-card { transform: none; }
+}
+
+@media (max-width: 900px) {
+  .stages { padding: clamp(3.5rem, 9vh, 6rem) 0; }
+  .stages h2 .line { white-space: normal; }
+  .stages-copy p { max-width: 52ch; }
+  .stage-badge { min-width: 96px; padding: 0.6rem 0.8rem; }
+}
+
+@media (max-width: 600px) {
+  .stage-chip, .stage-tag { padding: 6px 10px; font-size: 0.55rem; }
+  .stage-tag { display: none; }
+  .stage-badge { min-width: 84px; }
+  .stage-badge strong { font-size: 0.85rem; }
+  .badge-qc { top: 14%; right: 3%; }
+  .badge-model { left: 3%; bottom: 12%; }
+}
+
+@media (max-width: 480px) {
+  .stage-tabs { grid-template-columns: repeat(2, 1fr); row-gap: 1.1rem; }
+  .tab-name { font-size: 0.85rem; overflow-wrap: anywhere; }
+}
+
+@media (pointer: coarse) {
+  .stage-tab { min-height: 44px; }
+}

@@ -237,3 +237,23 @@
   background: radial-gradient(closest-side, rgba(174, 167, 163, 0.13) 0%, transparent 100%);
   pointer-events: none; z-index: 1;
 }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+.pl-track { overscroll-behavior-x: contain; }
+
+@media (max-width: 992px) {
+  .pl-section { padding: 64px 5% 80px; }
+}
+
+@media (max-width: 640px) {
+  .pl-top { gap: 14px; }
+  .pl-card { min-height: min(460px, 68svh); }
+}
+
+@media (hover: none) {
+  .pl-card:hover, .pl-card:focus-visible { transform: none; }
+}

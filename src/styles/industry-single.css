@@ -790,3 +790,40 @@ html body .indd-svc-row-btn:not(#a):not(#b) {
   font-family: 'Inter Tight', sans-serif !important;
   letter-spacing: -0.015em !important;
 }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+@media (max-width: 1024px) {
+  .indd-wrap { width: min(100% - 56px, 1240px); }
+  .indd-sec { padding-bottom: 90px; }
+}
+
+@media (max-width: 900px) {
+  .indd-banner { padding: 190px 0 90px; }
+}
+
+@media (max-width: 480px) {
+  .indd-wrap { width: calc(100% - 32px); }
+  .indd-banner { padding: 150px 0 70px; }
+  .indd-svc-row-link { white-space: normal; }
+  .indd-svc-row-media { height: 180px; }
+  /* fixed-pixel gol images chhoti screen par scale */
+  .indd-collage { transform: scale(0.68); transform-origin: left top; height: 236px; margin-top: 32px; }
+}
+
+
+/* ---- Main heading: lines ke beech zyada jagah (letters overlap na hon) ---- */
+html body .indd-h1:not(#a):not(#b) { line-height: 1.1 !important; padding-bottom: 0.04em; }
+html body .indd-h1:not(#a):not(#b) * { line-height: inherit !important; }
+
+@media (max-width: 1024px) {
+  html body .indd-h1:not(#a):not(#b) { font-size: clamp(3rem, 7.4vw, 4.6rem) !important; line-height: 1.1 !important; }
+  html body .indd-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}
+@media (max-width: 680px) {
+  html body .indd-h1:not(#a):not(#b) { font-size: clamp(2.2rem, 10.4vw, 3.2rem) !important; line-height: 1.08 !important; }
+  html body .indd-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}

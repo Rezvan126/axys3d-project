@@ -1,0 +1,46 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article";
+  jsonLd?: Record<string, any> | Record<string, any>[];
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = "",
+  image = "/og-default.jpg",
+  type = "website",
+  jsonLd,
+  noindex = false,
+} = Astro.props;
+
+const site = Astro.site ?? new URL("https://aapka-domain.com");
+const canonical = new URL(Astro.url.pathname, site).href;
+const ogImage = new URL(image, site).href;
+
+const clean = description.replace(/\s+/g, " ").trim();
+const desc = clean.length > 160 ? clean.slice(0, 157).trimEnd() + "..." : clean;
+const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+
+<title>{title}</title>
+{desc && <meta name="description" content={desc} />}
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content="Axys3D" />
+<meta property="og:title" content={title} />
+{desc && <meta property="og:description" content={desc} />}
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+{desc && <meta name="twitter:description" content={desc} />}
+<meta name="twitter:image" content={ogImage} />
+
+{ld.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}

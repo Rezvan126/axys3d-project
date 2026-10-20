@@ -1,5 +1,6 @@
 ---
 // src/pages/insights/[slug].astro
+import SEO from "../../components/SEO.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import "../../styles/token.css";
@@ -19,6 +20,18 @@ export async function getStaticPaths() {
 
 const { article } = Astro.props;
 const { Content } = await render(article);
+
+const pd = article.data.publishedDate ? new Date(article.data.publishedDate) : null;
+const publishedISO = pd && !isNaN(pd.getTime()) ? pd.toISOString() : undefined;
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: article.data.title,
+  description: article.data.summary,
+  datePublished: publishedISO,
+  author: { "@type": "Organization", name: "Axys3D" },
+  publisher: { "@type": "Organization", name: "Axys3D" },
+};
 
 /* ---------- Saare articles (sidebar + related ke liye) ---------- */
 const allArticles = await getCollection("insights");
@@ -79,8 +92,7 @@ const initials = author.split(/\s+/).map((w: string) => w[0]).join("").slice(0, 
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={article.data.summary} />
-    <title>{article.data.title} — Axys3D Insights</title>
+    <SEO title={`${article.data.title} | Axys3D Insights`} description={article.data.summary} type="article" jsonLd={articleLd} />
     <script is:inline>
       document.documentElement.classList.add("js");
     </script>

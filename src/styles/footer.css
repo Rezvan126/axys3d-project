@@ -236,3 +236,30 @@
   .footer-glow,
   .footer-glow::after { animation: none !important; }
 }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+@media (max-width: 1024px) {
+  .footer-top { gap: 40px; grid-template-columns: 1.5fr 1fr 1.3fr; }
+}
+
+@media (max-width: 768px) {
+  .site-footer { padding: 56px 0 calc(24px + env(safe-area-inset-bottom)); }
+  .footer-inner { padding: 0 max(22px, env(safe-area-inset-left)); }
+  .footer-top { padding-bottom: 36px; }
+  .footer-brand p { max-width: none; }
+  /* chhoti screen par animated glow ka bojh kam */
+  .footer-glow, .footer-glow::after { animation: none !important; }
+}
+
+@media (max-width: 480px) {
+  .footer-logo { font-size: 26px; }
+}
+
+@media (pointer: coarse) {
+  .footer-links a, .footer-socials a { display: inline-flex; align-items: center; min-height: 44px; padding: 0; }
+  .footer-contact { display: inline-flex; align-items: center; min-height: 44px; }
+}

@@ -980,3 +980,50 @@ html body .isd-share-list button:not(#a):not(#b) {
   text-transform: uppercase !important;
   color: var(--ins-muted) !important;
 }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+@media (max-width: 1024px) {
+  .isl-wrap { width: min(100% - 56px, 1320px); }
+  .isd-wrap { width: min(100% - 56px, 1180px); }
+}
+
+@media (max-width: 900px) {
+  .isl-page, .isd-page { margin-top: 108px; }
+  /* pehle total ~420px khali jagah thi */
+  .isl-intro { margin-top: 120px; }
+  .isl-cards-sec { margin-top: 70px; padding-bottom: 80px; }
+}
+
+@media (max-width: 480px) {
+  .isl-page, .isd-page { margin-top: 92px; }
+  .isl-wrap, .isd-wrap { width: min(100% - 32px, 100%); }
+  .isl-intro { margin-top: 56px; }
+  .isl-cards-sec { margin-top: 36px; }
+}
+
+@media (hover: none) {
+  .isl-card:hover { transform: none; }
+}
+
+
+/* ---- Main heading: lines ke beech zyada jagah (letters overlap na hon) ---- */
+html body .isl-h1:not(#a):not(#b) { line-height: 1.1 !important; padding-bottom: 0.04em; }
+html body .isl-h1:not(#a):not(#b) * { line-height: inherit !important; }
+
+@media (max-width: 1024px) {
+  html body .isl-h1:not(#a):not(#b) { font-size: clamp(3rem, 7.4vw, 4.6rem) !important; line-height: 1.1 !important; }
+  html body .isl-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}
+@media (max-width: 680px) {
+  html body .isl-h1:not(#a):not(#b) { font-size: clamp(2.2rem, 10.4vw, 3.2rem) !important; line-height: 1.08 !important; }
+  html body .isl-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}
+
+/* tablet: hero ke upar ka bada gap kam */
+@media (min-width: 901px) and (max-width: 1366px) {
+  .isl-intro { margin-top: 150px; }
+}

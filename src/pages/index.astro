@@ -1,4 +1,5 @@
 ---
+import SEO from "../components/SEO.astro";
 import Hero from "../components/Hero.astro";
 import "../styles/token.css";
 import "../styles/global.css";
@@ -9,45 +10,38 @@ import ProductionLayer from "../components/ProductionLayer.astro";
 import "../styles/Production-layer.css";
 import VisualGallery from "../components/VisualGallery.astro";
 import "../styles/Visual-Gallery.css";
-import Buyersegments from "../components/Buyersegments.astro";
-import "../styles/Buyer-segments.css";
-import CaseStudies from "../components/casestudies.astro";
-import "../styles/case-studies.css";
-import ProcessSection from "../components/ProcessSection.astro";
 import FAQSection from "../components/FAQSection.astro";
 import CTASection from "../components/CTASection.astro";
 import Footer from "../components/Footer.astro";
 import Mission from "../components/Mission.astro";
-import About from "../components/about.astro";
 import "../styles/Mission.css";
-import "../styles/process.css";
 import "../styles/faq.css";
 import "../styles/cta.css";
 import "../styles/footer.css";
-import "../styles/index.css";
+import "../styles/index.css";                                                                                                                                                                                                                                                                                                                                                  
 import "../styles/Mission.css";
-import "../styles/HomeAbout.css";
 import Howitworks  from "../components/Howitworks.astro";
 import "../styles/Howitworks.css";
-import Marquee from "../components/Marquee.astro";
-import "../styles/Marquee.css";
 import Stages from "../components/Stages.astro";
 import "../styles/stages.css";
+
+const siteUrl = Astro.site ?? new URL("https://aapka-domain.com");
+const orgLd = [
+  { "@context": "https://schema.org", "@type": "Organization", name: "Axys3D", url: siteUrl.href },
+  { "@context": "https://schema.org", "@type": "WebSite", name: "Axys3D", url: siteUrl.href },
+];
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
-    <meta name="viewport" content="width=device-width" />
-
-    <meta
-      name="description"
-      content="Axys3D is an integrated AEC production partner delivering BIM, Revit production, MEP coordination support, 3D modeling, architectural visualization, animation and real-time experiences."
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SEO
+      title="Axys3D | BIM, Revit & Visualization Production for AEC"
+      description="Axys3D is an integrated AEC production partner delivering BIM, Revit production, MEP coordination support, 3D modeling, architectural visualization, animation and real-time experiences."
+      jsonLd={orgLd}
     />
-
-    <title>Axys3D</title>
   </head>
 
   <body>
@@ -57,11 +51,6 @@ import "../styles/stages.css";
         <Hero />
       </div>
 
-      <!-- <div class="grad-zone">
-        <div class="reveal reveal-up">
-          <Marquee />
-        </div>
-      </div> -->
       <!-- Mission — own gradient zone -->
       <div class="grad-zone">
         <div class="reveal reveal-fade">
@@ -91,39 +80,7 @@ import "../styles/stages.css";
           <Howitworks />
         </div> </div> 
 
-
-     
-
-       <!-- <div class="grad-zone">
-        <div class="reveal reveal-blur">
-          <CaseStudies />
-        </div>
-      </div> -->
-
-
-     
-
-      <!-- Buyer segments gradient zone -->
-      <!-- <div class="grad-zone">
-        <div class="reveal reveal-right">
-          <Buyersegments />
-        </div>
-      </div> -->
-
-      <!-- Case Studies gradient zone -->
-     
-
-      <!-- Process Section gradient zone
-      <div class="grad-zone">
-        <div class="reveal reveal-up">
-          <ProcessSection />
-        </div>
-      </div> -->
-
-      <!-- <div class="reveal reveal-fade">
-        <About /> 
-      </div> -->
-
+    
       <!-- FAQ gradient zone -->
       <div class="grad-zone">
         <div class="reveal reveal-fade">

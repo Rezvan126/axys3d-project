@@ -1136,3 +1136,65 @@ html body .cnt-submit:not(#a):not(#b) {
   font-family: 'Inter Tight', sans-serif !important;
   letter-spacing: -0.015em !important;
 }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+@media (max-width: 1024px) {
+  .ind-wrap { width: min(100% - 56px, 1320px); }
+}
+
+@media (max-width: 900px) {
+  .industries-page { margin-top: 108px; }
+  .ind-trust { padding: 70px 0; }
+  .ind-cards-sec { padding: 56px 0 80px; }
+}
+
+@media (max-width: 480px) {
+  .industries-page { margin-top: 92px; }
+  .ind-wrap { width: min(100% - 32px, 100%); }
+  .ind-card { min-height: 360px; }
+}
+
+@media (hover: none) {
+  .ind-card:hover, .ind-stat:hover { transform: none; }
+}
+
+
+/* ---- Main heading: lines ke beech zyada jagah (letters overlap na hon) ---- */
+html body .ind-h1:not(#a):not(#b) { line-height: 1.1 !important; padding-bottom: 0.04em; }
+html body .ind-h1:not(#a):not(#b) * { line-height: inherit !important; }
+
+@media (max-width: 1024px) {
+  html body .ind-h1:not(#a):not(#b) { font-size: clamp(3rem, 7.4vw, 4.6rem) !important; line-height: 1.1 !important; }
+  html body .ind-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}
+@media (max-width: 680px) {
+  html body .ind-h1:not(#a):not(#b) { font-size: clamp(2.2rem, 10.4vw, 3.2rem) !important; line-height: 1.08 !important; }
+  html body .ind-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}
+
+/* tablet: hero poori screen jitna lamba nahi */
+@media (min-width: 901px) and (orientation: portrait) {
+  .ind-intro { min-height: 0; padding: 10px 0 60px; }
+}
+@media (min-width: 901px) and (max-width: 1366px) and (orientation: landscape) {
+  .ind-intro { min-height: min(calc(100svh - 150px), 560px); }
+}
+
+
+/* ---- Sub headings chhoti (section title, card title). CTA heading pehle jaisi ---- */
+html body .ind-sec-h2:not(#a):not(#b) { font-size: clamp(1.5rem, 2.8vw, 2.5rem) !important; line-height: 1.1 !important; }
+html body .ind-sec-h2:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+
+html body .ind-card-title:not(#a):not(#b) { font-size: clamp(1.25rem, 2.2vw, 1.85rem) !important; line-height: 1.15 !important; }
+
+@media (max-width: 1024px) {
+  html body .ind-sec-h2:not(#a):not(#b) { font-size: clamp(1.6rem, 3.6vw, 2.2rem) !important; }
+}
+@media (max-width: 680px) {
+  html body .ind-sec-h2:not(#a):not(#b) { font-size: clamp(1.45rem, 6.4vw, 1.9rem) !important; }
+  html body .ind-card-title:not(#a):not(#b) { font-size: 1.35rem !important; }
+}

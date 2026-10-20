@@ -1,4 +1,5 @@
 ---
+import SEO from "../components/SEO.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 
@@ -23,7 +24,7 @@ if (!pageData) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact & Scoping — Axys3D</title>
+    <SEO title="Contact & Project Scoping | Axys3D" description={pageData.heroDescription} />
     <script is:inline>
       document.documentElement.classList.add("js");
     </script>

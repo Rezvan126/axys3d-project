@@ -2,6 +2,12 @@ import { defineCollection } from "astro:content";
 import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 
+// Reusable SEO fields (page-level title/description)
+const seoFields = {
+  seoTitle: z.string().max(70).optional(),
+  seoDescription: z.string().max(160).optional(),
+};
+
 // 1. Services Page Collection
 const servicesPage = defineCollection({
   loader: glob({ pattern: "index.md", base: "./src/content/servicesPage" }),
@@ -52,6 +58,7 @@ const industriesPage = defineCollection({
         ctaLink: z.string(),
       }),
     ),
+    ...seoFields,
   }),
 });
 
@@ -78,8 +85,10 @@ const industries = defineCollection({
   }),
 });
 
-// Process Collection
-const process = defineCollection({
+// 5. Process Page Collection
+// Variable ka naam processPage hai (Node ke global `process` se bachne ke liye),
+// lekin collection ka naam "process" hi rakha hai, to getCollection("process") waisa hi chalega.
+const processPage = defineCollection({
   loader: glob({ pattern: "index.md", base: "./src/content/process" }),
   schema: z.object({
     heroTitle: z.string(),
@@ -99,10 +108,11 @@ const process = defineCollection({
     ctaSubtitle: z.string().optional(),
     ctaLabel: z.string().optional(),
     ctaLink: z.string().optional(),
+    ...seoFields,
   }),
 });
 
-// 5. Work Page Master Metadata & Filters
+// 6. Work Page Master Metadata & Filters
 const workPage = defineCollection({
   loader: glob({ pattern: "index.md", base: "./src/content/workPage" }),
   schema: z.object({
@@ -118,10 +128,11 @@ const workPage = defineCollection({
       deliveryTypes: z.array(z.string()),
       publicationStatuses: z.array(z.string()),
     }),
+    ...seoFields,
   }),
 });
 
-// 6. Individual Projects / Case Studies
+// 7. Individual Projects / Case Studies
 const projects = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/projects" }),
   schema: z.object({
@@ -133,20 +144,49 @@ const projects = defineCollection({
     deliveryType: z.string(),
     publicationStatus: z.string(),
     services: z.array(z.string()),
+
+    // SEO
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().max(160).optional(),
+    publishDate: z.coerce.date().optional(),
+
+    // Media (sab optional, images/videos aane par bharna)
+    coverImage: z.string().optional(),
+    gallery: z.array(z.string()).optional(),
+    videos: z
+      .array(z.union([z.string(), z.object({ url: z.string(), title: z.string().optional() })]))
+      .optional(),
+    brief: z
+      .object({
+        project: z.string().optional(),
+        scope: z.string().optional(),
+        inputs: z.string().optional(),
+      })
+      .optional(),
+    stageImages: z.array(z.string()).optional(),
+    renders: z
+      .array(
+        z.union([
+          z.string(),
+          z.object({ src: z.string(), title: z.string().optional(), note: z.string().optional() }),
+        ]),
+      )
+      .optional(),
   }),
 });
 
-// 7. Insights Page Master Header Data
+// 8. Insights Page Master Header Data
 const insightsPage = defineCollection({
   loader: glob({ pattern: "index.md", base: "./src/content/insightsPage" }),
   schema: z.object({
     heroTitle: z.string(),
     heroSubtitle: z.string(),
     heroDescription: z.string(),
+    ...seoFields,
   }),
 });
 
-// 8. Individual Insights Articles
+// 9. Individual Insights Articles
 const insights = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/insights" }),
   schema: z.object({
@@ -156,11 +196,19 @@ const insights = defineCollection({
     summary: z.string(),
     badgeText: z.string(),
     ctaLabel: z.string(),
+
+    // SEO
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().max(160).optional(),
+    publishDate: z.coerce.date().optional(),
+
+    // Purana field. Build na toote isliye rakha hai.
+    // Jab saari .md files me publishDate ho jaye, to ye line delete kar dena.
     publishedDate: z.string().optional(),
   }),
 });
 
-// About Page Collection
+// 10. About Page Collection
 const aboutPage = defineCollection({
   loader: glob({ pattern: "index.md", base: "./src/content/aboutPage" }),
   schema: z.object({
@@ -181,9 +229,11 @@ const aboutPage = defineCollection({
     deliveryDescription: z.string(),
     ctaLabel: z.string(),
     ctaLink: z.string(),
+    ...seoFields,
   }),
 });
 
+// 11. Contact Page Collection
 const contactPage = defineCollection({
   loader: glob({ pattern: "index.md", base: "./src/content/contactPage" }),
   schema: z.object({
@@ -218,6 +268,7 @@ const contactPage = defineCollection({
     channelSubtitle: z.string(),
     channelDescription: z.string(),
     channelActionNote: z.string(),
+    ...seoFields,
   }),
 });
 
@@ -226,7 +277,7 @@ export const collections = {
   services,
   industriesPage,
   industries,
-  process,
+  process: processPage,
   workPage,
   projects,
   insightsPage,

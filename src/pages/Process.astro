@@ -1,4 +1,5 @@
 ---
+import SEO from "../components/SEO.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/token.css";
@@ -70,8 +71,7 @@ const stepIcons = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={heroDescription} />
-    <title>{heroSubtitle} — Axys3D</title>
+    <SEO title={`${heroSubtitle} | Axys3D`} description={heroDescription} />
     <script is:inline>
       document.documentElement.classList.add("js");
     </script>

@@ -1320,3 +1320,49 @@ html body .cnt-submit:not(#a):not(#b) {
 .isl-tag-title { font-size: 11.5px; letter-spacing: 0.06em; fill: #d6d3d0; }
 .isl-tag-title { font-weight: 700; }
 .isl-cad-grid { stroke: #8f8b88; }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+@media (max-width: 1024px) {
+  .wrk-wrap { width: min(100% - 56px, 1320px); }
+}
+
+@media (max-width: 900px) {
+  .work-page { margin-top: 108px; }
+  .wrk-intro { padding: 40px 0; }
+}
+
+@media (max-width: 480px) {
+  .work-page { margin-top: 92px; }
+  .wrk-wrap { width: min(100% - 32px, 100%); }
+  .wrk-card { min-height: 360px; }
+}
+
+@media (hover: none) {
+  .wrk-card:hover { transform: none; }
+}
+
+
+/* ---- Main heading: lines ke beech zyada jagah (letters overlap na hon) ---- */
+html body .wrk-h1:not(#a):not(#b) { line-height: 1.1 !important; padding-bottom: 0.04em; }
+html body .wrk-h1:not(#a):not(#b) * { line-height: inherit !important; }
+
+@media (max-width: 1024px) {
+  html body .wrk-h1:not(#a):not(#b) { font-size: clamp(3rem, 7.4vw, 4.6rem) !important; line-height: 1.1 !important; }
+  html body .wrk-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}
+@media (max-width: 680px) {
+  html body .wrk-h1:not(#a):not(#b) { font-size: clamp(2.2rem, 10.4vw, 3.2rem) !important; line-height: 1.08 !important; }
+  html body .wrk-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}
+
+/* tablet: hero poori screen jitna lamba nahi */
+@media (min-width: 901px) and (orientation: portrait) {
+  .wrk-intro { min-height: 0; padding: 10px 0 60px; }
+}
+@media (min-width: 901px) and (max-width: 1366px) and (orientation: landscape) {
+  .wrk-intro { min-height: min(calc(100svh - 150px), 560px); }
+}

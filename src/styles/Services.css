@@ -1012,3 +1012,59 @@ html body .cnt-submit:not(#a):not(#b) {
   grid-template-rows: 1fr;
   opacity: 1;
 }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+@media (max-width: 900px) {
+  .services-page { margin-top: 108px; }
+  .svc-list { padding-bottom: 60px; }
+}
+
+@media (max-width: 480px) {
+  .services-page { margin-top: 92px; }
+  .svc-wrap { width: min(100% - 28px, 100%); }
+}
+
+/* bohat chhoti phone screen: service card ki image thodi chhoti */
+@media (max-width: 400px) {
+  .svc-card { --m: 92px; gap: 10px; padding-inline: 12px; }
+  .svc-card-num { font-size: 16px; }
+}
+
+.svc-card-body { overflow-wrap: anywhere; }
+
+@media (hover: none) {
+  .svc-card:hover { transform: none; }
+}
+
+
+/* ---- Main heading: lines ke beech zyada jagah (letters overlap na hon) ---- */
+html body .svc-h1:not(#a):not(#b) { line-height: 1.1 !important; padding-bottom: 0.04em; }
+html body .svc-h1:not(#a):not(#b) * { line-height: inherit !important; }
+
+@media (max-width: 1024px) {
+  html body .svc-h1:not(#a):not(#b) { font-size: clamp(3rem, 7.4vw, 4.6rem) !important; line-height: 1.1 !important; }
+  html body .svc-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}
+@media (max-width: 680px) {
+  html body .svc-h1:not(#a):not(#b) { font-size: clamp(2.2rem, 10.4vw, 3.2rem) !important; line-height: 1.08 !important; }
+  html body .svc-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}
+
+/* tablet: hero poori screen jitna lamba nahi */
+@media (min-width: 901px) and (orientation: portrait) {
+  .svc-intro { min-height: 0; padding-top: 10px; padding-bottom: 70px; }
+}
+@media (min-width: 901px) and (max-width: 1366px) and (orientation: landscape) {
+  .svc-intro { min-height: min(calc(100svh - 150px), 560px); }
+}
+
+
+/* ---- Hero visual chota ---- */
+.svc-intro-media { max-width: 360px; margin-inline: auto; }
+@media (max-width: 1100px) { .svc-intro-media { max-width: 340px; } }
+@media (max-width: 900px)  { .svc-intro-media { max-width: 320px; margin: 0 auto; } }
+@media (max-width: 480px)  { .svc-intro-media { max-width: 290px; } }

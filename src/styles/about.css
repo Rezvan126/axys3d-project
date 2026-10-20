@@ -892,3 +892,92 @@ html body .abt-bento-pill-btn:not(#a):not(#b) {
   font-family: 'Inter Tight', sans-serif !important;
   letter-spacing: -0.015em !important;
 }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+/* tablet: side margin kam */
+@media (max-width: 1024px) {
+  .abt-wrap { width: min(100% - 56px, 1320px); }
+
+  /* BUG FIX: handshake/stats card pehle teesre (anjaan) column me chali jati thi */
+  .abt-bento-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; }
+  .abt-bento-card--tall      { grid-column: 1 / -1; grid-row: auto; }
+  .abt-bento-card--handshake { grid-column: 1;      grid-row: auto; }
+  .abt-bento-card--stats     { grid-column: 2;      grid-row: auto; }
+  .abt-bento-card--wide      { grid-column: 1 / -1; grid-row: auto; }
+
+  .abt-bento-card--tall { flex-direction: row; align-items: center; gap: 28px; }
+  .abt-bento-card--tall .abt-bento-tall-media { width: 42%; flex: none; margin-bottom: 0; }
+  .abt-bento-card--tall > div:last-child { flex: 1; }
+}
+
+@media (max-width: 900px) {
+  .about-page { margin-top: 108px; }
+  .abt-intro { padding: 30px 0 60px; }
+  .abt-bento-section { padding-bottom: 80px; }
+  .abt-principles { padding: 40px 0 80px; }
+  .abt-team { padding-bottom: 80px; }
+  .abt-quotes { padding-bottom: 80px; }
+  .abt-final-cta { padding: 90px 0 100px; }
+}
+
+@media (max-width: 680px) {
+  .abt-wrap { width: min(100% - 40px, 1320px); }
+
+  .abt-bento-grid { grid-template-columns: 1fr; gap: 16px; }
+  .abt-bento-card--tall,
+  .abt-bento-card--handshake,
+  .abt-bento-card--stats,
+  .abt-bento-card--wide { grid-column: 1 / -1; }
+
+  .abt-bento-card--tall { flex-direction: column; align-items: stretch; padding: 24px 22px 28px; }
+  .abt-bento-card--tall .abt-bento-tall-media { width: 100%; aspect-ratio: 4 / 3; }
+  .abt-bento-card--wide { padding: 28px 24px; min-height: 0; }
+  .abt-bento-wide-overlay {
+    background: linear-gradient(180deg, rgba(12,10,10,.9) 0%, rgba(12,10,10,.88) 100%);
+  }
+
+  /* team: 2 cards ek line me, badge chhota */
+  .abt-team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .abt-team-floating-badge { left: 8px; right: 8px; bottom: 8px; padding: 8px 10px; border-radius: 10px; }
+  .abt-team-badge-info h4 { font-size: 13px; }
+  .abt-team-badge-info span { font-size: 11px; }
+  .abt-team-linkedin-btn { width: 28px; height: 28px; flex: none; }
+
+  .abt-principles-grid-2x2 { grid-template-columns: 1fr; }
+  .abt-bubble-box { min-height: 0; }
+  .abt-trust-strip { padding: 32px 0 44px; margin-bottom: 60px; }
+  .abt-final-inner h2 { margin-bottom: 26px !important; }
+
+}
+
+@media (max-width: 480px) {
+  .about-page { margin-top: 92px; }
+  .abt-wrap { width: min(100% - 32px, 1320px); }
+  .abt-team-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
+  .abt-bento-stats-grid { gap: 18px 14px; }
+}
+
+@media (hover: none) {
+  .abt-bento-card:hover,
+  .abt-principle-card-grey:hover,
+  .abt-team-card-image:hover,
+  .abt-final-button:hover { transform: none; }
+}
+
+
+/* ---- Main heading: lines ke beech zyada jagah (letters overlap na hon) ---- */
+html body .abt-h1:not(#a):not(#b) { line-height: 1.1 !important; padding-bottom: 0.04em; }
+html body .abt-h1:not(#a):not(#b) * { line-height: inherit !important; }
+
+@media (max-width: 1024px) {
+  html body .abt-h1:not(#a):not(#b) { font-size: clamp(3rem, 7.4vw, 4.6rem) !important; line-height: 1.1 !important; }
+  html body .abt-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}
+@media (max-width: 680px) {
+  html body .abt-h1:not(#a):not(#b) { font-size: clamp(2.2rem, 10.4vw, 3.2rem) !important; line-height: 1.08 !important; }
+  html body .abt-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}

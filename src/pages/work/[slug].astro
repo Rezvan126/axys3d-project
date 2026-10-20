@@ -194,18 +194,47 @@ const more = all.length > 1
       return { entry: all[k], video: videoFor(k) };
     })
   : [];
+
+// ---------- SEO ----------
+const siteUrl = Astro.site ?? new URL("https://aapka-domain.com");
+const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
+const seoTitle = p.seoTitle || `${title} | Axys3D`;
+const seoDescription = p.seoDescription || summary;
+const ogImage = new URL(customCover || "/og-default.jpg", siteUrl).href;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description: seoDescription,
+  image: ogImage,
+  datePublished: p.publishDate ? new Date(p.publishDate).toISOString() : undefined,
+  author: { "@type": "Organization", name: "Axys3D" },
+  publisher: { "@type": "Organization", name: "Axys3D" },
+  mainEntityOfPage: canonicalURL,
+};
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={summary} />
-    <title>{title} — Axys3D Case Study</title>
-    <script is:inline>
-      document.documentElement.classList.add("js");
-    </script>
+   <title>{seoTitle}</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content={seoDescription} />
+<link rel="canonical" href={canonicalURL} />
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Axys3D" />
+<meta property="og:title" content={seoTitle} />
+<meta property="og:description" content={seoDescription} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:image" content={ogImage} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={seoTitle} />
+<meta name="twitter:description" content={seoDescription} />
+<meta name="twitter:image" content={ogImage} />
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
 
   <body class="page-work-detail">
@@ -614,6 +643,8 @@ const more = all.length > 1
     </div>
 
     <Footer />
+
+
 
     <script is:inline>
       // every block of the article reveals on its own

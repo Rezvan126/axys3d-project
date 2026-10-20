@@ -733,3 +733,43 @@ html body .svcd-more-btn:not(#a):not(#b) {
 .svcd-proj:focus-visible,
 .svcd-crumbs a:focus-visible { outline: 2px solid var(--brown-light); outline-offset: 4px; border-radius: 8px; }
 .svcd-note--light a:focus-visible { outline: 2px solid #3b2415; outline-offset: 4px; border-radius: 4px; }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+@media (max-width: 1024px) {
+  .svcd-wrap { width: min(100% - 56px, 1240px); }
+  .svcd-sec, .svcd-band-sec { padding-bottom: 90px; }
+  .svcd-faq-a-inner { padding-right: 24px; }
+}
+
+@media (max-width: 900px) {
+  .svcd-banner { padding: 190px 0 90px; }
+}
+
+@media (max-width: 640px) {
+  .svcd-sec, .svcd-band-sec { padding-bottom: 72px; }
+  .svcd-final-inner p { font-size: 15.5px; }
+  .svcd-final-inner { padding: 0 4px; }
+}
+
+@media (max-width: 480px) {
+  .svcd-wrap { width: calc(100% - 32px); }
+  .svcd-banner { padding: 150px 0 70px; }
+}
+
+
+/* ---- Main heading: lines ke beech zyada jagah (letters overlap na hon) ---- */
+html body .svcd-h1:not(#a):not(#b) { line-height: 1.1 !important; padding-bottom: 0.04em; }
+html body .svcd-h1:not(#a):not(#b) * { line-height: inherit !important; }
+
+@media (max-width: 1024px) {
+  html body .svcd-h1:not(#a):not(#b) { font-size: clamp(3rem, 7.4vw, 4.6rem) !important; line-height: 1.1 !important; }
+  html body .svcd-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}
+@media (max-width: 680px) {
+  html body .svcd-h1:not(#a):not(#b) { font-size: clamp(2.2rem, 10.4vw, 3.2rem) !important; line-height: 1.08 !important; }
+  html body .svcd-h1:not(#a):not(#b) * { font-size: inherit !important; line-height: inherit !important; }
+}

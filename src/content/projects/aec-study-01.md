@@ -10,4 +10,7 @@ services:
   - "BIM production"
   - "Revit production"
   - "MEP coordination support"
+seoTitle: "Federated BIM, Revit & MEP Delivery Study | Axys3D"
+seoDescription: "A demonstration case study showing how BIM execution, Revit documentation and MEP coordination review are joined in one integrated delivery package."
+publishDate: 2026-10-19
 ---

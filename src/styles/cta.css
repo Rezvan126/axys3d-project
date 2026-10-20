@@ -219,3 +219,26 @@
 @media (prefers-reduced-motion: reduce) {
   .cta-button, .cta-button::before, .cta-arrow { transition: none; }
 }
+
+
+/* =========================================================
+   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
+   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+========================================================= */
+@media (max-width: 992px) {
+  .cta-section { padding: clamp(64px, 10vh, 110px) 0; }
+}
+
+@media (max-width: 480px) {
+  .cta-card { padding: 24px 20px; }
+  .cta-card p { font-size: 15px; margin-bottom: 24px; }
+  .cta-main h2 { letter-spacing: -0.045em !important; }
+}
+
+@media (pointer: coarse) {
+  .cta-button { min-height: 44px; }
+}
+
+@media (hover: none) {
+  .cta-button:hover { transform: none; }
+}
