@@ -24,8 +24,8 @@ const stages = [
         <span class="line"><em>Render out.</em></span>
       </h2>
       <p>
-        A real Axys3D project moving from linework to coordinated BIM to the
-        final render. Hover the card, or pick a stage.
+        One real project, from linework to final render.
+        Open the layers, or pick a stage.
       </p>
     </div>
 
@@ -37,7 +37,22 @@ const stages = [
             <img class:list={["stage-img", i === 0 && "is-under"]} src={s.img} alt={`${s.chip} stage`} loading="lazy" />
           ))}
           <span class="stage-beam" aria-hidden="true"></span>
+          <!-- 3D layers (Three.js). WebGL na ho to upar wali images hi chalti hain -->
+          <canvas class="stage-3d" id="stage3dCanvas" aria-hidden="true"></canvas>
         </div>
+
+        <!-- Khulne par har layer ka naam -->
+        <div class="stage-layers" id="stageLayers" aria-hidden="true">
+          {stages.map((s, i) => (
+            <span class="stage-layer"><i>0{i + 1}</i>{s.tab}</span>
+          ))}
+        </div>
+
+        <span class="stage-hint" aria-hidden="true">
+          <i></i>
+          <b class="hint-hover">Hover to open the layers</b>
+          <b class="hint-touch">Tap to open the layers</b>
+        </span>
 
         <span class="stage-chip"><i></i><b id="stChip">{stages[0].chip}</b></span>
         <span class="stage-tag" id="stTag">{stages[0].tag}</span>
@@ -88,6 +103,15 @@ const stages = [
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let cur = 0, timer: number | undefined, startedAt = 0, remaining = DURATION, inView = false, hover = false;
 
+  // 3D viewer (lazy). null = purani image-wipe wali animation
+  type Viewer = {
+    goTo(i: number): void; setActive(i: number): void; setHold(on: boolean): void;
+    pick(x: number, y: number): number; destroy(): void;
+  };
+  let viewer: Viewer | null = null;
+  let opened = false; // touch par layers khuli hain ya nahi
+  const coarse = window.matchMedia("(hover: none)").matches;
+
   function setLabels(t: HTMLButtonElement) {
     const targets = [labels.chip, labels.tag, labels.qc, labels.model];
     targets.forEach((el) => el.classList.add("is-swap"));
@@ -110,16 +134,20 @@ const stages = [
   function go(i: number) {
     const prev = cur;
     cur = i;
-    imgs.forEach((im, k) => {
-      im.classList.remove("is-top", "is-under");
-      if (k === prev && prev !== i) im.classList.add("is-under");
-    });
-    void imgs[i].offsetWidth;
-    imgs[i].classList.add("is-top");
+    if (viewer) {
+      viewer.goTo(i); // layers khulti hain -> agli stage -> band
+    } else {
+      imgs.forEach((im, k) => {
+        im.classList.remove("is-top", "is-under");
+        if (k === prev && prev !== i) im.classList.add("is-under");
+      });
+      void imgs[i].offsetWidth;
+      imgs[i].classList.add("is-top");
 
-    beam.classList.remove("run");
-    void beam.offsetWidth;
-    beam.classList.add("run");
+      beam.classList.remove("run");
+      void beam.offsetWidth;
+      beam.classList.add("run");
+    }
 
     tabs.forEach((t, k) => {
       t.classList.toggle("is-active", k === i);
@@ -133,22 +161,46 @@ const stages = [
   tabs.forEach((t) => t.addEventListener("click", () => { if (Number(t.dataset.i) !== cur) go(Number(t.dataset.i)); }));
 
   function pause() {
+    if (hover) return;
     hover = true;
     window.clearTimeout(timer);
     remaining = Math.max(300, remaining - (performance.now() - startedAt));
     root.classList.add("is-paused");
+    viewer?.setHold(true); // hover = layers khuli rahen
   }
   function resume() {
+    if (!hover) return;
     hover = false;
+    opened = false;
     root.classList.remove("is-paused");
+    viewer?.setHold(false);
     if (inView) schedule(remaining);
   }
-  card.addEventListener("mouseenter", pause);
-  card.addEventListener("mouseleave", () => { resume(); card.style.setProperty("--rx", "0deg"); card.style.setProperty("--ry", "0deg"); });
-  card.addEventListener("mousemove", (e) => {
+  const used = () => card.classList.add("is-used");
+
+  // mouse: hover se khulta hai
+  card.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") { pause(); if (viewer) used(); } });
+  card.addEventListener("pointerleave", (e) => {
+    if (e.pointerType !== "mouse") return;
+    resume();
+    card.style.setProperty("--rx", "0deg");
+    card.style.setProperty("--ry", "0deg");
+  });
+  card.addEventListener("pointermove", (e) => {
+    if (e.pointerType !== "mouse") return;
     const r = card.getBoundingClientRect();
     card.style.setProperty("--ry", `${((e.clientX - r.left) / r.width - 0.5) * 5}deg`);
     card.style.setProperty("--rx", `${-((e.clientY - r.top) / r.height - 0.5) * 4}deg`);
+  });
+
+  // click / tap: layer chuno (touch par pehla tap layers kholta hai)
+  card.addEventListener("click", (e) => {
+    if (!viewer) return;
+    used();
+    if (coarse && !opened) { opened = true; pause(); return; }
+    const idx = viewer.pick(e.clientX, e.clientY);
+    if (idx >= 0 && idx !== cur) go(idx);
+    if (coarse) resume();
   });
 
   // sirf screen par aaye tab chalay
@@ -157,4 +209,33 @@ const stages = [
     if (inView && !hover) { tabs[cur].classList.remove("is-active"); void tabs[cur].offsetWidth; tabs[cur].classList.add("is-active"); schedule(DURATION); }
     else { window.clearTimeout(timer); }
   }, { threshold: 0.35 }).observe(root);
+
+  // ---------- 3D layers: sirf tab load jab section screen ke paas aaye ----------
+  const canvas = document.getElementById("stage3dCanvas") as HTMLCanvasElement | null;
+  const layerLabels = Array.from(root.querySelectorAll<HTMLElement>(".stage-layer"));
+  if (canvas) {
+    const loader = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      loader.disconnect();
+      import("../scripts/stages-3d.ts")
+        .then(({ initStages3D }) =>
+          initStages3D({
+            card,
+            canvas,
+            sources: imgs.map((im) => im.getAttribute("src") || ""),
+            labels: layerLabels,
+            reduce,
+            onReady: () => card.classList.add("has-3d"),
+            onFail: () => { card.classList.remove("has-3d"); viewer = null; },
+          }),
+        )
+        .then((v) => {
+          if (!v) return;
+          viewer = v as Viewer;
+          viewer.setActive(cur);
+        })
+        .catch(() => { card.classList.remove("has-3d"); viewer = null; }); // fail ho to purani images
+    }, { rootMargin: "200px" });
+    loader.observe(root);
+  }
 </script>

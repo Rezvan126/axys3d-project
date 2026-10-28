@@ -6,23 +6,43 @@ const bookingStatus = "Now booking — June";
 ---
 
 <!-- =====================================================
-     UX BRIEF — MISSION (STATS)
+     MISSION (STATS) — "Our focus is simple" bento
      Visitor ka sawal : "Kya in par bharosa kar sakta hoon?"
      Jawab : numbers (50+ projects, 7 days, 4.8/5) + har number ka seedha matlab.
-     Purane cards / UI wohi hain; sirf NEW (UX) wale hisse add hue hain.
-     Agla section: HowItWorks.astro (kaam kaise hota hai).
+
+     Layout (desktop):
+       heading (left)                         paragraph (right)
+       [ Partners (light grey) ] [ Deliveries 50+ (brown)  ] [ Impact — dark ]
+       [ Turnaround (grey)     ] [ Status (light grey)     ] [ arrow + 4.8/5 ]
+     Heading nahi chahiye to sirf <header class="mission-head"> wala block hata do.
+     Agla section: HowItWorks.astro
      ===================================================== -->
+
+<noscript>
+  <style>[data-reveal]{opacity:1 !important;transform:none !important;}</style>
+</noscript>
 
 <section class="mission" id="missionSection">
   <div class="mission-inner">
 
+    <!-- ================= HEADING ================= -->
+    <header class="mission-head" data-reveal>
+      <h2 class="mission-title">
+        <span class="line">Our focus is simple</span>
+        <span class="line"><em>Show it before it’s built</em></span>
+      </h2>
+      <p class="mission-lead">
+        We promise to deliver beyond your expectations for every project.
+      </p>
+    </header>
+
     <div class="mission-grid">
 
-      <!-- COLUMN 1 -->
+      <!-- ================= COLUMN 1 ================= -->
       <div class="mission-col">
-        <!-- Card 1: Studio Partners -->
-        <div class="mission-card mission-card--avatars" data-reveal>
-          <p class="mission-card-copy">Collaborating with global leaders</p>
+
+        <!-- Partners (chhota card) -->
+        <div class="mission-card mission-card--partners" data-reveal>
           <div class="mission-card-row">
             <div class="avatar-stack">
               <span class="avatar-dot">A</span>
@@ -30,76 +50,85 @@ const bookingStatus = "Now booking — June";
               <span class="avatar-dot">M</span>
               <span class="avatar-dot avatar-dot--more">+</span>
             </div>
-            <span class="mission-card-label">
+            <span class="mission-partners-label">
               <span class="mission-stat-inline" data-count-to="40">0</span>+ Studio partners
             </span>
           </div>
-          <!-- NEW (UX): maqsad = "global leaders" kaun hain, ye saaf karna -->
-          <p class="mission-card-note">Architecture studios and developers who trust us with their projects.</p>
+          <p class="mission-card-label">Collaborating with global leaders: architecture studios and developers who trust us with their projects.</p>
         </div>
 
-        <!-- Card 2: Turnaround Time -->
-        <div class="mission-card mission-card--stat" data-reveal>
-          <span class="mission-card-tag">Turnaround</span>
-          <div class="mission-stat">
-            <span class="mission-stat-value" data-count-to="7">0</span><span class="mission-stat-suffix"> days</span>
+        <!-- Turnaround (tall, grey) -->
+        <div class="mission-card mission-card--tall mission-card--turnaround" data-reveal>
+          <div class="mission-card-top">
+            <p class="mission-card-copy">Average time from brief to first render</p>
           </div>
-          <p class="mission-card-copy">Average time from brief to first render</p>
-          <!-- NEW (UX): maqsad = "7 days" ka matlab client ke liye kya hai -->
-          <p class="mission-card-note">You see your first draft within a week of sending the brief.</p>
+
+          <div class="mission-card-bottom">
+            <div class="mission-stat">
+              <span class="mission-stat-value" data-count-to="7">0</span><span class="mission-stat-suffix"> days</span>
+            </div>
+            <p class="mission-card-label">You see your first draft within a week of sending the brief.</p>
+          </div>
         </div>
+
       </div>
 
-      <!-- COLUMN 2 (CENTER TALL / FEATURED) -->
-      <div class="mission-card mission-card--accent" data-reveal>
-        <div class="mission-accent-top">
-          <span class="mission-card-tag mission-card-tag--light">Deliveries</span>
-          <div class="mission-stat mission-stat--hero">
-            <span class="mission-stat-value" data-count-to="50">0</span><span class="mission-stat-suffix">+</span>
+      <!-- ================= COLUMN 2 ================= -->
+      <div class="mission-col">
+
+        <!-- Deliveries (tall, brown) -->
+        <div class="mission-card mission-card--tall mission-card--deliveries" data-reveal>
+          <div class="mission-card-top">
+            <p class="mission-card-copy">
+              Renders, walkthroughs, and stills crafted with precision to bring architectural visions to life seamlessly.
+            </p>
+            <div class="mission-chips">
+              <span class="mission-chip">Renders</span>
+              <span class="mission-chip">Walkthroughs</span>
+              <span class="mission-chip">Stills</span>
+            </div>
           </div>
-          <h3 class="mission-hero-title">Projects delivered to date</h3>
+
+          <div class="mission-card-bottom">
+            <div class="mission-stat">
+              <span class="mission-stat-value" data-count-to="50">0</span><span class="mission-stat-suffix">+</span>
+            </div>
+            <p class="mission-card-label">Projects delivered to date</p>
+          </div>
         </div>
 
-        <p class="mission-card-copy mission-card-copy--light">
-          Renders, walkthroughs, and stills crafted with precision to bring architectural visions to life seamlessly.
-        </p>
-
-        <!-- NEW (UX): maqsad = "projects" mein asal mein kya kya deliver hota hai -->
-        <div class="mission-chips">
-          <span class="mission-chips-label">What you get</span>
-          <span class="mission-chip">Renders</span>
-          <span class="mission-chip">Walkthroughs</span>
-          <span class="mission-chip">Stills</span>
-        </div>
-
-        <!-- Availability Status Block (Replaced small badge) -->
-        <div class="mission-booking-card">
+        <!-- Status (chhota card) — ab click hota hai, seedha contact par -->
+        <a href="/contact" class="mission-card mission-card--status mission-card--link" data-reveal aria-label={`${bookingStatus} — send your brief`}>
           <span class="mission-badge-dot"></span>
           <div>
-            <span class="mission-booking-label">Current Status</span>
+            <span class="mission-booking-label">Current status</span>
             <span class="mission-booking-val">{bookingStatus}</span>
           </div>
-        </div>
+          <span class="mission-status-go" aria-hidden="true">Send brief <b>↗</b></span>
+        </a>
+
       </div>
 
-      <!-- COLUMN 3 -->
-      <div class="mission-card mission-card--dark" data-reveal>
-        <div>
-          <span class="mission-card-tag mission-card-tag--gold">Impact</span>
-          <p class="mission-card-copy mission-card-copy--light">
-            We've helped studios and developers secure buy-in before a single brick is laid.
-          </p>
-        </div>
+      <!-- ================= COLUMN 3: IMPACT (bara dark card) ================= -->
+      <div class="mission-card mission-card--impact" id="missionImpact" data-reveal>
 
-        <svg class="mission-chart" viewBox="0 0 200 90" preserveAspectRatio="none" aria-hidden="true">
-          <path class="mission-chart-line" d="M4 72 C 40 76, 58 40, 92 46 S 152 12, 196 8" />
-          <path class="mission-chart-arrowhead" d="M196 8 l -15 -2 M196 8 l -4 15" />
+        <!-- 3D: wireframe -> render (Three.js, lazy-load). WebGL na ho to neeche wala SVG arrow dikhta rahega -->
+        <canvas class="mission-3d" id="mission3dCanvas" aria-hidden="true"></canvas>
+        <div class="mission-3d-tag" id="mission3dTag" aria-hidden="true"><i></i><span>Drawing</span></div>
+
+        <svg class="mission-chart" viewBox="0 0 200 120" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
+          <path class="mission-chart-line" d="M10 104 C 40 108, 56 62, 92 70 S 142 32, 178 22" />
+          <path class="mission-chart-arrowhead" d="M178 22 l -26 3 M178 22 l -7 25" />
         </svg>
 
-        <!-- NEW (UX): maqsad = graph ka matlab batana (pehle sirf sajawat thi) -->
-        <p class="mission-card-note mission-card-note--light">Clearer visuals help clients say yes sooner.</p>
+        <div>
+          <p class="mission-card-copy">
+            We’ve helped studios and developers secure buy-in before a single brick is laid.
+          </p>
+          <p class="mission-card-label">Clearer visuals help clients say yes sooner.</p>
+        </div>
 
-        <div class="mission-dark-bottom">
+        <div class="mission-impact-bottom">
           <div class="mission-rating">
             <span class="mission-rating-label">Average client rating</span>
             <span class="mission-stat-value" data-count-to="4.8" data-decimals="1">0</span><span class="mission-stat-suffix">/5</span>
@@ -166,5 +195,56 @@ const bookingStatus = "Now booking — June";
       { threshold: 0.6 }
     );
     countEls.forEach((el) => countObserver.observe(el));
+
+    /* ---------- Card tilt + cursor-follow border glow ---------- */
+    const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const cards = section.querySelectorAll<HTMLElement>(".mission-card");
+
+    cards.forEach((card) => {
+      if (!fine) return;
+      card.addEventListener("pointermove", (e: PointerEvent) => {
+        const r = card.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        card.style.setProperty("--mx", x + "px");
+        card.style.setProperty("--my", y + "px");
+        if (calm) return;
+        const max = 3.5; // degrees — halka, over nahi
+        card.style.setProperty("--ry", ((x / r.width - 0.5) * 2 * max).toFixed(2) + "deg");
+        card.style.setProperty("--rx", ((0.5 - y / r.height) * 2 * max).toFixed(2) + "deg");
+      });
+      card.addEventListener("pointerleave", () => {
+        card.style.setProperty("--rx", "0deg");
+        card.style.setProperty("--ry", "0deg");
+      });
+    });
+
+    /* ---------- 3D (Three.js) — sirf tab load jab card screen ke paas aaye ---------- */
+    const impact = document.getElementById("missionImpact");
+    const canvas = document.getElementById("mission3dCanvas") as HTMLCanvasElement | null;
+    const tag = document.getElementById("mission3dTag");
+
+    if (impact && canvas) {
+      const loader = new IntersectionObserver(
+        (entries) => {
+          if (!entries[0].isIntersecting) return;
+          loader.disconnect();
+          import("../scripts/mission-3d")
+            .then(({ initMission3D }) =>
+              initMission3D({
+                card: impact,
+                canvas,
+                tag,
+                onReady: () => impact.classList.add("has-3d"),
+                onFail: () => impact.classList.remove("has-3d"),
+              }),
+            )
+            .catch(() => impact.classList.remove("has-3d")); // fail ho to purana SVG arrow
+        },
+        { rootMargin: "200px" },
+      );
+      loader.observe(impact);
+    }
   });
 </script>

@@ -6,10 +6,12 @@ import "../styles/Hero.css";
      UX BRIEF — HERO
      Visitor ka sawal : "Ye log kya karte hain, aur kya ye mere liye hai?"
      Jawab (5 second): drawings -> 3D models / renders / walkthroughs.
-     Har NEW (UX) element ka maqsad us k upar comment mein likha hai.
+
+     BACKGROUND: pehle outline draw, phir black & grey building photo reveal.
+     Numbering / progress lines nahi hain. Photo badalni ho to <img class="hero-photo"> ka src badlo.
      ===================================================== -->
 
-<section class="hero" id="axysHero">
+<section class="hero hero--photo text-in" id="axysHero">
 
   <!-- ================= FONTS ================= -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,42 +22,80 @@ import "../styles/Hero.css";
   />
 
 
-  <!-- ================= BACKGROUND VIDEO ================= -->
-  <video
-    class="hero-video"
-    id="heroVideo"
-    autoplay
-    muted
-    playsinline
-  >
-    <!-- <source
-      src="/videos/hero-video.mp4"
-      type="video/mp4"
-    /> -->
-  </video>
+  <!-- ================= BACKGROUND =================
+       1) Pehle building ka outline "draw" hota hai (SVG lines)
+       2) Phir photo neeche se upar reveal hoti hai
+       3) Aakhir me outline fade ho jata hai
+       Photo: /public/hero/building.jpg  (outline isi photo ke hisaab se trace hui hai,
+       isliye photo badlo to outline ka SVG bhi badalna hoga ya <svg> hata do). -->
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-frame hero-frame--photo">
+      <div class="hero-frame-inner">
+        <img
+          class="hero-photo"
+          src="/public/images/building.jpg"
+          alt=""
+          width="1344"
+          height="768"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+    </div>
 
+    <div class="hero-overlay"></div>
 
-  <!-- ================= 3D TOWER (Three.js canvas) ================= -->
-  <canvas class="hero-3d" id="hero3d" aria-hidden="true"></canvas>
+    <div class="hero-frame hero-frame--lines">
+      <div class="hero-frame-inner">
+        <svg class="hero-outline" viewBox="0 0 1344 768" preserveAspectRatio="none" focusable="false">
+        <path class="ol-fill" d="M902 187 L959 137 L1199 75 L1292 199 V467 H932 V320 L902 320 Z" />
+        <path pathLength="1" style="--d:0.35s" d="M109 237 L150 213 L353 115 L517 201" />
+        <path pathLength="1" style="--d:0.7s" d="M353 115 V297" />
+        <path pathLength="1" style="--d:0.5s" d="M109 237 V367" />
+        <path pathLength="1" style="--d:0.6s" d="M109 367 L360 295" />
+        <path pathLength="1" style="--d:0.8s" d="M517 201 V468" />
+        <path pathLength="1" style="--d:0.9s" d="M125 367 V624" />
+        <path pathLength="1" style="--d:1.0s" d="M127 487 L381 455" />
+        <path pathLength="1" style="--d:1.1s" d="M423 455 L672 490" />
+        <path pathLength="1" style="--d:1.2s" d="M381 463 V628 M423 463 V628" />
+        <path pathLength="1" style="--d:0.15s" d="M110 624 H1330" />
+        <path pathLength="1" style="--d:0.9s" d="M465 168 L565 133 L672 192 L775 163" />
+        <path pathLength="1" style="--d:1.2s" d="M465 168 V210" />
+        <path pathLength="1" style="--d:1.0s" d="M775 85 L892 52 L962 137" />
+        <path pathLength="1" style="--d:1.15s" d="M775 85 V352 H940" />
+        <path pathLength="1" style="--d:1.3s" d="M899 52 V347" />
+        <path pathLength="1" style="--d:1.2s" d="M934 67 L1079 21 L1105 99" />
+        <path pathLength="1" style="--d:1.4s" d="M934 67 V135 M1079 21 V95" />
+        <path class="ol-a" pathLength="1" style="--d:1.3s" d="M902 187 L959 137 L1199 75 L1292 199 V467 H932 V320 L902 320 Z" />
+        <path class="ol-a" pathLength="1" style="--d:1.9s" d="M1199 75 V467" />
+        <path pathLength="1" style="--d:2.0s" d="M1292 199 L1313 277 V470 L1292 467" />
+        <path pathLength="1" style="--d:2.1s" d="M932 477 L960 492 H1135" />
+        <path pathLength="1" style="--d:1.5s" d="M819 403 H929 V623 M819 403 V623" />
+        <path pathLength="1" style="--d:1.7s" d="M672 603 L739 507 M752 587 L815 493" />
+        <path class="ol-w" pathLength="1" style="--d:1.9s" d="M690 598 H752 M705 580 H765 M720 562 H780 M735 544 H795 M745 526 H805" />
+        <path pathLength="1" style="--d:1.6s" d="M727 148 V475" />
+        <path class="ol-w" pathLength="1" style="--d:2.0s" d="M480 517 H623 V617 H480 Z M527 517 V617" />
+        <path class="ol-w" pathLength="1" style="--d:2.1s" d="M939 503 H1082 V617 H939 Z M1002 503 V617" />
+        <path pathLength="1" style="--d:1.8s" d="M1135 457 V622 M1192 457 V622" />
+        <path class="ol-w" pathLength="1" style="--d:2.2s" d="M238 197 H265 V300 H238 Z" />
+        <path class="ol-w" pathLength="1" style="--d:2.3s" d="M410 187 H437 V297 H410 Z" />
+        <path class="ol-w" pathLength="1" style="--d:2.4s" d="M383 313 H437 V440 H383 Z" />
+        <path class="ol-w" pathLength="1" style="--d:2.45s" d="M857 85 H884 V133 H857 Z" />
+        <path class="ol-w" pathLength="1" style="--d:2.5s" d="M857 235 H884 V301 H857 Z" />
+        <path class="ol-w" pathLength="1" style="--d:2.55s" d="M749 212 H775 V287 H749 Z" />
+        <path class="ol-w" pathLength="1" style="--d:2.6s" d="M988 160 H1039 V287 H988 Z" />
+        <path class="ol-w" pathLength="1" style="--d:2.7s" d="M988 310 H1040 V440 H988 Z" />
+        <path class="ol-w" pathLength="1" style="--d:2.65s" d="M1255 192 H1275 V305 H1255 Z" />
+        </svg>
+      </div>
+    </div>
 
-
-  <!-- ================= DARK OVERLAY ================= -->
-  <div class="hero-overlay"></div>
-
-
-  <!-- TEXT SCRIM (video end par fade-in) -->
-  <div class="hero-text-scrim"></div>
-
-
-  <!-- ================= BRAND MASK INTRO ================= -->
-  <div class="brand-mask" aria-hidden="true">
-    <video autoplay muted loop playsinline>
-      <source
-        src="/videos/hero-video.mp4"
-        type="video/mp4"
-      />
-    </video>
+    <div class="hero-dots"></div>
   </div>
+
+
+  <!-- TEXT SCRIM -->
+  <div class="hero-text-scrim"></div>
 
 
   <!-- =====================================================
@@ -75,7 +115,6 @@ import "../styles/Hero.css";
           <!-- EYEBROW -->
           <div class="hero-eyebrow">
             Full-service
-            <!-- NEW (UX): maqsad = "AEC" lafz na samajhne wale ko 1 tap par matlab mil jaye -->
             <span
               class="term"
               tabindex="0"
@@ -99,9 +138,6 @@ import "../styles/Hero.css";
           </h1>
 
 
-          <!-- NEW (UX): PLAIN-WORDS LINE
-               maqsad = heading industry ki zubaan mein hai; ye line aam banday ko
-               pehle 5 second mein bata deti hai ke kaam kya hai. -->
           <p class="hero-lead">
             We turn architects' drawings into 3D models, renders and walkthroughs,
             so you can see the building before it's built.
@@ -141,10 +177,6 @@ import "../styles/Hero.css";
           </div>
 
 
-          <!-- NEW (UX): "WHO ARE YOU?" CHIPS
-               maqsad = visitor ko khud apni jagah dhoondni na paray.
-               Click karne par Buyer section tak scroll hota hai.
-               NOTE: Buyer section par id="buyer-segments" lagana zaroori hai. -->
           <!-- <div class="hero-fit" role="group" aria-label="Find the right fit for you">
             <span class="hero-fit-label">Find your fit</span>
 
@@ -157,10 +189,6 @@ import "../styles/Hero.css";
 
       </div>
 
-
-      <!-- =================================================
-           SCROLL CUE
-           ================================================= -->
 
       <!-- <div class="hero-scroll-cue">
 
@@ -180,563 +208,58 @@ import "../styles/Hero.css";
 </section>
 
 
-<!-- =====================================================
-     SCRIPT — 3D TOWER (Three.js) + VIDEO TO TEXT HANDLER
-     ===================================================== -->
-
 <style is:global>
-  /* Text: left side, vertically beech mein, bara size */
+  /* Text: left side, vertically beech mein */
   .hero .hero-content {
     justify-content: center;
     padding: 130px 6% 70px;
   }
   .hero .hero-main {
-    max-width: 780px;
+    max-width: 720px;
   }
   .hero .hero-main h1 {
-    font-size: clamp(36px, 3.9vw, 62px);
-    max-width: 780px;
-    line-height: 1.02 !important;
+    font-size: clamp(36px, 4.2vw, 60px);
+    max-width: 720px;
+    line-height: 1.1 !important;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
   }
-  /* 3rd line: solid brown (gradient hata diya) */
+  /* 2nd line: solid purple (pehle brown tha) */
   .hero h1 .accent {
     background: none;
     -webkit-background-clip: border-box;
     background-clip: border-box;
-    -webkit-text-fill-color: #8f6444;
-    color: #8f6444 !important;
+    -webkit-text-fill-color: #9318d7;
+    color: #9318d7 !important;
   }
   .hero .hero-eyebrow {
-    font-size: 13px;
-    margin-bottom: 20px;
+    font-size: 12.5px;
+    margin-bottom: 18px;
   }
   .hero .hero-lead {
-    font-size: 19px;
-    max-width: 580px;
-    margin-top: 22px;
+    font-size: 13px;
+    max-width: 480px;
+    margin-top: 16px;
   }
   .hero .hero-buttons {
-    margin-top: 38px;
+    margin-top: 26px;
   }
   .hero .primary-button,
   .hero .secondary-button {
-    min-height: 52px;
-    padding: 0 24px;
-    font-size: 15px;
+    min-height: 34px;
+    padding: 0 14px;
+    font-size: 11.5px;
   }
   @media (max-width: 1100px) {
     .hero .hero-content { padding: 110px 5% 60px; }
-    .hero .hero-main h1 { font-size: clamp(36px, 6vw, 64px); }
+    .hero .hero-main h1 { font-size: clamp(34px, 5.8vw, 54px); }
   }
   @media (max-width: 768px) {
     .hero .hero-content { justify-content: flex-end; padding: 100px 6% 50px; }
     .hero .hero-main { max-width: 100%; }
-    .hero .hero-main h1 { font-size: clamp(34px, 9.5vw, 52px); }
+    .hero .hero-main h1 { font-size: clamp(30px, 8.4vw, 44px); }
     .hero .hero-eyebrow { font-size: 11px; }
-    .hero .hero-lead { font-size: 16px; }
+    .hero .hero-lead { font-size: 12px; }
     .hero .primary-button,
-    .hero .secondary-button { min-height: 48px; font-size: 14px; }
+    .hero .secondary-button { min-height: 36px; font-size: 11px; }
   }
 </style>
-
-<script>
-  import * as THREE from "three";
-  import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
-  import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
-  import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
-  import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
-
-  /* =========================================================
-     AXYS3D — HERO 3D TOWER (Three.js)
-     Loop (25s):  brown hold -> dissolve -> beam only -> grey wireframe
-     builds bottom-up -> glass fill -> white render -> coffee brown.
-     Colours: wireframe = GREY, final render = COFFEE BROWN.
-  ========================================================= */
-
-  /* ---------- COLOURS (yahan se badal sakte ho) ---------- */
-  const COL = {
-    wire: 0x8f6444,      // wireframe lines  (brown)
-    wireGlass: 0xb8946f, // lines jab glass ban jaye (brown)
-    glass: 0x5b3b27,     // translucent brown glass
-    white: 0x6b452c,     // render stage (ab white nahi, brown)
-    sand: 0xc8a77f,      // warm light neeche se
-    brown: 0x5b3b27,     // FINAL coffee brown (slabs)
-    edgeBrown: 0xb8946f, // brown stage ki lines
-    beamWarm: 0xd9b08c,  // beam ka halka coffee/tan
-    beamWhite: 0xd9b08c, // beam ka core (brown/tan)
-  };
-
-  /* ---------- TIMELINE (seconds, 25s loop) ---------- */
-  const LOOP = 25;
-  const START_AT = 7.0;          // page khulte hi "empty + beam" se shuru
-  const T = {
-    dissolveA: 6.2, dissolveB: 7.0,   // brown -> gayab
-    buildBase: 7.0, buildStep: 0.19,  // wire bottom-up (har slab 0.16s)
-    glassA: 16.0, whiteFull: 20.5,    // glass fill
-    warmA: 22.3, brownFull: 25.0,     // white -> coffee brown
-  };
-
-  /* ---------- TOWER SHAPE ---------- */
-  const N = 46;            // slabs
-  const W = 5.0;           // slab width (wide)
-  const D = 3.8;           // slab depth (wide)
-  const H = 0.64;          // slab height
-  const GAP = 0.12;
-  const PITCH = H + GAP;
-  const CAM_Z = 27;
-  const FOV = 30;
-
-  /* ---------- ROTATION (gol ghoomna) ---------- */
-  const SPIN_SPEED = 0.42;   // rad/sec: poora tower gol ghoomta hai (0 = band)
-  const TWIST_AMP = 0.6;     // wave ki chaurai: slabs zyada swivel karte hain
-  const TWIST_SPEED = 1.0;   // wave ki raftaar
-  const TWIST_PHASE = 0.2;   // har slab ke beech phase farq
-  const TIMELINE_SPEED = 1.1;  // poora build/dissolve loop is guna tez (1 = pehle jaisa)
-
-  /* ---------- BEAM / GLOW (bohat minimal) ---------- */
-  const BEAM_LEVEL = 0.4;      // beam ki roshni (1 = pehle jaisa tez)
-  const BLOOM_STRENGTH = 0.2;  // glow/lightening (0.65 = pehle jaisa)
-  const SUN_LEVEL = 40;        // slabs par garam roshni ke patches (110 = pehle jaisa)
-
-  /* ---------- BACKGROUND GRADIENT (brown + grey, halka sa) ---------- */
-  const BG_BASE = "#050506";
-
-  const clamp01 = (x: number) => Math.min(1, Math.max(0, x));
-  const smooth = (x: number) => x * x * (3 - 2 * x);
-  const easeOut = (x: number) => 1 - (1 - x) * (1 - x);
-  const ph = (c: number, a: number, b: number) => clamp01((c - a) / (b - a));
-
-  interface TowerController {
-    dispose: () => void;
-    seek: (cycleSeconds: number) => void;
-  }
-
-  function initHeroTower(
-    canvas: HTMLCanvasElement,
-    opts: { freeze?: boolean } = {}
-  ): TowerController {
-    const host = (canvas.parentElement || document.body) as HTMLElement;
-
-    const renderer = new THREE.WebGLRenderer({
-      canvas,
-      antialias: true,
-      alpha: false,
-      powerPreference: "high-performance",
-    });
-    renderer.setClearColor(0x000000, 1);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(FOV, 1.6, 0.1, 200);
-    camera.position.set(0, 0, CAM_Z);
-    camera.lookAt(0, 0, 0);
-
-    /* ---------- LIGHTS ---------- */
-    const ambient = new THREE.AmbientLight(0xffffff, 0.28);
-    scene.add(ambient);
-
-    const key = new THREE.DirectionalLight(0xffffff, 1.05);
-    key.position.set(5, 6, 9);
-    scene.add(key);
-
-    const rim = new THREE.DirectionalLight(0x8f6444, 0.5);   // left brown rim
-    rim.position.set(-8, 1, 3);
-    scene.add(rim);
-
-    const sun = new THREE.PointLight(0xfff0e0, 0, 40, 1.4);   // hot patches
-    scene.add(sun);
-
-    const warm = new THREE.PointLight(COL.sand, 0, 40, 1.3);  // neeche ki warm light
-    warm.position.set(1.5, -6.5, 9);
-    scene.add(warm);
-
-    /* ---------- TOWER ---------- */
-    const tower = new THREE.Group();
-    scene.add(tower);
-
-    // dark core column
-    const coreH = N * PITCH + 8;
-    const core = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.46, 0.46, coreH, 48, 1),
-      new THREE.MeshStandardMaterial({ color: 0x15161a, metalness: 0.6, roughness: 0.4 })
-    );
-    tower.add(core);
-
-    // glowing streak on the column
-    const BEAM_SEG = 220;
-    const beamGeo = new THREE.CylinderGeometry(0.045, 0.045, coreH, 6, BEAM_SEG, true);
-    const beamCount = beamGeo.attributes.position.count;
-    beamGeo.setAttribute("color", new THREE.BufferAttribute(new Float32Array(beamCount * 3), 3));
-    const beam = new THREE.Mesh(
-      beamGeo,
-      new THREE.MeshBasicMaterial({
-        vertexColors: true,
-        transparent: true,
-        blending: THREE.AdditiveBlending,
-        depthWrite: false,
-      })
-    );
-    beam.position.set(0.19, 0, 0.43);
-    tower.add(beam);
-
-    // slabs
-    const boxGeo = new THREE.BoxGeometry(1, 1, 1);
-    const edgeGeo = new THREE.EdgesGeometry(boxGeo);
-    type Slab = {
-      g: THREE.Group;
-      fill: THREE.Mesh;
-      fillMat: THREE.MeshStandardMaterial;
-      edgeMat: THREE.LineBasicMaterial;
-      baseRot: number;
-    };
-    const slabs: Slab[] = [];
-
-    for (let i = 0; i < N; i++) {
-      const u = i / (N - 1);
-      const prof = 1 - 0.16 * Math.exp(-Math.pow((u - 0.5) / 0.16, 2)); // hourglass
-      const w = W * prof * (1 + 0.03 * Math.sin(i * 1.7));
-      const d = D * prof;
-      const baseRot = 0.9 * Math.pow(1 - u, 2) + 0.05 * Math.sin(i * 2.3);
-
-      const g = new THREE.Group();
-      g.position.y = (i - (N - 1) / 2) * PITCH;
-      g.scale.set(w, H, d);
-
-      const fillMat = new THREE.MeshStandardMaterial({
-        color: COL.glass,
-        roughness: 0.38,
-        metalness: 0.12,
-        transparent: true,
-        opacity: 0,
-        depthWrite: false,
-      });
-      const fill = new THREE.Mesh(boxGeo, fillMat);
-      fill.visible = false;
-      g.add(fill);
-
-      const edgeMat = new THREE.LineBasicMaterial({
-        color: COL.wire,
-        transparent: true,
-        opacity: 0,
-        depthWrite: false,
-      });
-      const edges = new THREE.LineSegments(edgeGeo, edgeMat);
-      g.add(edges);
-
-      tower.add(g);
-      slabs.push({ g, fill, fillMat, edgeMat, baseRot });
-    }
-
-    /* ---------- POST (bloom = beam ka halka glow) ---------- */
-    const msaaTarget = new THREE.WebGLRenderTarget(512, 512, {
-      type: THREE.HalfFloatType,
-      samples: 4, // MSAA: rotate hote waqt lines/edges smooth rehti hain
-    });
-    const composer = new EffectComposer(renderer, msaaTarget);
-    composer.addPass(new RenderPass(scene, camera));
-    const bloom = new UnrealBloomPass(new THREE.Vector2(512, 512), BLOOM_STRENGTH, 0.9, 0.85);
-    composer.addPass(bloom);
-    composer.addPass(new OutputPass());
-
-    /* ---------- BACKGROUND GRADIENT (brown + grey) ---------- */
-    let bgTex: THREE.CanvasTexture | null = null;
-    function paintBackground(w: number, h: number, towerFrac: number) {
-      const cw = Math.max(2, Math.round(w / 2));
-      const ch = Math.max(2, Math.round(h / 2));
-      const cv = document.createElement("canvas");
-      cv.width = cw;
-      cv.height = ch;
-      const g = cv.getContext("2d");
-      if (!g) return;
-
-      g.fillStyle = BG_BASE;
-      g.fillRect(0, 0, cw, ch);
-
-      // left side saaf (koi gradient nahi); sirf neeche-right mein halka brown
-      const lin = g.createLinearGradient(0, 0, cw, ch);
-      lin.addColorStop(0, "rgba(0,0,0,0)");
-      lin.addColorStop(0.5, "rgba(0,0,0,0)");
-      lin.addColorStop(1, "rgba(91,59,39,0.30)");
-      g.fillStyle = lin;
-      g.fillRect(0, 0, cw, ch);
-
-      // tower ke peeche halka brown glow
-      const cx = cw * towerFrac;
-      const cy = ch * 0.5;
-      const rad = Math.max(cw, ch) * 0.55;
-      const rg = g.createRadialGradient(cx, cy, 0, cx, cy, rad);
-      rg.addColorStop(0, "rgba(143,100,68,0.28)");
-      rg.addColorStop(0.5, "rgba(91,59,39,0.10)");
-      rg.addColorStop(1, "rgba(0,0,0,0)");
-      g.fillStyle = rg;
-      g.fillRect(0, 0, cw, ch);
-
-      const tex = new THREE.CanvasTexture(cv);
-      tex.colorSpace = THREE.SRGBColorSpace;
-      scene.background = tex;
-      bgTex?.dispose();
-      bgTex = tex;
-    }
-
-    /* ---------- RESIZE ---------- */
-    let aspect = 1.6;
-    function resize() {
-      const w = Math.max(1, host.clientWidth);
-      const h = Math.max(1, host.clientHeight);
-      aspect = w / h;
-      renderer.setSize(w, h, false);
-      composer.setSize(w, h);
-      camera.aspect = aspect;
-      camera.updateProjectionMatrix();
-
-      const visH = 2 * CAM_Z * Math.tan((FOV * Math.PI) / 360);
-      const visW = visH * aspect;
-      const wide = aspect >= 1.15;
-      tower.position.x = wide ? (0.72 - 0.5) * visW : 0.12 * visW;
-      const s = wide ? 1 : Math.min(1, aspect * 0.95);
-      tower.scale.setScalar(s);
-      paintBackground(w, h, 0.5 + tower.position.x / visW);
-    }
-    resize();
-    const ro = new ResizeObserver(resize);
-    ro.observe(host);
-
-    /* ---------- BEAM COLOURS ---------- */
-    const tmpA = new THREE.Color();
-    const tmpB = new THREE.Color();
-    function paintBeam(time: number, strength: number) {
-      const col = beamGeo.attributes.color as THREE.BufferAttribute;
-      const pos = beamGeo.attributes.position as THREE.BufferAttribute;
-      const peaks = [
-        { y: 4.2 + 1.2 * Math.sin(time * 0.31), w: 1.3, a: 0.95, warm: 1 },
-        { y: -1.6 + 1.4 * Math.sin(time * 0.23 + 1.4), w: 1.7, a: 1.0, warm: 0 },
-        { y: -6.0 + 1.0 * Math.sin(time * 0.37 + 2.2), w: 1.2, a: 0.55, warm: 0.5 },
-      ];
-      for (let k = 0; k < beamCount; k++) {
-        const y = pos.getY(k);
-        let v = 0.1;
-        let warmMix = 0;
-        let tot = 0;
-        for (const p of peaks) {
-          const g = p.a * Math.exp(-Math.pow((y - p.y) / p.w, 2));
-          v += g;
-          warmMix += g * p.warm;
-          tot += g;
-        }
-        const wm = tot > 0 ? warmMix / tot : 0.5;
-        tmpA.setHex(COL.beamWhite);
-        tmpB.setHex(COL.beamWarm);
-        tmpA.lerp(tmpB, wm);
-        v = Math.min(1.25, v) * strength * BEAM_LEVEL;
-        col.setXYZ(k, tmpA.r * v, tmpA.g * v, tmpA.b * v);
-      }
-      col.needsUpdate = true;
-    }
-
-    /* ---------- APPLY ONE FRAME (c = cycle seconds) ---------- */
-    const cWhite = new THREE.Color(COL.white);
-    const cGlass = new THREE.Color(COL.glass);
-    const cBrown = new THREE.Color(COL.brown);
-    const cTmp = new THREE.Color();
-    const eWire = new THREE.Color(COL.wire);
-    const eGlass = new THREE.Color(COL.wireGlass);
-    const eBrown = new THREE.Color(COL.edgeBrown);
-
-    function apply(c: number, time: number) {
-      // sab slabs ka "brown hold" tab tak jab tak dissolve na ho
-      const dissolve = c < T.dissolveA ? 1 : 1 - smooth(ph(c, T.dissolveA, T.dissolveB));
-      const inBrownHold = c < T.dissolveB;           // pichle cycle ka brown
-      const toBrown = 1; // hamesha brown (white/grey stage band)
-
-      for (let i = 0; i < N; i++) {
-        const s = slabs[i];
-        const r = i / (N - 1);
-
-        /* --- gol ghoomna: base twist + travelling wave + continuous spin --- */
-        s.g.rotation.y =
-          s.baseRot +
-          TWIST_AMP * Math.sin(time * TWIST_SPEED - i * TWIST_PHASE) +
-          time * SPIN_SPEED;
-
-        /* --- wire presence --- */
-        let presence: number;
-        if (inBrownHold) presence = dissolve;
-        else presence = smooth(ph(c, T.buildBase + i * T.buildStep, T.buildBase + i * T.buildStep + 0.7));
-
-        /* --- fill amount --- */
-        let fillAmt = 0;
-        if (inBrownHold) fillAmt = 1;
-        else if (c >= T.glassA) {
-          const delay = (1 - r) * 0.8;               // upar wale pehle
-          fillAmt = easeOut(ph(c - delay, T.glassA, T.whiteFull));
-        }
-
-        /* --- fill look --- */
-        const brownMix = inBrownHold ? 1 : toBrown;
-        const whiteness = inBrownHold ? 0 : fillAmt;
-        cTmp.copy(cGlass).lerp(cWhite, whiteness);
-        cTmp.lerp(cBrown, brownMix);
-        s.fillMat.color.copy(cTmp);
-        s.fillMat.emissive.copy(cTmp);
-        s.fillMat.emissiveIntensity = 0.26 * fillAmt * (1 - brownMix);
-        const fillOpacity = (0.9 * Math.pow(fillAmt, 0.85)) * (inBrownHold ? dissolve : 1);
-        s.fillMat.opacity = fillOpacity;
-        s.fill.visible = fillOpacity > 0.003;
-
-        /* --- edges --- */
-        cTmp.copy(eWire).lerp(eGlass, fillAmt * (1 - brownMix));
-        cTmp.lerp(eBrown, brownMix);
-        s.edgeMat.color.copy(cTmp);
-        const edgeBase = 0.64 - 0.14 * fillAmt * (1 - brownMix) - 0.1 * brownMix;
-        s.edgeMat.opacity = edgeBase * presence;
-      }
-
-      /* --- lights --- */
-      const bm = 1;
-      key.intensity = 1.05 - 0.5 * bm;
-      ambient.intensity = 0.28 - 0.1 * bm;
-      // sun: brown stage ke hot patches (22.3 se shuru, 3.5s tak decay)
-      const tt = c >= T.warmA ? c - T.warmA : c + (LOOP - T.warmA);
-      let sunI = 0;
-      if (c >= T.warmA) sunI = smooth(ph(c, T.warmA, T.brownFull));
-      else if (c < T.dissolveB) sunI = 1 - 0.85 * smooth(ph(c, 0, 3.5));
-      sunI *= c < T.dissolveB ? dissolve : 1;
-      sun.intensity = sunI * SUN_LEVEL;
-      sun.position.set(1.6, 4.2 - tt * 0.72, 7);
-
-      // warm sand light (neeche se)
-      const warmI =
-        smooth(ph(c, 19, 21)) * (1 - smooth(ph(c, 24, 25.6))) * (c >= 19 ? 1 : 0);
-      warm.intensity = warmI * 25;
-
-      // beam: tower ban jaye (glass/white/brown) to bilkul gayab; dissolve ke baad dobara aaye
-      const beamS = c >= 17 ? 1 - smooth(ph(c, 17, 21)) : smooth(ph(c, 6.6, 7.8));
-      beam.visible = beamS > 0.002;
-      if (beam.visible) paintBeam(time, beamS);
-
-      // bloom: white phase mein threshold ooncha
-      bloom.threshold = 0.8 + 0.12 * smooth(ph(c, 17, 20.5)) * (1 - smooth(ph(c, 23, 25)));
-      bloom.strength = BLOOM_STRENGTH;
-
-      tower.rotation.y = Math.sin(time * 0.12) * 0.05;
-    }
-
-    /* ---------- LOOP ---------- */
-    let raf = 0;
-    let running = false;
-    let visible = true;
-    let time = 0;          // chalta hua clock (pause/resume par jump nahi karta)
-    let last = 0;
-    let seekOverride: number | null = null;
-
-    function frame(now: number) {
-      raf = requestAnimationFrame(frame);
-      // frame drop par bhi jhatka nahi: dt ko clamp karke time barhao
-      const dt = Math.min(0.05, Math.max(0, (now - last) / 1000));
-      last = now;
-      time += dt;
-      const c = seekOverride !== null ? seekOverride : (START_AT + time * TIMELINE_SPEED) % LOOP;
-      apply(c, time);
-      composer.render();
-    }
-    function start() {
-      if (running || opts.freeze) return;
-      running = true;
-      last = performance.now();
-      raf = requestAnimationFrame(frame);
-    }
-    function stop() {
-      running = false;
-      cancelAnimationFrame(raf);
-    }
-
-    const io = new IntersectionObserver(
-      ([e]) => {
-        visible = e.isIntersecting;
-        if (visible && !document.hidden) start();
-        else stop();
-      },
-      { threshold: 0.01 }
-    );
-    io.observe(host);
-    const onVis = () => (document.hidden ? stop() : visible && start());
-    document.addEventListener("visibilitychange", onVis);
-
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || opts.freeze) {
-      stop();
-      apply(2.0, 0);   // reduced motion: sirf final brown tower
-      composer.render();
-    }
-
-    return {
-      dispose() {
-        stop();
-        io.disconnect();
-        ro.disconnect();
-        document.removeEventListener("visibilitychange", onVis);
-        bgTex?.dispose();
-        composer.dispose();
-        msaaTarget.dispose();
-        renderer.dispose();
-      },
-      seek(c: number) {
-        seekOverride = c;
-        apply(c, c);
-        composer.render();
-      },
-    };
-  }
-
-  /* ---------- START TOWER ---------- */
-  const towerCanvas = document.getElementById("hero3d") as HTMLCanvasElement | null;
-  if (towerCanvas) initHeroTower(towerCanvas);
-
-
-  /* =====================================================
-     VIDEO TO TEXT HANDLER
-     ===================================================== */
-  const hero = document.getElementById("axysHero") as HTMLElement | null;
-  const video = document.getElementById("heroVideo") as HTMLVideoElement | null;
-
-  // Video End Logic
-  if (hero && video) {
-    const HOLD_MS = 6000;
-
-    // NEW (UX): text video khatam hone ka intezar karta hai. Agar chahte ho ke
-    // text zyada se zyada itni der baad aa jaye to ise ms mein likho (jaise 4000).
-    // 0 = pehle jaisa (video end par).
-    const MAX_WAIT_MS = 0;
-    let holdTimer: number | undefined;
-
-    const restartVideo = () => {
-      hero.classList.remove("text-in");
-      video.currentTime = 0;
-      video.play().catch(() => {});
-    };
-
-    const showText = (loopAgain = true) => {
-      if (hero.classList.contains("text-in")) return;
-      hero.classList.add("text-in");
-      window.clearTimeout(holdTimer);
-      if (loopAgain) holdTimer = window.setTimeout(restartVideo, HOLD_MS);
-    };
-
-    if (MAX_WAIT_MS > 0) window.setTimeout(() => showText(true), MAX_WAIT_MS);
-
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (reduceMotion) {
-      video.pause();
-      showText(false);
-    } else {
-      video.addEventListener("ended", () => showText(true));
-
-      video.querySelector("source")?.addEventListener("error", () => showText(false));
-      video.addEventListener("error", () => showText(false));
-      window.setTimeout(() => {
-        if (video.paused && video.currentTime === 0) showText(false);
-      }, 3000);
-    }
-  }
-</script>

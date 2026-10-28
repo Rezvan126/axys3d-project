@@ -1,45 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap');
 /* =========================================================
-   AXYS3D — THE FULL PIPELINE (SERVICES) — Black + Grey + Coffee Brown (60/30/10)
+   AXYS3D — THE FULL PIPELINE (SERVICES) 
+   Exact Alignment Match with Mission Section (Green Lines Match)
 ========================================================= */
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 .pl-section {
   --pl-bg: #000000;
-  --pl-card-bg: #000000;
-  --pl-border: rgba(255, 255, 255, 0.08);
-  --pl-border-hover: rgba(143, 100, 68, 0.6);
-  --pl-brown: #5b3b27;
-  --pl-brown-hi: #8f6444;
+  --pl-card-bg: #0f0f0f;
+  --pl-border: rgba(255, 255, 255, 0.09);
+  --pl-border-hover: rgba(169, 37, 231, 0.55);
+  --pl-brown: #7e20aa;
+  --pl-brown-hi: #9318d7;
   --pl-font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --pl-gap: 16px;
+  --pl-gap: 14px;         /* Mission grid jaisa 14px gap */
   --pl-per-view: 3;
 
   position: relative;
   width: 100%;
   background: var(--pl-bg);
-  padding: 80px 5% 100px;
+  /* Mission section wali exact 6% side padding */
+  padding: 60px 5% 50px;
   box-sizing: border-box;
   font-family: var(--pl-font);
   color: #ffffff;
   overflow: hidden;
 }
 
-.pl-container { position: relative; z-index: 2; max-width: 1240px; margin: 0 auto; }
+/* Mission.inner ke 100% mutabiq 1240px width aur center alignment */
+.pl-container { 
+  position: relative; 
+  z-index: 2; 
+  width: 100%;
+  max-width: 1100px;      /* Mission jaisa exact 1100px */
+  margin: 0 auto; 
+  box-sizing: border-box;
+}
 
 /* ---------- Top row: header + arrows ---------- */
 .pl-top {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: 24px;
-  margin: 0 0 4px;
+  gap: 50px;
+  margin-bottom: 28px;
 }
 
 /* ---------- Header ---------- */
-.pl-header { text-align: left; margin: 0 !important; padding: 0 !important; }
+.pl-header { 
+  text-align: left; 
+  margin: 0 !important; 
+  padding: 0 !important; 
+}
 
-/* Chhoti heading ("SERVICES"): mono, grey, bina pill/background ke. */
+/* Chhoti tag ("SERVICES") */
 .pl-header .pl-tag,
 .pl-header [class*="tag"],
 .pl-header [class*="badge"],
@@ -49,36 +64,37 @@
 .pl-header .pl-tag * {
   display: block !important;
   width: auto !important;
-  margin: 0 0 18px !important;
+  margin: 0 0 8px !important;
   padding: 0 !important;
   border: 0 !important;
   border-radius: 0 !important;
   background: none !important;
   box-shadow: none !important;
-  backdrop-filter: none !important;
   font-family: 'JetBrains Mono', ui-monospace, monospace !important;
-  font-size: clamp(0.5rem, 0.6vw, 0.68rem) !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.3em !important;
+  font-size: 10.5px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.16em !important;
   text-transform: uppercase !important;
-  color: #959595 !important;
+  color: #b89ec4 !important;
 }
 .pl-header .pl-tag * { margin: 0 !important; display: inline !important; }
 
-/* Title: white -> grey */
+/* Title: Exact Mission Title font, weight & spacing */
 .pl-title {
-  font-family:  'Manrope', sans-serif;
-  font-size: clamp(2.3rem, 6vw, 4rem);
-  line-height: 0.95;
-  letter-spacing: -0.065em !important;
-  font-weight: 900 !important;
-  margin: 10px 0 0 !important;
+  font-family: 'Inter Tight', sans-serif !important;
+  font-size: clamp(2rem, 4.8vw, 3.25rem) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.015em !important;
+  font-weight: 800 !important;
+  margin: 0 !important;
   padding: 0 !important;
+  color: #ffffff;
 }
 
-/* Highlight: coffee brown gradient */
+/* Highlight: Coffee brown gradient */
 .pl-highlight {
-  background: linear-gradient(90deg, #b8946f 0%, #8f6444 55%, #6b452c 100%);
+  font-style: normal;
+  background: linear-gradient(90deg, #b95ce4 0%, #9318d7 55%, #6e1c94 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -86,50 +102,49 @@
 }
 
 /* ---------- Arrows ---------- */
-.pl-nav { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin: 0; padding: 0; }
+.pl-nav { 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+  flex-shrink: 0; 
+  margin: 0; 
+  padding: 0; 
+}
 
 .pl-arrow {
-  width: 46px;
-  height: 46px;
+  width: 42px;
+  height: 42px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: linear-gradient(160deg, #3a2518 0%, #34312f 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #19191a;
   color: #ffffff;
   cursor: pointer;
   padding: 0;
-  transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  transition: all 0.25s ease;
+}
+
+.pl-arrow svg {
+  width: 18px;
+  height: 18px;
 }
 
 .pl-arrow:hover:not(:disabled),
 .pl-arrow:focus-visible {
   border-color: var(--pl-border-hover);
-  background: rgba(91, 59, 39, 0.35);
+  background: rgba(97, 25, 131, 0.35);
+  color: #d091ed;
   outline: none;
 }
 
-.pl-arrow,
-.pl-arrow:focus,
-.pl-arrow:focus-visible,
-.pl-arrow:active {
-  outline: none !important;
-  box-shadow: none;
-  -webkit-tap-highlight-color: transparent;
+.pl-arrow:disabled { 
+  opacity: 0.3; 
+  cursor: default; 
 }
-.pl-arrow::-moz-focus-inner { border: 0; }
-.pl-arrow::before,
-.pl-arrow::after { content: none !important; display: none !important; }
-.pl-arrow { appearance: none; -webkit-appearance: none; background-image: none; border-style: solid; text-decoration: none; }
-.pl-nav::before,
-.pl-nav::after { content: none !important; display: none !important; }
 
-.pl-arrow:active:not(:disabled) { transform: scale(0.94); }
-
-.pl-arrow:disabled { opacity: 0.3; cursor: default; }
-
-/* ---------- Carousel track (ek time par 3 cards) ---------- */
+/* ---------- Carousel Track ---------- */
 .pl-track {
   display: flex;
   gap: var(--pl-gap);
@@ -139,21 +154,22 @@
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  /* hover lift aur shadow clip na hon */
-  padding: 12px 0 28px;
-  margin: 20px 0 -28px;
+  padding: 8px 0 20px;
+  margin: 0;
+  width: 100%;
 }
 .pl-track::-webkit-scrollbar { display: none; }
 
-/* ---------- Card ---------- */
+/* ---------- Cards: Mission Jaisi Rounding aur Edges ---------- */
 .pl-card {
+  /* 3 cards + 2 gaps mil kar container ki 100% width poori karenge */
   flex: 0 0 calc((100% - (var(--pl-per-view) - 1) * var(--pl-gap)) / var(--pl-per-view));
   scroll-snap-align: start;
-  min-height: 490px;
+  min-height: 420px;       /* Proper balanced height */
   position: relative;
-  background: linear-gradient(160deg, #3a2518 0%, #34312f 50%, #1c1411 100%);
+  background: #0f0f0f;
   border: 1px solid var(--pl-border);
-  border-radius: 8px;
+  border-radius: 18px;     /* Mission cards jaisi 18px rounding */
   overflow: hidden;
   text-decoration: none;
   color: #ffffff;
@@ -161,99 +177,86 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 26px 28px;
+  padding: 24px 26px;
   box-sizing: border-box;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
-  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.45);
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
 }
 
 .pl-card:hover,
 .pl-card:focus-visible {
   border-color: var(--pl-border-hover);
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.9), 0 0 24px rgba(91, 59, 39, 0.12);
-  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(97, 25, 131, 0.22), 0 30px 60px rgba(0, 0, 0, 0.6);
+  transform: translateY(-4px);
   outline: none;
 }
 
 .pl-card-img {
-  position: absolute; inset: 0; width: 100%; height: 100%;
+  position: absolute; 
+  inset: 0; 
+  width: 100%; 
+  height: 100%;
   object-fit: cover;
-  opacity: 1;
-  transform: scale(1);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
   z-index: 1;
 }
 
-.pl-card:hover .pl-card-img,
-.pl-card:focus-visible .pl-card-img { opacity: 1; transform: scale(1.06); }
+.pl-card:hover .pl-card-img { 
+  transform: scale(1.05); 
+}
 
-/* Black overlay hata diya */
-.pl-card-overlay { display: none; }
+/* Dark gradient taake images par title clear parha jaye */
+.pl-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.85) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
 
-
-/* ---------- Typography inside Card ---------- */
-.pl-card-content { position: relative; z-index: 3; display: flex; flex-direction: column; }
+/* Card Content / Title */
+.pl-card-content { 
+  position: relative; 
+  z-index: 3; 
+  display: flex; 
+  flex-direction: column; 
+}
 
 .pl-card-title {
   margin: 0;
-  font-family: var(--pl-font);
-  font-size: clamp(20px, 1.8vw, 24px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.015em;
   color: #ffffff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 2px 16px rgba(0, 0, 0, 0.85);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
 .pl-card-desc { display: none; }
 
-.pl-card:hover .pl-card-title,
-.pl-card:focus-visible .pl-card-title {
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 2px 14px rgba(0, 0, 0, 0.9);
-}
-
-/* ---------- Responsive ---------- */
-@media (max-width: 992px) {
-  .pl-section { --pl-per-view: 2; }
-}
-
-@media (max-width: 640px) {
-  .pl-section { --pl-per-view: 1; padding: 50px 4% 70px; }
-  .pl-top { align-items: center; margin-bottom: 4px; }
-  .pl-arrow { width: 40px; height: 40px; }
-  .pl-card { min-height: 460px; padding: 22px 20px; }
-}
-
-/* ---------- SIDE GLOWS (sirf left/right mid): left brown, right grey ---------- */
+/* ---------- Side Glows (Mission Glows ke Sath Matched) ---------- */
 .pl-section::before {
-  content: ""; position: absolute; top: 50%; left: -340px; width: 680px; height: 680px;
+  content: ""; position: absolute; top: 50%; left: -280px; width: 560px; height: 560px;
   transform: translateY(-50%); border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(110, 72, 48, 0.3) 0%, transparent 100%);
+  background: radial-gradient(closest-side, rgba(126, 32, 170, 0.28) 0%, transparent 100%);
   pointer-events: none; z-index: 1;
 }
 .pl-section::after {
-  content: ""; position: absolute; top: 50%; right: -340px; width: 680px; height: 680px;
+  content: ""; position: absolute; top: 50%; right: -280px; width: 560px; height: 560px;
   transform: translateY(-50%); border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(174, 167, 163, 0.13) 0%, transparent 100%);
+  background: radial-gradient(closest-side, rgba(176, 148, 189, 0.06) 0%, transparent 100%);
   pointer-events: none; z-index: 1;
 }
 
-
-/* =========================================================
-   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
-   Is file ka responsive fix. Isay file ke bilkul END me rakho.
-========================================================= */
-.pl-track { overscroll-behavior-x: contain; }
-
-@media (max-width: 992px) {
-  .pl-section { padding: 64px 5% 80px; }
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .pl-section { --pl-per-view: 2; padding: 50px 4% 40px; }
+  .pl-top { margin-bottom: 24px; gap: 14px; }
 }
 
 @media (max-width: 640px) {
-  .pl-top { gap: 14px; }
-  .pl-card { min-height: min(460px, 68svh); }
-}
-
-@media (hover: none) {
-  .pl-card:hover, .pl-card:focus-visible { transform: none; }
+  .pl-section { --pl-per-view: 1; padding: 44px 5% 44px; }
+  .pl-card { min-height: 340px; padding: 20px; border-radius: 18px; }
+  .pl-arrow { width: 36px; height: 36px; }
 }

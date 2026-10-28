@@ -1,300 +1,628 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=JetBrains+Mono:wght@400;500&display=swap');
+
 /* =========================================================
-   MISSION / STATS (BENTO) — Black + Grey + Coffee Brown (60/30/10)
+   MISSION / STATS — Bento Section
 ========================================================= */
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
 
 .mission {
+  --m-card: #14102a;
+  --m-border: rgba(237, 237, 236, 0.09);
+  --m-brown: #4A3D62;
+  --m-brown-hi: #927F95;
+  --m-brown-lt: #927F95;
+  --m-copy: #D2CBC6;
+  --m-muted: #927F95;
+  --m-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --m-pad: 20px;          /* Cards ki inner padding kam ki */
+  --m-radius: 18px;       /* Border radius thoda compact kiya */
+
   position: relative;
   width: 100%;
   background: #000000;
-  padding: 100px 6% 60px;
+  padding: 60px 5% 50px;  /* Section ki overall height aur padding kam ki */
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   overflow: hidden;
 }
 
 /* Left Brown Glow */
 .mission::before {
-  content: ""; position: absolute; top: 50%; left: -280px; width: 560px; height: 560px;
+  content: ""; position: absolute; top: 50%; left: -240px; width: 480px; height: 480px;
   transform: translateY(-50%); border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(117, 90, 74, 0.13) 0%, transparent 100%);
+  background: radial-gradient(closest-side, rgba(74, 61, 98, 0.48) 0%, transparent 100%);
   pointer-events: none; z-index: 1;
 }
+
 /* Right Soft Grey Glow */
 .mission::after {
-  content: ""; position: absolute; top: 50%; right: -280px; width: 560px; height: 560px;
+  content: ""; position: absolute; top: 50%; right: -240px; width: 480px; height: 480px;
   transform: translateY(-50%); border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(174, 167, 163, 0.045) 0%, transparent 100%);
+  background: radial-gradient(closest-side, rgba(210, 203, 198, 0.05) 0%, transparent 100%);
   pointer-events: none; z-index: 1;
 }
 
-.mission-inner { position: relative; z-index: 2; max-width: 1240px; margin: 0 auto; }
+/* Poora section darmian (center) me compact dikhane ke liye max-width 1100px */
+.mission-inner { 
+  position: relative; 
+  z-index: 2; 
+  max-width: 1100px; 
+  margin: 0 auto; 
+}
 
-/* ---------- GRID ---------- */
+
+/* =========================================================
+   HEADING & PARAGRAPH
+========================================================= */
+.mission-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;     /* Heading aur Paragraph dono vertical center (mid) me rahenge */
+  gap: 50px;
+  margin-bottom: 28px;
+}
+
+.mission-title {
+  margin: 0;
+  color: #EDEDEC;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: clamp(1.6rem, 3.6vw, 2.5rem);   /* heading thora chhota */
+  line-height: 1.1;
+  letter-spacing: -0.015em !important;
+  font-weight: 800 !important;
+}
+
+.mission-title .line { 
+  display: block; 
+  white-space: nowrap; 
+}
+
+/* Highlight: purple gradient */
+.mission-title em {
+  font-style: normal;
+  background: linear-gradient(90deg, #D2CBC6 0%, #927F95 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.mission-lead {
+  margin: 0;
+  max-width: 28ch;
+  font-size: clamp(0.82rem, 1vw, 0.95rem); /* Paragraph size balance kiya */
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  color: #927F95;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
 .mission-grid {
   display: grid;
-  grid-template-columns: 1fr 1.05fr 1.1fr;
-  gap: 20px;
+  grid-template-columns: 1fr 1fr 1.15fr;
+  gap: 14px;              /* Cards ke darmiyan gap kam kiya */
   align-items: stretch;
 }
 
-.mission-col { display: flex; flex-direction: column; gap: 20px; }
+.mission-col { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 14px; 
+}
 
-/* ---------- SHARED CARD ----------
-   Flat dark card (no grey wash) so it matches the black + brown theme */
-.mission-card {
+
+/* =========================================================
+   SHARED CARD
+========================================================= */
+[data-reveal] {
   opacity: 0;
-  transform: translateY(28px);
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #121212;
-  padding: 30px;
-  box-sizing: border-box;
-  cursor: default;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.45);
+  transform: translateY(20px);
   transition:
     opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.35s ease,
     border-color 0.3s ease;
 }
+[data-reveal].is-in { opacity: 1; transform: translateY(0); }
 
-.mission-card.is-in { opacity: 1; transform: translateY(0); }
+.mission-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: var(--m-pad);
+  border-radius: var(--m-radius);
+  border: 1px solid var(--m-border);
+  background: var(--m-card);
+  cursor: default;
+  box-shadow: 0 4px 12px rgba(11, 8, 27, 0.4), 0 16px 32px rgba(11, 8, 27, 0.45);
+}
 
 .mission-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(143, 100, 68, 0.55);
-  box-shadow: 0 12px 24px rgba(91, 59, 39, 0.2), 0 30px 60px rgba(0, 0, 0, 0.6);
+  transform: translateY(-4px);
+  border-color: rgba(146, 127, 149, 0.55);
+  box-shadow: 0 10px 20px rgba(74, 61, 98, 0.2), 0 24px 48px rgba(11, 8, 27, 0.55);
 }
 
-.mission-card-tag {
+.mission-card-copy { 
+  margin: 0; 
+  color: var(--m-copy); 
+  font-size: 13.5px; 
+  line-height: 1.5; 
+}
+
+.mission-card-label {
+  margin: 0;
+  color: var(--m-muted);
   font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #c9a67f;
-  display: inline-block;
-  margin-bottom: 12px;
+  line-height: 1.45;
 }
 
-.mission-card-tag--light { color: #cfc9c5; }
-.mission-card-tag--gold  { color: #c9a67f; }
-
-.mission-card-copy { margin: 0; color: #cfc9c5; font-size: 14.5px; line-height: 1.6; }
-.mission-card-copy--light { color: #e0dad6; }
-
-/* ---------- COLUMN 1 ---------- */
-.mission-card--avatars {
-  display: flex; flex-direction: column; justify-content: space-between; gap: 20px; flex: 1;
-}
-
-.mission-card-row { display: flex; align-items: center; gap: 14px; }
-.avatar-stack { display: flex; }
-
-.avatar-dot {
-  display: flex; align-items: center; justify-content: center;
-  width: 38px; height: 38px; border-radius: 50%;
-  margin-left: -10px;
-  border: 2px solid #121212;
-  background: #4a4644;
-  color: #ffffff;
-  font-size: 12px; font-weight: 700;
-}
-
-.avatar-dot:first-child { margin-left: 0; }
-
-.avatar-dot--more { background: linear-gradient(135deg, #8f6444, #5b3b27); color: #ffffff; }
-
-.mission-card-label { color: #d6d0cc; font-size: 14px; font-weight: 600; }
-.mission-stat-inline { color: #ffffff; font-weight: 800; }
-
-/* Stat card: warm dark brown, clearly different from the others but still on-theme */
-.mission-card--stat {
-  display: flex; flex-direction: column; justify-content: space-between; flex: 1.2;
-  background: #1d1510;
-  border-color: rgba(143, 100, 68, 0.3);
-}
-.mission-card--stat .mission-card-tag { color: #e3c9a8; }
-.mission-card--stat .mission-card-copy { color: #ece8e5; }
-.mission-card--stat .mission-card-note { color: #d6d0cc; }
-.mission-card--stat .mission-stat-value { background: linear-gradient(180deg, #ffffff 0%, #ddd7d3 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-.mission-card--stat .mission-stat-suffix { background: linear-gradient(90deg, #f0d2ae, #c79a6e); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-
-.mission-stat { display: flex; align-items: baseline; gap: 2px; margin: 8px 0; }
+/* Numbers (Bricolage) */
+.mission-stat { display: flex; align-items: baseline; gap: 3px; }
 
 .mission-stat-value {
+  color: #EDEDEC;
   font-family: "Bricolage Grotesque", sans-serif;
   font-weight: 800;
-  font-size: clamp(42px, 4vw, 56px);
-  line-height: 1.02;
-  letter-spacing: -0.01em;
-  background: linear-gradient(180deg, #ffffff 0%, #aea7a3 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: clamp(42px, 3.8vw, 56px); /* Number size chhota kiya */
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
 }
 
 .mission-stat-suffix {
+  color: var(--m-brown-lt);
   font-family: "Bricolage Grotesque", sans-serif;
-  background: linear-gradient(90deg, #b8946f, #6b452c);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 800;
-  font-size: clamp(20px, 2vw, 26px);
-}
-
-/* ---------- COLUMN 2 (ACCENT TALL CARD) ---------- */
-.mission-card--accent {
-  background: #181513;
-  border: 1px solid rgba(143, 100, 68, 0.4);
-  display: flex; flex-direction: column; justify-content: space-between;
-  min-height: 380px;
-}
-
-.mission-stat--hero .mission-stat-value { font-size: clamp(54px, 5vw, 72px); }
-.mission-stat--hero .mission-stat-suffix { font-size: clamp(30px, 3vw, 40px); }
-
-.mission-hero-title {
-  color: #ffffff;
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-size: 19px; font-weight: 800; letter-spacing: -0.01em;
-  margin: 4px 0 0;
-}
-
-.mission-booking-card {
-  display: flex; align-items: center; gap: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 12px 18px; border-radius: 14px; margin-top: 16px;
-}
-
-.mission-badge-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: #c9a67f;
-  box-shadow: 0 0 0 4px rgba(184, 148, 111, 0.2);
-}
-
-.mission-booking-label {
-  display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
-  color: #cfc9c5; font-weight: 600;
-}
-
-.mission-booking-val { display: block; color: #ffffff; font-size: 13.5px; font-weight: 700; }
-
-/* ---------- COLUMN 3 (DARK CARD) ---------- */
-.mission-card--dark {
-  grid-column: 3;
-  min-height: 380px;
-  display: flex; flex-direction: column; justify-content: space-between;
-  background: #0a0a0a;
-  border: 1px solid rgba(143, 100, 68, 0.3);
-}
-
-.mission-chart { width: 100%; height: 90px; margin: 14px 0; }
-
-.mission-chart-line,
-.mission-chart-arrowhead {
-  fill: none; stroke: #a9764f; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
-}
-
-.mission-chart-line {
-  stroke-dasharray: 260; stroke-dashoffset: 260;
-  transition: stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
-}
-
-.mission-chart-arrowhead { opacity: 0; transition: opacity 0.3s ease 1.5s; }
-
-.mission-card--dark.is-in .mission-chart-line { stroke-dashoffset: 0; }
-.mission-card--dark.is-in .mission-chart-arrowhead { opacity: 1; }
-
-.mission-dark-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
-
-.mission-rating .mission-stat-value { font-size: clamp(34px, 3.4vw, 44px); }
-.mission-rating .mission-stat-suffix { background: none; -webkit-text-fill-color: #cfc9c5; color: #cfc9c5; }
-
-.mission-trust { text-align: right; }
-
-.mission-stars { display: block; color: #c9a67f; font-size: 13px; letter-spacing: 2px; margin-bottom: 4px; }
-
-.mission-trust-label {
-  display: block; color: #cfc9c5; font-size: 11px; font-weight: 600;
-  letter-spacing: 0.3px; text-transform: uppercase; max-width: 140px;
-}
-
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 900px) {
-  .mission-grid { grid-template-columns: 1fr; }
-  .mission-card--dark { grid-column: auto; }
-}
-
-@media (max-width: 600px) {
-  .mission { padding: 70px 6% 80px; }
-}
-
-/* ---------- EXPLAINER NOTES ---------- */
-.mission-card-note { margin: 8px 0 0; color: #bdb7b3; font-size: 13px; line-height: 1.55; }
-.mission-card-note--light { color: #cfc9c5; margin: 0 0 4px; }
-
-.mission-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 14px; }
-
-.mission-chips-label {
-  width: 100%; color: #cfc9c5; font-size: 11px; font-weight: 700;
-  letter-spacing: 1px; text-transform: uppercase;
-}
-
-.mission-chip {
-  padding: 5px 12px; border-radius: 999px;
-  background: rgba(91, 59, 39, 0.25);
-  border: 1px solid rgba(143, 100, 68, 0.5);
-  color: #d4b08a; font-size: 12px; font-weight: 600;
-}
-
-.mission-rating-label {
-  display: block; margin-bottom: 2px; color: #cfc9c5; font-size: 11px; font-weight: 600;
-  letter-spacing: 1px; text-transform: uppercase;
-}
-
-/* ---------- ACCESSIBILITY ---------- */
-/* If a visitor has reduced motion on (or JS is slow), cards must still show */
-@media (prefers-reduced-motion: reduce) {
-  .mission-card { opacity: 1; transform: none; transition: none; }
-  .mission-card:hover { transform: none; }
-  .mission-chart-line { stroke-dashoffset: 0; transition: none; }
-  .mission-chart-arrowhead { opacity: 1; transition: none; }
+  font-weight: 700;
+  font-size: clamp(18px, 1.8vw, 24px);
 }
 
 
 /* =========================================================
-   RESPONSIVE — FINAL LAYER (phone / tablet / iPad)
-   Is file ka responsive fix. Isay file ke bilkul END me rakho.
+   SMALL CARD: PARTNERS
 ========================================================= */
-/* tablet: 3 columns tang hote hain -> 2 columns, dark card poori line me */
-@media (max-width: 1100px) and (min-width: 701px) {
-  .mission { padding: 84px 5% 56px; }
+.mission-card--partners {
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 14px 18px;
+  background: #1f1a33;
+  border-color: rgba(237, 237, 236, 0.1);
+}
+
+.mission-card-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.avatar-stack { display: flex; }
+
+.avatar-dot {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; margin-left: -8px; border-radius: 50%;
+  border: 2px solid #1f1a33;
+  background: #4A3D62;
+  color: #EDEDEC; font-size: 11px; font-weight: 700;
+  box-shadow: 0 4px 10px rgba(11, 8, 27, 0.4);
+}
+.avatar-dot:first-child { margin-left: 0; }
+.avatar-dot--more { background: linear-gradient(135deg, var(--m-brown-hi), var(--m-brown)); }
+
+.mission-partners-label {
+  color: var(--m-muted);
+  font-family: var(--m-mono);
+  font-size: 9.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.mission-stat-inline { color: #EDEDEC; font-weight: 500; }
+
+.mission-card--partners .mission-card-label { font-size: 11px; }
+
+
+/* =========================================================
+   TALL CARDS: TURNAROUND & DELIVERIES
+========================================================= */
+.mission-card--tall {
+  flex: 1;
+  min-height: 270px; /* Tall cards ki unchai kam ki */
+}
+
+/* Grey */
+.mission-card--turnaround {
+  background: #14102a;
+  border-color: rgba(237, 237, 236, 0.09);
+}
+
+/* Brown */
+.mission-card--deliveries {
+  background: #4A3D62;
+  border-color: rgba(74, 61, 98, 0.3);
+}
+.mission-card--deliveries .mission-card-copy { color: #EDEDEC; }
+.mission-card--deliveries .mission-card-label { color: rgba(237, 237, 236, 0.78); }
+
+.mission-card-top .mission-card-copy { max-width: 32ch; }
+.mission-card-bottom { display: flex; flex-direction: column; gap: 6px; }
+.mission-card-bottom .mission-card-label { max-width: 32ch; }
+
+/* Chips */
+.mission-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 10px; }
+
+.mission-chip {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(11, 8, 27, 0.28);
+  border: 1px solid rgba(146, 127, 149, 0.55);
+  color: #D2CBC6;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   SMALL CARD: STATUS
+========================================================= */
+.mission-card--status {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: #1f1a33;
+  border-color: rgba(237, 237, 236, 0.1);
+}
+
+.mission-badge-dot {
+  flex: none; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--m-brown-lt);
+  box-shadow: 0 0 0 3px rgba(146, 127, 149, 0.2);
+}
+
+.mission-booking-label {
+  display: block; color: var(--m-muted); font-family: var(--m-mono);
+  font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase;
+}
+.mission-booking-val { display: block; color: #EDEDEC; font-size: 12.5px; font-weight: 700; margin-top: 2px; }
+
+
+/* =========================================================
+   RIGHT CARD: IMPACT
+========================================================= */
+.mission-card--impact {
+  min-height: 380px;      /* Card ki unchai choti ki */
+  padding: 24px;          /* Padding compact ki */
+  background: #14102a;
+  border-color: rgba(146, 127, 149, 0.3);
+}
+
+/* Right card ka text chhota kiya */
+.mission-card--impact .mission-card-copy {
+  position: relative; 
+  z-index: 1;
+  max-width: 28ch;
+  color: #EDEDEC;
+  font-size: 13.5px;      /* Pehle se kaafi chhota aur clean */
+  line-height: 1.5;
+}
+
+.mission-card--impact .mission-card-label { 
+  position: relative; 
+  z-index: 1; 
+  margin-top: 8px; 
+  font-size: 11.5px;
+}
+
+/* Arrow: Upar shift kiya aur chhota kiya taake bottom stats se na takraye */
+.mission-chart {
+  position: absolute;
+  right: 5%;
+  bottom: 115px;          /* Thoda upar kiya taaki rating stats ke tail par na aaye */
+  width: 72%;             /* Width 84% se 72% kar ke chhota kiya */
+  height: auto;
+  max-height: 48%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mission-chart-line,
+.mission-chart-arrowhead {
+  fill: none;
+  stroke: #4A3D62;
+  stroke-width: 11;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.8;
+}
+.mission-chart-line {
+  stroke-dasharray: 320; stroke-dashoffset: 320;
+  transition: stroke-dashoffset 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+.mission-chart-arrowhead { opacity: 0; transition: opacity 0.4s ease 1.6s; }
+
+.mission-card--impact.is-in .mission-chart-line { stroke-dashoffset: 0; }
+.mission-card--impact.is-in .mission-chart-arrowhead { opacity: 0.8; }
+
+/* Neeche ke stats */
+.mission-impact-bottom {
+  position: relative; 
+  z-index: 1;
+  display: flex; 
+  align-items: flex-end; 
+  justify-content: space-between; 
+  gap: 12px;
+}
+
+.mission-rating-label {
+  display: block; margin-bottom: 4px; color: var(--m-muted); font-size: 10.5px; font-weight: 500;
+}
+.mission-rating .mission-stat-value { font-size: clamp(42px, 3.8vw, 54px); }
+.mission-rating .mission-stat-suffix { color: var(--m-muted); }
+
+.mission-trust { text-align: left; }
+.mission-stars { display: block; margin-bottom: 4px; color: var(--m-brown-lt); font-size: 11px; letter-spacing: 2.5px; }
+.mission-trust-label {
+  display: block; max-width: 120px; color: var(--m-copy);
+  font-family: var(--m-mono); font-size: 8.5px; letter-spacing: .1em; line-height: 1.45; text-transform: uppercase;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media (max-width: 1100px) {
+  .mission-title .line { white-space: normal; }
+}
+
+@media (max-width: 1000px) {
+  .mission { padding: 50px 4% 40px; }
+
+  .mission-head { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .mission-title .line { white-space: normal; }
+  .mission-lead { max-width: 100%; }
+
   .mission-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .mission-card--dark { grid-column: 1 / -1; min-height: 0; }
-  .mission-card--accent { min-height: 0; }
+  .mission-card--impact { grid-column: 1 / -1; min-height: 320px; }
+  .mission-chart { bottom: 100px; width: 60%; }
 }
 
-/* phone: 1 column, cards ki zabardasti ki height khatam */
-@media (max-width: 700px) {
-  .mission-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
-  .mission-col { gap: 16px; }
-  .mission-card--dark { grid-column: auto; }
-  .mission-card--accent, .mission-card--dark { min-height: 0; gap: 18px; }
-  .mission-card { padding: 22px; border-radius: 20px; }
-  .mission-chart { height: 72px; }
-  .mission-dark-bottom { flex-wrap: wrap; }
-  .mission-trust-label { max-width: none; }
-}
-
-@media (max-width: 480px) {
-  .mission { padding: 56px 5% 64px; }
-  .mission-card-copy { font-size: 14px; }
-  .mission-booking-card { padding: 10px 14px; }
+@media (max-width: 640px) {
+  .mission { --m-pad: 16px; padding: 44px 5% 44px; }
+  .mission-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .mission-col { gap: 12px; }
+  .mission-card--tall { min-height: 240px; }
+  .mission-card--impact { min-height: 300px; padding: 18px; }
+  .mission-chart { width: 80%; right: 4%; }
+  .mission-card-row { flex-wrap: wrap; }
 }
 
 @media (hover: none) {
   .mission-card:hover { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .mission-card:hover { transform: none; }
+  .mission-chart-line { stroke-dashoffset: 0; transition: none; }
+  .mission-chart-arrowhead { opacity: 0.8; transition: none; }
+}
+
+
+/* =========================================================
+   GLASS — frosted glass look
+   (isay file ke bilkul END me rakho)
+========================================================= */
+/* Sab cards: glass border + andar ki highlight + blur */
+.mission-card {
+  border: 1px solid rgba(237, 237, 236, 0.16);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+  box-shadow:
+    inset 0 1px 0 rgba(237, 237, 236, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    0 16px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Card 2 aur 3 (turnaround + deliveries): COLOR WAHI RAHEGA, sirf glass border/highlight */
+.mission-card--turnaround,
+.mission-card--deliveries {
+  border-color: rgba(237, 237, 236, 0.16);
+}
+
+/* Baqi cards (partners, status, impact): transparent glass fill + halki sheen */
+.mission-card--partners,
+.mission-card--status,
+.mission-card--impact {
+  background: linear-gradient(135deg, rgba(237, 237, 236, 0.10) 0%, rgba(237, 237, 236, 0.03) 100%);
+}
+.mission-card--impact {
+  border-color: rgba(146, 127, 149, 0.30);
+}
+.mission-card--partners::before,
+.mission-card--status::before,
+.mission-card--impact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(237, 237, 236, 0.10) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+.mission-card:hover {
+  border-color: rgba(237, 237, 236, 0.30);
+  box-shadow:
+    inset 0 1px 0 rgba(237, 237, 236, 0.30),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+    0 10px 20px rgba(74, 61, 98, 0.25),
+    0 24px 48px rgba(0, 0, 0, 0.55);
+}
+
+/* =========================================================
+   3D + INTERACTION + CTA  (naya hissa — isay file ke END me rakho)
+========================================================= */
+
+/* ---------- Impact card: Three.js canvas ---------- */
+/* Canvas poore card par nahi, sirf right strip me: upar ke text aur neeche ke stats se takrata nahi */
+.mission-3d {
+  position: absolute;
+  top: 2%;
+  right: 0;
+  width: 42%;
+  height: 78%;
+  z-index: 0;
+  display: block;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+.mission-card--impact.has-3d .mission-3d { opacity: 1; }
+/* 3D chal jaye to purana flat arrow chup */
+.mission-card--impact.has-3d .mission-chart { opacity: 0; transition: opacity 0.4s ease; }
+
+/* Impact card ka text building tak na pahunche */
+.mission-card--impact .mission-card-copy,
+.mission-card--impact .mission-card-label {
+  max-width: calc(56% - 24px);
+}
+
+.mission-3d-tag {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  z-index: 1;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  color: var(--m-muted);
+  font-family: var(--m-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.mission-3d-tag i {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #927F95;
+  box-shadow: 0 0 0 3px rgba(146, 127, 149, 0.22);
+}
+.mission-card--impact.has-3d .mission-3d-tag { display: inline-flex; }
+
+/* ---------- Card tilt (halka) ---------- */
+.mission-card.is-in {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(0);
+}
+.mission-card.is-in:hover {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-4px);
+}
+
+/* ---------- Cursor ke saath chalti border glow ---------- */
+.mission-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), rgba(237, 237, 236, 0.75), transparent 60%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.mission-card:hover::after { opacity: 1; }
+
+/* ---------- Status card = CTA link ---------- */
+.mission-card--link {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+.mission-card--link:focus-visible { outline: 2px solid #927F95; outline-offset: 3px; }
+
+.mission-card--link .mission-badge-dot { animation: missionPulse 2s ease-in-out infinite; }
+@keyframes missionPulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(146, 127, 149, 0.20); }
+  50%      { box-shadow: 0 0 0 7px rgba(146, 127, 149, 0.00); }
+}
+
+.mission-status-go {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #D2CBC6;
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+.mission-status-go b {
+  display: grid;
+  place-items: center;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  font-weight: 600;
+  background: rgba(237, 237, 236, 0.10);
+  border: 1px solid rgba(237, 237, 236, 0.20);
+  box-shadow: inset 0 1px 0 rgba(237, 237, 236, 0.20);
+}
+.mission-card--link:hover .mission-status-go { color: #EDEDEC; transform: translateX(2px); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .mission-3d-tag { left: 18px; }
+}
+@media (max-width: 640px) {
+  .mission-status-go { font-size: 11px; }
+  .mission-3d-tag { left: 16px; }
+}
+@media (pointer: coarse) {
+  .mission-card--link { min-height: 48px; }
+}
+@media (hover: none) {
+  .mission-card.is-in:hover { transform: perspective(900px) translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mission-card--link .mission-badge-dot { animation: none; }
+  .mission-3d { transition: none; }
+  .mission-card.is-in,
+  .mission-card.is-in:hover { transform: none; }
+}
+
+
+/* =========================================================
+   SLOW FLOAT — cards apni jagah par bohat halka, dheere dheere hilte hain
+   (individual `translate` property use hui hai, is liye tilt/reveal ke
+    `transform` se takrati nahi)
+========================================================= */
+@keyframes missionFloat {
+  0%   { translate: 0 0; }
+  25%  { translate: 1px -3px; }
+  50%  { translate: 0 -5px; }
+  75%  { translate: -1px -2px; }
+  100% { translate: 0 0; }
+}
+
+.mission-card.is-in {
+  animation: missionFloat 10s ease-in-out infinite;
+}
+/* har card ka alag speed + shuruaat, taake sab ek saath na hilein */
+.mission-col:nth-child(1) .mission-card:nth-child(1) { animation-duration: 9s;  animation-delay: -1s; }
+.mission-col:nth-child(1) .mission-card:nth-child(2) { animation-duration: 12s; animation-delay: -5s; }
+.mission-col:nth-child(2) .mission-card:nth-child(1) { animation-duration: 11s; animation-delay: -3s; }
+.mission-col:nth-child(2) .mission-card:nth-child(2) { animation-duration: 8s;  animation-delay: -6s; }
+.mission-card--impact.is-in                           { animation-duration: 13s; animation-delay: -8s; }
+
+/* hover par ruk jayen taake tilt/glow saaf rahe */
+.mission-card.is-in:hover { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mission-card.is-in { animation: none; }
 }

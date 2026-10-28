@@ -1,29 +1,29 @@
 /* =========================================================
-   FOOTER — Black + Grey + Coffee Brown (60/30/10)
+   FOOTER — Black + Grey + Purple (60/30/10)
    ========================================================= */
 
 .site-footer {
   --bg-dark: #000000;
-  --brown: #1a1a1a;
-  --brown-hi: #8f6444;
-  --brown-lt: #c79a6e;
-  --text-white: #ffffff;
-  --text-muted: #b5b5b7;
-  --text-dim: #8f8f92;
-  --border-line: rgba(255, 255, 255, 0.1);
+  --brown: #0B081B;
+  --brown-hi: #927F95;
+  --brown-lt: #927F95;
+  --text-white: #EDEDEC;
+  --text-muted: #D2CBC6;
+  --text-dim: #927F95;
+  --border-line: rgba(237, 237, 236, 0.1);
 
   position: relative;
   overflow: hidden;
   isolation: isolate;
   width: 100%;
-  background: var(--brown);
+  background: black;
   color: var(--text-white);
   padding: 80px 0 30px;
   font-family: "Manrope", sans-serif;
   border-top: 1px solid var(--border-line);
 }
 
-/* Top brown gradient line */
+/* Top purple gradient line */
 .site-footer::before {
   content: "";
   position: absolute;
@@ -62,10 +62,23 @@
   color: var(--text-white);
   text-decoration: none;
   letter-spacing: -0.5px;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  line-height: 0;
+  background: transparent;
+}
+
+/* Logo image: koi background nahi (transparent), footer ka bg pure black hai */
+.footer-logo-img {
+  display: block;
+  height: 28px;
+  width: auto;
+  background: transparent;
 }
 
 .footer-logo span {
-  background: linear-gradient(90deg, #b8946f, #8f6444 60%, #6b452c);
+  background: linear-gradient(90deg, #D2CBC6, #927F95);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -160,7 +173,7 @@
 }
 
 /* =========================================================
-   CORNER GLOWS — Left Brown, Right Soft Grey
+   CORNER GLOWS — Left Purple, Right Soft Grey
    ========================================================= */
 
 .footer-glow {
@@ -176,7 +189,7 @@
   bottom: -160px;
   width: 620px;
   height: 620px;
-  background: radial-gradient(circle, rgba(110, 72, 48, 0.15) 0%, rgba(110, 72, 48, 0.05) 45%, transparent 72%);
+  background: radial-gradient(circle, rgba(146, 127, 149, 0.15) 0%, rgba(146, 127, 149, 0.05) 45%, transparent 72%);
   animation: footerGlowLeft 14s ease-in-out infinite alternate;
 }
 
@@ -185,7 +198,7 @@
   bottom: -160px;
   width: 620px;
   height: 620px;
-  background: radial-gradient(circle, rgba(174, 167, 163, 0.05) 0%, rgba(174, 167, 163, 0.02) 45%, transparent 72%);
+  background: radial-gradient(circle, rgba(210, 203, 198, 0.05) 0%, rgba(210, 203, 198, 0.02) 45%, transparent 72%);
   animation: footerGlowRight 14s ease-in-out infinite alternate;
 }
 
@@ -201,13 +214,13 @@
 
 .footer-glow--left::after {
   left: 28%;
-  background: radial-gradient(circle, rgba(110, 72, 48, 0.08), transparent 70%);
+  background: radial-gradient(circle, rgba(146, 127, 149, 0.08), transparent 70%);
   animation: footerGlowInner 9s ease-in-out infinite alternate;
 }
 
 .footer-glow--right::after {
   right: 28%;
-  background: radial-gradient(circle, rgba(149, 149, 149, 0.05), transparent 70%);
+  background: radial-gradient(circle, rgba(210, 203, 198, 0.05), transparent 70%);
   animation: footerGlowInner 9s ease-in-out infinite alternate-reverse;
 }
 
@@ -257,6 +270,7 @@
 
 @media (max-width: 480px) {
   .footer-logo { font-size: 26px; }
+  .footer-logo-img { height: 24px; }
 }
 
 @media (pointer: coarse) {

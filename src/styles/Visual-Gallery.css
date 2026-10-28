@@ -1,72 +1,68 @@
-/* 3D WALK-THE-GALLERY — Black + Grey + Coffee Brown (60/30/10) */
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap');
+/* 3D WALK-THE-GALLERY — Black + Grey + Purple (60/30/10) */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
 
 .vg {
   --bg: #000000;
-  --cream: #ffffff;
-  --muted: #b5b0ad;
-  --edge: rgba(255, 255, 255, 0.09);
-  --brown: #5b3b27;
-  --brown-hi: #8f6444;
-  --brown-lt: #b8946f;
+  --cream: #EDEDEC;
+  --muted: #927F95;
+  --edge: rgba(237, 237, 236, 0.09);
+  --brown: #4A3D62;
+  --brown-hi: #927F95;
+  --brown-lt: #927F95;
   position: relative;
   overflow: hidden;
   background: var(--bg);
   color: var(--cream);
   font-family: 'Manrope', system-ui, sans-serif;
-  padding: clamp(4rem, 12vh, 9rem) 0;
+  padding: 60px 5% 50px;
+  box-sizing: border-box;
 }
 
 /* Left Brown Glow */
 .vg::before {
   content: ""; position: absolute; top: 50%; left: -280px; width: 560px; height: 560px;
   transform: translateY(-50%); border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(110, 72, 48, 0.13) 0%, transparent 100%);
+  background: radial-gradient(closest-side, rgba(74, 61, 98, 0.26) 0%, transparent 100%);
   pointer-events: none; z-index: 1;
 }
 /* Right Soft Grey Glow */
 .vg::after {
   content: ""; position: absolute; top: 50%; right: -280px; width: 560px; height: 560px;
   transform: translateY(-50%); border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(174, 167, 163, 0.045) 0%, transparent 100%);
+  background: radial-gradient(closest-side, rgba(146, 127, 149, 0.045) 0%, transparent 100%);
   pointer-events: none; z-index: 1;
 }
 
-.vg-wrap { position: relative; z-index: 2; width: min(1500px, 88vw); margin: 0 auto; }
+.vg-wrap { position: relative; z-index: 2; width: 100%; max-width: 1100px; margin: 0 auto; }
 
 .vg-head {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  gap: 40px; margin-bottom: clamp(24px, 4vh, 40px);
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 50px; margin-bottom: 28px;
 }
 
 .vg-tag {
-  display: block; margin-bottom: 14px;
+  display: block; margin-bottom: 8px;
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: clamp(.72rem, .8vw, .82rem); letter-spacing: .24em; color: #b5b0ad;
+  font-size: 10.5px; letter-spacing: .16em; color: #927F95;
 }
 
 /* Title: white -> grey */
 .vg-head h2 {
   margin: 0;
-   font-family:  'Manrope', sans-serif;
-  font-size: clamp(2.3rem, 6vw, 4rem);
-  line-height: 0.95;
-  letter-spacing: -0.065em !important;
-  font-weight: 900 !important;
-  margin-top: 10px;
-  color: #ffffff;
-  white-space: nowrap;
-  background: linear-gradient(180deg, #ffffff 0%, #aea7a3 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: clamp(2rem, 4.8vw, 3.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em !important;
+  font-weight: 800 !important;
+  color: #EDEDEC;
+  white-space: normal;
 }
 
-/* Highlight: coffee brown gradient */
+/* Highlight: purple gradient */
 .vg-head h2 em {
   font-style: normal;
-  background: linear-gradient(90deg, #b8946f 0%, #8f6444 55%, #6b452c 100%);
+  background: linear-gradient(90deg, #D2CBC6 0%, #927F95 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -74,9 +70,9 @@
 }
 
 .vg-head p {
-  margin: 0 0 .5em; max-width: 30ch;
-  font-size: clamp(0.85rem, 1.15vw, 1.1rem); line-height: 1.55; letter-spacing: -.01em;
-  color: var(--muted);
+  margin: 0; max-width: 28ch;
+  font-size: clamp(0.82rem, 1vw, 0.95rem); line-height: 1.55; letter-spacing: -.01em;
+  color: #927F95;
 }
 
 /* Stage & Background */
@@ -87,8 +83,8 @@
   overflow: hidden;
   border-radius: clamp(20px, 2vw, 32px);
   border: 1px solid var(--edge);
-  background: radial-gradient(120% 90% at 50% 0%, #1c1c1c, #080808);
-  box-shadow: 0 30px 80px rgba(0,0,0,.85), 0 0 60px rgba(121,82,56,.12);
+  background: radial-gradient(120% 90% at 50% 0%, #14102a, #0B081B);
+  box-shadow: 0 30px 80px rgba(11, 8, 27, 0.85), 0 0 60px rgba(74, 61, 98, 0.24);
   outline: none;
   user-select: none;
   touch-action: pan-y;
@@ -98,8 +94,8 @@
    ENTRANCE — cards khud scroll hote hain
 ========================================================= */
 .vg-marquee {
-  --cw: 270px;
-  --ch: 400px;
+  --cw: 250px;
+  --ch: 380px;
   position: absolute; inset: 0; z-index: 2;
   display: flex; align-items: center; overflow: hidden;
   transition: opacity .6s ease, visibility 0s;
@@ -140,9 +136,9 @@
    GALLERY — ek waqt mein 4 cards
 ========================================================= */
 .vg-pager {
-  --cw: 270px;
-  --ch: 400px;
-  --vw: 1130px;
+  --cw: 250px;
+  --ch: 380px;
+  --vw: 1066px;
   position: absolute; inset: 0; z-index: 3;
   display: flex; align-items: center; justify-content: center;
   opacity: 0; visibility: hidden; pointer-events: none;
@@ -172,8 +168,8 @@
   flex: 0 0 var(--cw); width: var(--cw); height: var(--ch);
   padding: 0; border: 0; border-radius: 24px;
   overflow: hidden; isolation: isolate; cursor: pointer;
-  background: linear-gradient(160deg, #1c1c1c 0%, #080808 100%);
-  box-shadow: 0 2px 2px rgba(255, 255, 255, 0.05) inset, 0 16px 36px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(160deg, #14102a 0%, #0B081B 100%);
+  box-shadow: 0 2px 2px rgba(237, 237, 236, 0.05) inset, 0 16px 36px rgba(11, 8, 27, 0.6);
   contain: layout paint;
 }
 
@@ -181,9 +177,9 @@
 .vg-card::before {
   content: ""; position: absolute; inset: 0; z-index: 6;
   border-radius: inherit; padding: 1.4px; pointer-events: none;
-  background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.1) 30%, rgba(255,255,255,0.05) 60%, rgba(143,100,68,0.7) 85%, rgba(184,148,111,0.95) 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  background: linear-gradient(135deg, rgba(237, 237, 236, 0.8) 0%, rgba(237, 237, 236, 0.1) 30%, rgba(237, 237, 236, 0.05) 60%, rgba(146, 127, 149, 0.7) 85%, rgba(146, 127, 149, 0.95) 100%);
+  -webkit-mask: linear-gradient(#EDEDEC 0 0) content-box, linear-gradient(#EDEDEC 0 0);
+  mask: linear-gradient(#EDEDEC 0 0) content-box, linear-gradient(#EDEDEC 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0.7;
@@ -191,7 +187,7 @@
 
 .vg-card::after {
   content: ""; position: absolute; top: 0; left: 10%; right: 10%; height: 45%; z-index: 1;
-  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.12), transparent 70%);
+  background: radial-gradient(ellipse at top, rgba(237, 237, 236, 0.12), transparent 70%);
   pointer-events: none;
 }
 
@@ -210,7 +206,7 @@
 
 .vg-card-overlay {
   position: absolute; inset: 0; z-index: 2;
-  background: linear-gradient(180deg, rgba(0, 0, 0,0.05) 0%, rgba(0, 0, 0,0.12) 50%, rgba(0, 0, 0,0.5) 100%);
+  background: linear-gradient(180deg, rgba(11, 8, 27, 0.05) 0%, rgba(11, 8, 27, 0.12) 50%, rgba(11, 8, 27, 0.5) 100%);
   transition: opacity .5s ease; pointer-events: none;
 }
 
@@ -220,40 +216,40 @@
 .vg-marquee::after {
   content: ""; position: absolute; inset: 0; z-index: 5;
   background:
-    radial-gradient(60% 55% at 50% 50%, rgba(0, 0, 0, 0.35), transparent 100%),
-    rgba(0, 0, 0, 0.5);
+    radial-gradient(60% 55% at 50% 50%, rgba(11, 8, 27, 0.35), transparent 100%),
+    rgba(11, 8, 27, 0.5);
   pointer-events: none;
 }
 
 /* GALLERY: card ka naam */
 .vg-card-name {
   position: absolute; left: 20px; right: 20px; bottom: 20px; z-index: 6;
-  color: #ffffff;
+  color: #EDEDEC;
   font-family: 'Inter', system-ui, sans-serif;
   font-size: clamp(15px, 1.5vw, 19px);
   font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; text-align: left;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 2px 10px rgba(11, 8, 27, 0.8);
   pointer-events: none;
 }
 
 .vg-pager .vg-card-overlay {
-  background: linear-gradient(180deg, rgba(0, 0, 0,0.05) 0%, rgba(0, 0, 0,0.2) 45%, rgba(0, 0, 0,0.85) 100%);
+  background: linear-gradient(180deg, rgba(11, 8, 27, 0.05) 0%, rgba(11, 8, 27, 0.2) 45%, rgba(11, 8, 27, 0.85) 100%);
 }
 
-.vg-card:focus-visible { outline: 2px solid #8f6444; outline-offset: 4px; }
+.vg-card:focus-visible { outline: 2px solid #927F95; outline-offset: 4px; }
 
 /* Top HUD */
 .vg-hud {
   position: absolute; top: 18px; left: 20px; right: auto;
   padding: 8px 18px; border-radius: 12px;
-  background: rgba(8, 8, 8, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(11, 8, 27, 0.75);
+  border: 1px solid rgba(237, 237, 236, 0.1);
   backdrop-filter: blur(8px);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-weight: 600;
   font-size: clamp(.72rem, .8vw, .82rem);
   line-height: 1.5; letter-spacing: .24em; text-transform: uppercase;
-  color: #aea7a3;
+  color: #927F95;
   pointer-events: none; z-index: 6;
 }
 
@@ -263,13 +259,13 @@
 .vg-modes button {
   display: inline-flex; align-items: center; gap: 6px;
   background: none; border: 0; padding: 0;
-  color: #a5a5a8;
+  color: #D2CBC6;
   font: 600 clamp(.8rem, .9vw, 1rem) 'Manrope', sans-serif;
   letter-spacing: -.01em; cursor: pointer; transition: color .3s;
 }
 
 .vg-modes button.is-on,
-.vg-modes button:hover { color: #b8946f; }
+.vg-modes button:hover { color: #927F95; }
 
 /* Center Entrance Overlay */
 .vg-enter {
@@ -282,17 +278,17 @@
 .vg-enter button {
   pointer-events: auto;
   padding: 13px 26px; border: 0; border-radius: 999px;
-  background: linear-gradient(135deg, #8f6444, #5b3b27);
-  color: #ffffff;
+  background: linear-gradient(135deg, #927F95, #4A3D62);
+  color: #EDEDEC;
   font: 700 clamp(.82rem, .95vw, 1.02rem) 'Manrope', sans-serif;
   letter-spacing: -.01em; cursor: pointer;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7), 0 0 24px rgba(91, 59, 39, 0.4);
+  box-shadow: 0 12px 32px rgba(11, 8, 27, 0.7), 0 0 24px rgba(74, 61, 98, 0.4);
   transition: transform .25s ease, box-shadow .25s ease;
 }
 
 .vg-enter button:hover {
   transform: scale(1.04);
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.8), 0 0 32px rgba(143, 100, 68, 0.55);
+  box-shadow: 0 16px 38px rgba(11, 8, 27, 0.8), 0 0 32px rgba(146, 127, 149, 0.55);
 }
 
 .vg-enter small {
@@ -300,8 +296,8 @@
   font-weight: 600;
   font-size: clamp(.72rem, .8vw, .82rem);
   letter-spacing: .2em;
-  color: #b5b0ad;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  color: #927F95;
+  text-shadow: 0 2px 8px rgba(11, 8, 27, 0.9);
 }
 
 .vg-stage.is-walk .vg-enter { opacity: 0; visibility: hidden; }
@@ -311,67 +307,67 @@
   position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 6;
   display: flex; align-items: center; gap: 18px;
   padding: 12px 20px; border-radius: 999px;
-  background: rgba(10, 10, 10, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(11, 8, 27, 0.85);
+  border: 1px solid rgba(237, 237, 236, 0.1);
   backdrop-filter: blur(12px);
 }
 
 .vg-ctrl button {
   display: grid; place-items: center;
   background: none; border: 0; padding: 0;
-  color: #ffffff; cursor: pointer; opacity: .85; transition: opacity .2s, color .2s;
+  color: #EDEDEC; cursor: pointer; opacity: .85; transition: opacity .2s, color .2s;
 }
 
-.vg-ctrl button:hover { opacity: 1; color: #b8946f; }
+.vg-ctrl button:hover { opacity: 1; color: #927F95; }
 
 .vg-dots { display: flex; align-items: center; gap: 7px; }
 
 .vg-dots i {
   width: 5px; height: 5px; border-radius: 99px;
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(237, 237, 236, 0.28);
   transition: width .4s, background .4s;
 }
 
-.vg-dots i.is-on { width: 18px; background: linear-gradient(90deg, #b8946f, #6b452c); }
+.vg-dots i.is-on { width: 18px; background: linear-gradient(90deg, #927F95, #4A3D62); }
 
 /* Tooltip & Detail Drawer */
 .vg-tip {
   position: absolute; top: 0; left: 0; z-index: 7;
   padding: 12px 16px; border-radius: 12px;
-  background: rgba(8, 8, 8, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(11, 8, 27, 0.92);
+  border: 1px solid rgba(237, 237, 236, 0.1);
   backdrop-filter: blur(10px);
   opacity: 0; pointer-events: none; transition: opacity .2s; max-width: 260px;
 }
 
 .vg-tip.is-on { opacity: 1; }
-.vg-tip b { display: block; font: 700 clamp(.8rem, 1vw, 1.1rem) 'Manrope', sans-serif; letter-spacing: -.02em; color: #fff; }
-.vg-tip small { display: block; margin-top: 4px; font: 500 11.5px ui-monospace, Menlo, monospace; letter-spacing: .14em; color: #b5b0ad; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vg-tip b { display: block; font: 700 clamp(.8rem, 1vw, 1.1rem) 'Manrope', sans-serif; letter-spacing: -.02em; color: #EDEDEC; }
+.vg-tip small { display: block; margin-top: 4px; font: 500 11.5px ui-monospace, Menlo, monospace; letter-spacing: .14em; color: #927F95; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-.vg-detail { position: absolute; inset: 0; z-index: 10; display: grid; grid-template-columns: 62% 38%; background: #080808; opacity: 0; visibility: hidden; transition: opacity .6s ease, visibility 0s linear .6s; }
+.vg-detail { position: absolute; inset: 0; z-index: 10; display: grid; grid-template-columns: 62% 38%; background: #0B081B; opacity: 0; visibility: hidden; transition: opacity .6s ease, visibility 0s linear .6s; }
 .vg-detail.is-open { opacity: 1; visibility: visible; transition-delay: 0s; }
-.vg-detail-img { position: relative; overflow: hidden; background: #141210; }
+.vg-detail-img { position: relative; overflow: hidden; background: #14102a; }
 .vg-detail-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity .7s ease; }
 .vg-detail-img img.is-on { opacity: 1; }
 .vg-detail-info { position: relative; display: flex; flex-direction: column; justify-content: center; padding: 0 44px; }
-.vg-close { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border-radius: 50%; border: 0; background: rgba(255,255,255,.12); color: #ffffff; font-size: 15px; cursor: pointer; transition: background .2s; }
-.vg-close:hover { background: #5b3b27; }
-.vg-eyebrow { display: block; margin-bottom: 12px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: clamp(.72rem, .8vw, .8rem); letter-spacing: .2em; color: #c9a07a; }
+.vg-close { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border-radius: 50%; border: 0; background: rgba(237, 237, 236, 0.12); color: #EDEDEC; font-size: 15px; cursor: pointer; transition: background .2s; }
+.vg-close:hover { background: #4A3D62; }
+.vg-eyebrow { display: block; margin-bottom: 12px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; font-size: clamp(.72rem, .8vw, .8rem); letter-spacing: .2em; color: #927F95; }
 .vg-detail-info h3 {
   margin: 0 0 10px; font-family: 'Inter', system-ui, sans-serif;
   font-size: clamp(1.4rem, 2.2vw, 2.3rem); line-height: 1.05; font-weight: 800; letter-spacing: -.05em;
-  background: linear-gradient(180deg, #ffffff 0%, #aea7a3 100%);
+  background: linear-gradient(180deg, #EDEDEC 0%, #927F95 100%);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
-.vg-detail-info p { margin: 0 0 20px; font-size: clamp(.88rem, .95vw, .98rem); line-height: 1.6; color: #c4bebb; max-width: 36ch; }
+.vg-detail-info p { margin: 0 0 20px; font-size: clamp(.88rem, .95vw, .98rem); line-height: 1.6; color: #D2CBC6; max-width: 36ch; }
 .vg-detail-info dl { margin: 0 0 26px; display: grid; gap: 9px; }
 .vg-detail-info dl div { display: grid; grid-template-columns: 110px 1fr; font-size: clamp(.82rem, .9vw, .92rem); }
-.vg-detail-info dt { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: clamp(.66rem, .72vw, .74rem); letter-spacing: .16em; color: #a5a5a8; padding-top: 4px; }
-.vg-detail-info dd { margin: 0; color: #ffffff; }
+.vg-detail-info dt { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: clamp(.66rem, .72vw, .74rem); letter-spacing: .16em; color: #D2CBC6; padding-top: 4px; }
+.vg-detail-info dd { margin: 0; color: #EDEDEC; }
 .vg-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
 .vg-btn-solid, .vg-btn-ghost { padding: 11px 20px; border-radius: 999px; font: 600 13.5px 'Manrope', sans-serif; cursor: pointer; text-decoration: none; transition: transform .3s; }
-.vg-btn-solid { background: linear-gradient(135deg, #8f6444, #5b3b27); color: #ffffff; border: 1px solid #5b3b27; }
-.vg-btn-ghost { background: transparent; color: #ffffff; border: 1px solid rgba(255,255,255,.2); }
+.vg-btn-solid { background: linear-gradient(135deg, #927F95, #4A3D62); color: #EDEDEC; border: 1px solid #4A3D62; }
+.vg-btn-ghost { background: transparent; color: #EDEDEC; border: 1px solid rgba(237, 237, 236, 0.2); }
 .vg-btn-solid:hover, .vg-btn-ghost:hover { transform: translateY(-2px); }
 
 .vg-swap.hw-swap > * { animation: vgIn .55s cubic-bezier(.22,1,.36,1) both; }
@@ -381,7 +377,7 @@
 @keyframes vgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
 @media (max-width: 800px) {
-  .vg-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .vg-head { flex-direction: column; align-items: flex-start; gap: 14px; }
   .vg-stage { aspect-ratio: 16 / 10; min-height: 420px; }
   .vg-hud { top: 16px; left: 16px; }
   .vg-modes { right: 16px; top: 16px; }
@@ -398,50 +394,36 @@
 }
 
 /* =========================================================
-   SAB HEADINGS + CTA — Inter Tight (sab pages par ek jaisa)
-   Font: Inter Tight 800, letter-spacing -0.015em.
-   Gallery ka title, card ke naam, detail title aur buttons cover hain.
-   Hero title ka size/line-height neeche alag hai, baaki headings apna
-   size rakhti hain. Selector jaan-boojh kar mazboot hai kyunke purane
-   "Tamam Headings" rules !important ke saath Manrope laga rahe the.
+   GALLERY FONTS — sirf gallery ke andar (global h1-h6 override hata diya,
+   warna Mission/Stages/Pipeline ke Manrope titles override ho rahe thay)
    ========================================================= */
-html body h1:not(#a):not(#b),
-html body h2:not(#a):not(#b),
-html body h3:not(#a):not(#b),
-html body h4:not(#a):not(#b),
-html body h5:not(#a):not(#b),
-html body h6:not(#a):not(#b),
-html body .vg-card-name:not(#a):not(#b),
-html body .vg-detail-info h3:not(#a):not(#b),
-html body .vg-head h2:not(#a):not(#b),
-html body h1:not(#a):not(#b) *,
-html body h2:not(#a):not(#b) *,
-html body h3:not(#a):not(#b) *,
-html body h4:not(#a):not(#b) *,
-html body h5:not(#a):not(#b) *,
-html body h6:not(#a):not(#b) *,
-html body .vg-card-name:not(#a):not(#b) *,
-html body .vg-detail-info h3:not(#a):not(#b) *,
-html body .vg-head h2:not(#a):not(#b) * {
+html body .vg .vg-card-name:not(#a):not(#b),
+html body .vg .vg-detail-info h3:not(#a):not(#b) {
   font-family: 'Inter Tight', sans-serif !important;
   font-weight: 800 !important;
   letter-spacing: -0.015em !important;
 }
 
-/* HERO TITLE size */
-html body .vg-head h2:not(#a):not(#b) {
-  font-size: clamp(3rem, 4.5vw, 4.5rem) !important;
-  line-height: 0.92 !important;
+/* Section title: services.css jaisa (Inter Tight 800, FAQ jitna size) */
+html body .vg .vg-head h2:not(#a):not(#b),
+html body .vg .vg-head h2:not(#a):not(#b) * {
+  font-family: 'Inter Tight', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.015em !important;
+}
+html body .vg .vg-head h2:not(#a):not(#b) {
+  font-size: clamp(2rem, 4.8vw, 3.25rem) !important;
+  line-height: 1.1 !important;
   max-width: none !important;
   overflow-wrap: break-word;
-  white-space: normal !important;   /* pehle nowrap tha, itne bade size par kat jata */
+  white-space: normal !important;
 }
-html body .vg-head h2:not(#a):not(#b) * {
+html body .vg .vg-head h2:not(#a):not(#b) * {
   font-size: inherit !important;
   line-height: inherit !important;
 }
 
-/* CTA buttons — sirf font family + spacing (weight apna) */
+/* CTA buttons */
 html body .vg-btn-solid:not(#a):not(#b),
 html body .vg-btn-ghost:not(#a):not(#b) {
   font-family: 'Inter Tight', sans-serif !important;
@@ -458,7 +440,7 @@ html body .vg-btn-ghost:not(#a):not(#b) {
 .vg-close:focus-visible,
 .vg-enter button:focus-visible,
 .vg-btn-solid:focus-visible,
-.vg-btn-ghost:focus-visible { outline: 2px solid #c9a07a; outline-offset: 3px; }
+.vg-btn-ghost:focus-visible { outline: 2px solid #927F95; outline-offset: 3px; }
 
 
 /* =========================================================
@@ -473,7 +455,8 @@ html body .vg-btn-ghost:not(#a):not(#b) {
 }
 
 @media (max-width: 1024px) {
-  .vg-head h2 { white-space: normal; }
+  .vg-head h2,
+  html body .vg .vg-head h2:not(#a):not(#b) { white-space: normal !important; }
   .vg-stage { aspect-ratio: auto; min-height: 480px; }
   /* detail khulne par stage bada ho jaye (modern browsers) */
   .vg-stage:has(.vg-detail.is-open) { min-height: 560px; }
@@ -512,7 +495,7 @@ html body .vg-btn-ghost:not(#a):not(#b) {
     right: 12px;
     width: 44px;
     height: 44px;
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(11, 8, 27, 0.55);
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
   }
@@ -524,8 +507,12 @@ html body .vg-btn-ghost:not(#a):not(#b) {
   .vg-actions .vg-btn-solid, .vg-actions .vg-btn-ghost { flex: 1 1 auto; text-align: center; }
 }
 
-@media (max-width: 680px) {
-  .vg-wrap { width: 92vw; }
+@media (max-width: 1000px) {
+  .vg { padding: 50px 4% 40px; }
+  .vg-head { gap: 14px; }
+}
+@media (max-width: 640px) {
+  .vg { padding: 44px 5% 44px; }
 }
 
 @media (max-width: 480px) {
@@ -540,4 +527,35 @@ html body .vg-btn-ghost:not(#a):not(#b) {
 
 @media (hover: none) {
   .vg-card:hover img { transform: none; }
+}
+
+
+/* =========================================================
+   GLASS BUTTONS — frosted glass look
+   (isay file ke bilkul END me rakho)
+========================================================= */
+.vg-btn-solid, .vg-enter button {
+  background: linear-gradient(135deg, rgba(146, 127, 149, 0.30) 0%, rgba(74, 61, 98, 0.40) 100%) !important;
+  border: 1px solid rgba(237, 237, 236, 0.24) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  box-shadow: inset 0 1px 0 rgba(237, 237, 236, 0.28), inset 0 -1px 0 rgba(0, 0, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+  color: #EDEDEC;
+}
+.vg-btn-solid:hover, .vg-enter button:hover {
+  background: linear-gradient(135deg, rgba(146, 127, 149, 0.45) 0%, rgba(74, 61, 98, 0.55) 100%) !important;
+  border-color: rgba(237, 237, 236, 0.40) !important;
+  box-shadow: inset 0 1px 0 rgba(237, 237, 236, 0.38), inset 0 -1px 0 rgba(0, 0, 0, 0.25), 0 12px 30px rgba(0, 0, 0, 0.45) !important;
+}
+.vg-btn-ghost {
+  background: linear-gradient(135deg, rgba(237, 237, 236, 0.12) 0%, rgba(237, 237, 236, 0.04) 100%) !important;
+  border: 1px solid rgba(237, 237, 236, 0.20) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  box-shadow: inset 0 1px 0 rgba(237, 237, 236, 0.22), inset 0 -1px 0 rgba(0, 0, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.30) !important;
+  color: #EDEDEC;
+}
+.vg-btn-ghost:hover {
+  background: linear-gradient(135deg, rgba(237, 237, 236, 0.20) 0%, rgba(237, 237, 236, 0.08) 100%) !important;
+  border-color: rgba(237, 237, 236, 0.34) !important;
 }

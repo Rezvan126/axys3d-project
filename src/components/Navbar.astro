@@ -1,5 +1,6 @@
 ---
 import "../styles/Navbar.css";
+import Logo from "./logo.astro";
 
 const links = [
   { label: "Home", href: "/" },
@@ -28,7 +29,7 @@ const isActive = (href: string) =>
 
     <!-- LOGO -->
     <a href="/" class="logo" aria-label="Axys3D Home">
-      AXYS<span class="brown-text">3D</span>
+      <Logo class="logo-img" />
     </a>
 
     <!-- CENTER PILL NAV (desktop) -->
@@ -141,3 +142,10 @@ const isActive = (href: string) =>
     if (e.matches) setOpen(false);
   });
 </script>
+
+<style>
+  /* Logo image: text ki jagah. Height se size control hota hai. */
+  .logo { display: inline-flex; align-items: center; line-height: 0; }
+  .logo-img { display: block; height: 28px; width: auto; }
+  @media (max-width: 640px) { .logo-img { height: 24px; } }
+</style>

@@ -1,5 +1,6 @@
 ---
 import "../styles/footer.css";
+import Logo from "./logo.astro";
 ---
 
 <footer class="site-footer">
@@ -11,7 +12,9 @@ import "../styles/footer.css";
     <div class="footer-top">
       <!-- Brand Column -->
       <div class="footer-brand">
-        <a href="/" class="footer-logo">AXYS<span>3D</span></a>
+        <a href="/" class="footer-logo" aria-label="Axys3D Home">
+          <Logo class="footer-logo-img" />
+        </a>
         <p>AEC production & BIM modeling partner. Islamabad based.</p>
         <a href="mailto:info@axys3d.com" class="footer-contact">info@axys3d.com</a>
       </div>

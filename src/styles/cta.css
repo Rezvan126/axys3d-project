@@ -1,17 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
 /* =========================================================
-   CTA SECTION — Black + Grey + Coffee Brown (60/30/10)
+   CTA SECTION — Black + Grey + Purple (60/30/10)
    ========================================================= */
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 .cta-section {
   --black: #000000;
-  --grey: #b5b0ad;
-  --grey-dark: #525254;
-  --grey-darker: #363336;
-  --sand: #cfc9c5;
-  --brown: #5b3b27;
-  --brown-hi: #8f6444;
-  --brown-lt: #b8946f;
+  --grey: #927F95;
+  --grey-dark: #6d6179;
+  --grey-darker: #6d6179;
+  --sand: #D2CBC6;
+  --brown: #4A3D62;
+  --brown-hi: #927F95;
+  --brown-lt: #927F95;
 
   position: relative;
   width: 100%;
@@ -28,13 +30,13 @@
   inset: 0;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.66)),
+    linear-gradient(rgba(11, 8, 27, 0.66), rgba(11, 8, 27, 0.66)),
     url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #0B081B 24%, #0B081B 76%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #0B081B 24%, #0B081B 76%, transparent 100%);
 }
 
 .cta-inner {
@@ -66,20 +68,20 @@
 
 .cta-main h2 {
   margin: 0;
-  color: #ffffff;
-  font-family:  'Manrope', sans-serif;
-  font-size: clamp(2.3rem, 6vw, 4rem);
-  line-height: 1;
-  letter-spacing: -0.06em !important;
-  font-weight: 900 !important;
-  margin-top: 10px;
+  color: #EDEDEC;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: clamp(2rem, 4.8vw, 3.25rem);   /* FAQ jitna */
+  line-height: 1.1;
+  letter-spacing: -0.015em !important;
+  font-weight: 800 !important;
+  margin-top: 6px;
 }
 
 /* Highlight: Coffee brown gradient */
 .cta-highlight {
   display: inline-block;
   padding-right: .06em;
-  background: linear-gradient(90deg, #c9a67f 0%, #a9764f 55%, #8f6444 100%);
+  background: linear-gradient(90deg, #D2CBC6 0%, #927F95 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -107,17 +109,17 @@
   right: -18px;
   width: 44%;
   height: 56%;
-  background: #2a292b;
+  background: #1f1a33;
   border-top-right-radius: 44px;
 }
 
-/* bottom-left, coffee brown */
+/* bottom-left, purple */
 .cta-shape--b {
   left: -18px;
   bottom: -18px;
   width: 40%;
   height: 50%;
-  background: #3a2518;
+  background: #4A3D62;
   border-bottom-left-radius: 44px;
 }
 
@@ -125,11 +127,11 @@
   position: relative;
   padding: clamp(28px, 3.2vw, 44px);
   border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(12, 12, 12, 0.88);
+  border: 1px solid rgba(237, 237, 236, 0.16);
+  background: rgba(11, 8, 27, 0.88);
   -webkit-backdrop-filter: blur(18px) saturate(120%);
   backdrop-filter: blur(18px) saturate(120%);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 70px rgba(11, 8, 27, 0.6), inset 0 1px 0 rgba(237, 237, 236, 0.1);
 }
 
 .cta-card p {
@@ -151,11 +153,11 @@
   padding: 10px 10px 10px 28px;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--brown-hi) 0%, var(--brown) 100%);
-  color: #ffffff;
+  color: #EDEDEC;
   text-decoration: none;
   font-size: 15px;
   font-weight: 700;
-  box-shadow: 0 10px 30px rgba(91, 59, 39, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 30px rgba(74, 61, 98, 0.4), inset 0 1px 0 rgba(237, 237, 236, 0.25);
   transition: transform .3s ease, box-shadow .3s ease;
 }
 
@@ -166,7 +168,7 @@
   left: -60%;
   width: 40%;
   height: 100%;
-  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  background: linear-gradient(100deg, transparent, rgba(237, 237, 236, 0.35), transparent);
   transform: skewX(-20deg);
   transition: left .7s ease;
   pointer-events: none;
@@ -174,7 +176,7 @@
 
 .cta-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(91, 59, 39, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: 0 16px 40px rgba(74, 61, 98, 0.6), inset 0 1px 0 rgba(237, 237, 236, 0.25);
 }
 
 .cta-button:hover::before { left: 120%; }
@@ -198,7 +200,7 @@
 .cta-button:hover .cta-arrow { transform: rotate(45deg); }
 
 .cta-button:focus-visible {
-  outline: 2px solid #ffffff;
+  outline: 2px solid #EDEDEC;
   outline-offset: 4px;
 }
 
@@ -232,7 +234,7 @@
 @media (max-width: 480px) {
   .cta-card { padding: 24px 20px; }
   .cta-card p { font-size: 15px; margin-bottom: 24px; }
-  .cta-main h2 { letter-spacing: -0.045em !important; }
+  .cta-main h2 { letter-spacing: -0.015em !important; font-size: clamp(1.8rem, 8vw, 2.4rem); }
 }
 
 @media (pointer: coarse) {
@@ -241,4 +243,30 @@
 
 @media (hover: none) {
   .cta-button:hover { transform: none; }
+}
+
+
+/* =========================================================
+   GLASS BUTTONS — frosted glass look
+   (isay file ke bilkul END me rakho)
+========================================================= */
+.cta-button {
+  background: linear-gradient(135deg, rgba(146, 127, 149, 0.30) 0%, rgba(74, 61, 98, 0.40) 100%) !important;
+  border: 1px solid rgba(237, 237, 236, 0.24) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  box-shadow: inset 0 1px 0 rgba(237, 237, 236, 0.28), inset 0 -1px 0 rgba(0, 0, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+  color: #EDEDEC;
+}
+.cta-button:hover {
+  background: linear-gradient(135deg, rgba(146, 127, 149, 0.45) 0%, rgba(74, 61, 98, 0.55) 100%) !important;
+  border-color: rgba(237, 237, 236, 0.40) !important;
+  box-shadow: inset 0 1px 0 rgba(237, 237, 236, 0.38), inset 0 -1px 0 rgba(0, 0, 0, 0.25), 0 12px 30px rgba(0, 0, 0, 0.45) !important;
+}
+.cta-arrow {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(237, 237, 236, 0.22);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(237, 237, 236, 0.2);
 }
